@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>입사지원서 · 박세훈</title>
+<meta name="description" content="입사지원서 — 이력서 · 경력사항 상세기술서 / 게임 사업 PM 지원 박세훈">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   입사지원서 — 표 양식 (원본: 입사지원서_2025.02.06_박세훈.docx)
+   무채색 · A3 297×420mm 고정 · 굵기 최대 600
+   2026-08-09 A4 → A3 전환 (자소서_작업규칙.json v1.1)
+   구조 mm ×1.414 · 글자 크기는 유지 (A3=A4 2배 면적이라 2장을 1장으로 합침)
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --ink:#0d0d0d;
+  --muted:#5d5d5d;
+  --subtle:#8f8f8f;
+  --line:#b9b9b9;
+  --line-soft:#dcdcdc;
+  --fill:#f4f4f4;
+  --snow:#ffffff;
+  --ff-sans:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",ui-sans-serif,system-ui,sans-serif;
+  --ff-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{ box-sizing:border-box; }
+html{
+  font-family:var(--ff-sans); font-size:10.5pt; color:var(--ink);
+  line-height:1.6; word-break:keep-all; -webkit-font-smoothing:antialiased;
+}
+body{ margin:0; background:#e9e9e9; }
+strong,b{ font-weight:600; }
+.mono{ font-family:var(--ff-mono); letter-spacing:.05em; }
+::selection{ background:#111; color:#fff; }
+
+/* ── A3 페이지 박스 ── */
+@page{ size:A3 portrait; margin:0; }
+.page{
+  width:297mm; height:420mm; position:relative; overflow:hidden;
+  background:var(--snow); page-break-after:always; page-break-inside:avoid;
+}
+.page:last-of-type{ page-break-after:auto; }
+@media screen{
+  body{ padding:24px 0 40px; }
+  .page{ margin:0 auto 20px; border:1px solid var(--line); box-shadow:none; }
+}
+.head{
+  position:absolute; top:0; left:0; right:0; height:21mm;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  padding:0 21mm 5mm; border-bottom:1px solid var(--line);
+}
+.head .label{ font-family:var(--ff-mono); font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; }
+.head .who{ font-family:var(--ff-mono); font-size:7.5pt; letter-spacing:.3px; color:var(--subtle); }
+.foot{
+  position:absolute; bottom:0; left:0; right:0; height:16mm;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 21mm 4mm; border-top:1px solid var(--line-soft);
+  font-family:var(--ff-mono); font-size:7.5pt; color:var(--subtle);
+}
+.body{ position:absolute; top:21mm; bottom:16mm; left:0; right:0; padding:10mm 21mm 6mm; }
+/* 내용이 A3 박스를 넘칠 경우 잘리지 않도록 축소 (기본 1.0, 넘칠 때만 동작) */
+.fit{ transform-origin:top left; }
+
+/* ── 양식 제목 ── */
+.form-title{
+  text-align:center; font-size:15pt; font-weight:500; letter-spacing:.5em;
+  margin:0 0 8.5mm; padding-bottom:3.5mm;
+}
+.form-title.sub{ font-size:13pt; letter-spacing:.35em; margin-bottom:7mm; }
+
+/* ── 공통 표 ── */
+table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td{
+  border:1px solid var(--line); padding:2.3mm 3.1mm;
+  font-size:9.5pt; line-height:1.45; vertical-align:middle; text-align:left;
+}
+th{ background:var(--fill); font-weight:500; text-align:center; color:var(--ink); }
+td.c{ text-align:center; }
+td.k, th.k{ background:var(--fill); font-weight:500; text-align:center; letter-spacing:.12em; }
+.sm{ font-size:8.4pt; font-weight:400; color:var(--muted); letter-spacing:0; }
+.tbl + .tbl{ border-top:0; }
+.tbl + .tbl table{ margin-top:-1px; }
+.blk-gap{ height:5mm; }
+
+/* 사진칸 */
+td.photo{
+  padding:0; height:61mm; background:var(--snow); overflow:hidden; line-height:0;
+}
+td.photo img{
+  display:block; width:100%; height:61mm;
+  object-fit:cover; object-position:center 20%;
+}
+
+/* ── 경력 상세 블록 ── */
+.exp{ margin-bottom:7mm; }
+.exp:last-child{ margin-bottom:0; }
+.exp-detail{
+  border:1px solid var(--line); border-top:0; padding:4.2mm 5.6mm 5mm;
+}
+.exp-row{ display:flex; gap:4.2mm; margin-bottom:2.3mm; align-items:baseline; }
+.exp-row:last-child{ margin-bottom:0; }
+.exp-row .lbl{
+  flex:0 0 31mm; font-size:8.8pt; font-weight:500; letter-spacing:.06em;
+  color:var(--ink); font-family:var(--ff-mono);
+}
+.exp-row .val{ flex:1; font-size:9.3pt; }
+.exp-list{ margin:0; padding:0; list-style:none; }
+.exp-list li{
+  font-size:9.3pt; line-height:1.55; padding-left:4.8mm; position:relative; margin-bottom:1.6mm;
+}
+.exp-list li:last-child{ margin-bottom:0; }
+.exp-list li::before{ content:"–"; position:absolute; left:0; color:var(--subtle); }
+.exp-list li b{ font-weight:600; }
+.exp-list li .meta{ font-weight:500; color:#333; }
+.exp-list li .sub{ display:block; font-weight:400; color:var(--muted); font-size:8.8pt; padding-left:0; margin-top:.6mm; }
+
+/* ── 확인 필요 필드 ── */
+.chk{ border-bottom:1px dashed var(--subtle); }
+
+/* ── 인쇄 ── */
+@media print{
+  body{ background:#fff; padding:0; }
+  .page{ margin:0; border:0; }
+  html,body,.page{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ P1 · 이력서 ═══════════ -->
+<section class="page">
+  <div class="head">
+    <span class="label">Application Form</span>
+    <span class="who">박세훈 / Park Se Hoon</span>
+  </div>
+  <div class="body">
+    <h1 class="form-title">&lt; 이 력 서 &gt;</h1>
+
+    <!-- 지원분야 -->
+    <div class="tbl">
+      <table>
+        <colgroup><col style="width:31mm"><col></colgroup>
+        <tr><td class="k">지원분야</td><td>게임 사업 PM · 라이브 옵스</td></tr>
+      </table>
+    </div>
+
+    <!-- 인적사항 -->
+    <div class="tbl">
+      <table>
+        <colgroup>
+          <col style="width:45mm"><col style="width:34mm"><col style="width:68mm">
+          <col style="width:37mm"><col>
+        </colgroup>
+        <tr>
+          <td class="photo" rowspan="5"><img src="photo.jpg" alt="박세훈 증명사진"></td>
+          <td class="k">성　　명</td><td>박세훈</td>
+          <td class="k">희망연봉</td><td>사내 내규에 따름</td>
+        </tr>
+        <tr>
+          <td class="k">영문성명</td><td colspan="3">Park Se Hoon</td>
+        </tr>
+        <tr>
+          <td class="k">생년월일</td><td colspan="3">1993년 6월 1일 (만 33세)</td>
+        </tr>
+        <tr>
+          <td class="k">e-mail</td><td>sun8070vvv20@gmail.com</td>
+          <td class="k">휴대폰번호</td><td>010-7222-0473</td>
+        </tr>
+        <tr>
+          <td class="k">주　　소</td><td colspan="3">서울특별시 관악구 봉천동 950-3</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="blk-gap"></div>
+
+    <!-- 학력사항 -->
+    <div class="tbl">
+      <table>
+        <colgroup>
+          <col style="width:31mm"><col style="width:28mm"><col style="width:11mm"><col style="width:28mm">
+          <col><col style="width:54mm">
+        </colgroup>
+        <tr>
+          <th class="k" rowspan="3" style="width:31mm">학력사항</th>
+          <th colspan="3">년월 ~ 년월</th><th>학교명</th><th>전공</th>
+        </tr>
+        <tr>
+          <td class="c">2009.03</td><td class="c">~</td><td class="c">2012.02</td>
+          <td>성신고등학교</td><td class="c">–</td>
+        </tr>
+        <tr>
+          <td class="c">2012.03</td><td class="c">~</td><td class="c">2020.02</td>
+          <td>울산대학교 (졸업)</td><td class="c">역사·문화</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="blk-gap"></div>
+
+    <!-- 경력사항 -->
+    <div class="tbl">
+      <table>
+        <colgroup>
+          <col style="width:31mm"><col><col style="width:31mm">
+          <col style="width:54mm"><col style="width:34mm">
+        </colgroup>
+        <tr>
+          <th class="k" rowspan="5" style="width:31mm">경력사항</th>
+          <th>회사명</th><th>직급</th><th>기간 (년월~년월)</th><th>근무기간</th>
+        </tr>
+        <tr>
+          <td>(주)이노디스</td><td class="c">기획 PL</td>
+          <td class="c">2025.02 ~ 재직 중</td><td class="c">1년 6개월</td>
+        </tr>
+        <tr>
+          <td>(주)그라비티 네오싸이언</td><td class="c">대리</td>
+          <td class="c">2024.01 ~ 2024.11</td><td class="c">11개월</td>
+        </tr>
+        <tr>
+          <td>(주)이노컴즈</td><td class="c">주임</td>
+          <td class="c">2021.07 ~ 2023.06</td><td class="c">2년</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="k">경 력 합 산</td><td class="c"><b>4년 5개월</b></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="blk-gap"></div>
+
+    <!-- 병역사항 -->
+    <div class="tbl">
+      <table>
+        <colgroup>
+          <col style="width:31mm"><col style="width:37mm"><col>
+          <col style="width:37mm"><col style="width:65mm">
+        </colgroup>
+        <tr>
+          <td class="k">병역사항</td>
+          <td class="k">군필여부</td><td class="c"><b>필</b> / 미필 / 면제 (육군 만기전역)</td>
+          <td class="k">복무기간</td><td class="c">2013.04 ~ 2015.01</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="blk-gap"></div>
+
+    <!-- 보유기술 / 자격면허 -->
+    <div class="tbl">
+      <table>
+        <colgroup><col style="width:31mm"><col style="width:74mm"><col style="width:23mm"><col></colgroup>
+        <tr>
+          <th class="k" rowspan="6" style="width:31mm">보유기술<br><span class="sm">(상/중/하)</span></th>
+          <th>항목</th><th>숙련도</th><th>활용 내용</th>
+        </tr>
+        <tr>
+          <td>PowerPoint · Google Slides</td><td class="c">상</td><td>화면정의서·화면기획서 작성</td>
+        </tr>
+        <tr>
+          <td>Excel · Google Sheets</td><td class="c">중</td><td>메뉴구조도·WBS·요구사항정의서</td>
+        </tr>
+        <tr>
+          <td>한글 (HWP) · MS Word</td><td class="c">상</td><td>유지보수 보고서·정책 문서·증적 문서</td>
+        </tr>
+        <tr>
+          <td>Figma</td><td class="c">중</td><td>화면 설계·와이어프레임</td>
+        </tr>
+        <tr>
+          <td>생성형 AI 활용</td><td class="c">상</td><td>기획 문서 작성과 웹·앱 화면 구현(바이브 코딩)에 상시 활용. 작업 단위로 서브에이전트를 나누어 분업 구성, 하네스·스킬로 코드·문서 산출물 규격 일원화, 계획 → 검토 → 구현 플로우를 반드시 거치도록 구성</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="blk-gap"></div>
+
+    <div class="tbl">
+      <table>
+        <colgroup><col style="width:31mm"><col></colgroup>
+        <tr>
+          <td class="k">입사가능</td>
+          <td>최종합격 통보 후 2~3주 (퇴사 절차)</td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="blk-gap"></div>
+    <div class="blk-gap"></div>
+
+    <!-- A3 전환으로 이력서와 같은 장에 배치 (구 P2) -->
+    <h1 class="form-title sub">&lt; 경력사항 상세기술서 &gt;</h1>
+
+    <!-- 경력 ① 이노디스 -->
+    <div class="exp">
+      <table>
+        <colgroup>
+          <col style="width:25mm"><col style="width:10mm"><col style="width:25mm">
+          <col style="width:28mm"><col style="width:57mm"><col style="width:42mm"><col>
+        </colgroup>
+        <tr>
+          <th colspan="3">근무기간</th><th>근무개월수</th>
+          <th>회사명 / 업종</th><th>부서 / 직급</th><th>담당업무</th>
+        </tr>
+        <tr>
+          <td class="c">2025.02</td><td class="c">~</td><td class="c">재직 중</td>
+          <td class="c">1년 6개월</td>
+          <td>(주)이노디스<br><span class="sm">웹·앱 구축 / SI</span></td>
+          <td>웹서비스팀<br><span class="sm">기획 PL</span></td>
+          <td>공공·문화 포털 사업 관리<br><span class="sm">담당 프로젝트 전부 사업 관리 담당</span></td>
+        </tr>
+      </table>
+      <div class="exp-detail">
+        <div class="exp-row"><span class="lbl">이직사유</span><span class="val">재직 중</span></div>
+        <div class="exp-row" style="display:block">
+          <span class="lbl" style="display:block;margin-bottom:1.4mm">업무내용</span>
+          <ul class="exp-list">
+            <li><b>국립부여박물관 누리집 개편·고도화</b> <span class="meta">(공공·문화 / 5,000만원 / 4개월) · 기획 PL</span>
+              <span class="sub">향로박사 퀴즈 기능 — 관리자 문제 입력 필드 신설부터 O/X·객관식·주관식 3개 유형의 결과 화면 노출까지 관리자·사용자 구간 기획. 키오스크 발권 현황 연동은 대상 확정 전 데이터 요구사항 명세서와 DB 설계서를 선작성하고 캐시·프록시 2개 안을 비교해 적용 방식 확정. 본인인증 API 교체, 4개 언어 전시안내 개편, WCAG 2.1 웹접근성 대응.</span>
+            </li>
+            <li><b>서울영화센터 포털 유지보수·운영</b> <span class="meta">(문화 / 연 9,000만원대 / 2025.03~) · 기획 PL</span>
+              <span class="sub">시설대관 입금 상태를 예약금·잔금 2단계로 분리 — 기존 코드 영향 범위를 전수 확인해 3개 안을 비교한 뒤 정책 항목 확정·문서화. 기획전 신청관리 CMS 신규 설계(신청·승인·반려·취소 상태 흐름, 전용 테이블, 검색 필터, 일괄 상태변경). 외부 예매 시스템 쿠폰 데이터 동기화 설계, 관람 통계 화면 3종 신규 정의.</span>
+            </li>
+            <li><b>자전거행복나눔 포털 운영·유지보수</b> <span class="meta">(공공 / 2026.01~) · 기획 PL</span>
+              <span class="sub">개인정보 접근이력 엑셀 다운로드 신규 — 검색조건을 유지한 전체 내려받기, 암호화 저장 필드의 복호화 조건과 권한 검증 정의. 행정안전부 개인정보보호 실태점검 대응 — 계정 잠금·자동 로그아웃·접속기록 보존·보유기간 만료 파기를 화면·정책·배치 요건으로 정리하고 증적 문서 작성. NICE 본인인증 연동 플로우 설계.</span>
+            </li>
+            <li><b>2025년 프로젝트 3건</b> <span class="meta">(공공·문화 / 2025) · 기획 PL</span>
+              <span class="sub">공연유통 플랫폼 사용자 인터페이스 설계 및 단위 테스트 시나리오 작성. NABO 과업 진행 관리·회의록·퀴즈 이벤트 당첨자 관리 시스템 연계 기획. WBS 일정관리와 PRD 협의로 3개 프로젝트 동시 진행.</span>
+            </li>
+            <li><b>기획 PL · 사업 관리</b> <span class="meta">(공기관 / 5,000만원~1억원 미만)</span><span class="sub">재직 중 담당한 프로젝트 전부의 사업 관리를 맡음. 요구사항 접수부터 검수·정산까지 운영하고, WBS 기반으로 사업 일정과 소속 기획자 업무를 함께 관리. 구축 종료 후의 상시 운영·고도화까지 이어서 담당.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="foot"><span>입사지원서 · 박세훈</span><span>1 / 2</span></div>
+</section>
+
+<!-- ═══════════ P2 · 경력사항 상세기술서 ② ═══════════ -->
+<section class="page">
+  <div class="head">
+    <span class="label">Career Detail</span>
+    <span class="who">박세훈 / Park Se Hoon</span>
+  </div>
+  <div class="body">
+    <h1 class="form-title sub">&lt; 경력사항 상세기술서 &gt;</h1>
+
+    <!-- 경력 ② 그라비티 네오싸이언 -->
+    <div class="exp">
+      <table>
+        <colgroup>
+          <col style="width:25mm"><col style="width:10mm"><col style="width:25mm">
+          <col style="width:28mm"><col style="width:57mm"><col style="width:42mm"><col>
+        </colgroup>
+        <tr>
+          <th colspan="3">근무기간</th><th>근무개월수</th>
+          <th>회사명 / 업종</th><th>부서 / 직급</th><th>담당업무</th>
+        </tr>
+        <tr>
+          <td class="c">2024.01</td><td class="c">~</td><td class="c">2024.11</td>
+          <td class="c">11개월</td>
+          <td>(주)그라비티 네오싸이언<br><span class="sm">이커머스 운영</span></td>
+          <td>기획팀<br><span class="sm">대리 (팀원)</span></td>
+          <td>신세계DF 일반·이벤트 운영</td>
+        </tr>
+      </table>
+      <div class="exp-detail">
+        <div class="exp-row"><span class="lbl">이직사유</span><span class="val">계약 만료로 인한 직장 전환</span></div>
+        <div class="exp-row" style="display:block">
+          <span class="lbl" style="display:block;margin-bottom:1.4mm">업무내용</span>
+          <ul class="exp-list">
+            <li><b>신세계DF 면세 이커머스 운영 기획</b> <span class="meta">(이커머스 / 2024.01~2024.11) · 대리</span>
+              <span class="sub">사용자 화면과 관리자 화면(CMS) 운영 기획 전반. 상품 노출부터 주문·결제까지 핵심 구매 플로우를 점검하고 개선안 정리. 이용자가 반복 이탈하는 지점을 확인해 버튼 배치와 진입 경로 조정.</span>
+            </li>
+            <li><b>프로모션 이벤트 기획</b> <span class="meta">(이커머스 / 2024.01~2024.11) · 대리</span>
+              <span class="sub">참여형 이벤트의 참여 조건·회차 제한·당첨 판정 규칙 설계. 쿠폰/포인트 지급 규칙과 중복 지급·기간 만료 등 예외 처리 정의. 반응형 사이트 UI/UX 및 이벤트 제작 참여, 백오피스 모듈 일정 세팅.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 경력 ③ 이노컴즈 -->
+    <div class="exp">
+      <table>
+        <colgroup>
+          <col style="width:25mm"><col style="width:10mm"><col style="width:25mm">
+          <col style="width:28mm"><col style="width:57mm"><col style="width:42mm"><col>
+        </colgroup>
+        <tr>
+          <th colspan="3">근무기간</th><th>근무개월수</th>
+          <th>회사명 / 업종</th><th>부서 / 직급</th><th>담당업무</th>
+        </tr>
+        <tr>
+          <td class="c">2021.07</td><td class="c">~</td><td class="c">2023.06</td>
+          <td class="c">2년</td>
+          <td>(주)이노컴즈<br><span class="sm">Web·App·솔루션 개발/유통</span></td>
+          <td>기획팀<br><span class="sm">주임 (팀원)</span></td>
+          <td>사이트 UI/UX 기획 전반</td>
+        </tr>
+      </table>
+      <div class="exp-detail">
+        <div class="exp-row"><span class="lbl">이직사유</span><span class="val">직군 발전성과 비전을 위한 이직</span></div>
+        <div class="exp-row" style="display:block">
+          <span class="lbl" style="display:block;margin-bottom:1.4mm">업무내용</span>
+          <ul class="exp-list">
+            <li><b>현대성우캐스팅 출입증 발급 시스템</b> <span class="meta">(폐쇄형 업무 시스템 / 기획 참여도 50%) · 주임</span>
+              <span class="sub">방문자·공무·상시·협력사 유형별 발급 흐름 분리 설계, 발급 및 반입반출 구간 API 연계 기획. 분산된 출입 유형을 통합하고 수기 절차를 시스템으로 대체. 재직 중 유지보수 계약 유지.</span>
+            </li>
+            <li><b>SD바이오 업무 시스템</b> <span class="meta">(업무 시스템 / 기획 참여도 50%) · 주임</span>
+              <span class="sub">전자결재·전자서명·클레임 관리·QA 관리를 기능 단위로 분리해 정의. 수십 개 테이블이 맞물리는 데이터 연결 구조를 정리하고 화면과 매핑. 전자결재 흐름을 설계해 기존 업무 시스템과 연동.</span>
+            </li>
+            <li><b>한국석유공사 홈페이지 반응형 리뉴얼</b> <span class="meta">(공공 / 기획 참여도 50%) · 주임</span>
+              <span class="sub">반응형 리뉴얼 화면정의서 작성. 수시로 들어오던 요구사항을 기간을 정해 일괄 접수하도록 프로세스를 정리하고, 진행 상황을 공유 시트로 가시화해 작업 사이클 안정화. 재직 중 유지보수 계약 유지.</span>
+            </li>
+            <li><b>도아기업 신규 사이트 구축</b> <span class="meta">(기업 사이트 / 기획 참여도 80%) · 주임</span><span class="sub">재직 중 유지보수 계약 유지.</span></li>
+            <li><b>기획 산출물</b><span class="sub">화면정의서(Google Slides·PowerPoint), 검수용 메뉴구조도(Google Sheets·Excel), 유지보수 보고서(HWP).</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="foot"><span>박세훈 · 010-7222-0473 · sun8070vvv20@gmail.com</span><span>2 / 2</span></div>
+</section>
+
+<script>
+(function(){
+  /* A3 박스 넘침 방지 — 각 페이지 본문을 래핑해 필요한 만큼만 축소 */
+  function fit(){
+    document.querySelectorAll('.page > .body').forEach(function(body){
+      var w = body.querySelector(':scope > .fit');
+      if(!w){
+        w = document.createElement('div');
+        w.className = 'fit';
+        while(body.firstChild) w.appendChild(body.firstChild);
+        body.appendChild(w);
+      }
+      w.style.transform=''; w.style.width='';
+      var avail = body.clientHeight, need = w.scrollHeight;
+      if(need > avail + 1){
+        var k = Math.max(0.72, avail / need);
+        w.style.width = (100 / k) + '%';
+        w.style.transform = 'scale(' + k + ')';
+      }
+    });
+  }
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fit); }
+  window.addEventListener('load', fit);
+  window.addEventListener('beforeprint', fit);
+})();
+</script>
+</body>
+</html>
