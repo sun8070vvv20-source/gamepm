@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fff;color:#0d0d0d;font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,sans-serif;letter-spacing:-.015em;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:#0d0d0d;text-decoration:none}
+a:hover{color:#5d5d5d}
+</style>
+</helmet>
+
+<div style="max-width:1180px;margin:0 auto;padding:0 52px 120px">
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:26px 0;border-bottom:1px solid #0d0d0d">
+    <span style="font-size:14px;font-weight:600">박세훈 <em style="font-style:normal;font-weight:400;color:#6f6f6f">· 게임 사업 PM</em></span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:#6f6f6f">PORTFOLIO 2026</span>
+  </div>
+
+  <header style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:64px;align-items:end;padding:96px 0 72px;border-bottom:1px solid #0d0d0d">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#6f6f6f">Game Business PM · Live Ops</div>
+      <h1 style="margin:26px 0 0;font-size:34px;font-weight:600;line-height:1.46;letter-spacing:-.03em;max-width:19em">웹·앱과 이커머스에서 쌓은 사업 및 프로젝트 경험을 바탕으로, 게임산업에서 새로운 사업 기회를 발굴하고 서비스의 가치를 만들어가고 싶습니다.</h1>
+      <div style="display:flex;gap:12px;margin-top:40px">
+        <a href="portfolio.pdf" style="display:inline-flex;align-items:center;padding:13px 26px;background:#0d0d0d;color:#fff;border-radius:999px;font-size:14px;font-weight:500">PDF 내려받기</a>
+        <a href="../application/" style="display:inline-flex;align-items:center;padding:13px 26px;border:1px solid rgba(13,13,13,.24);font-size:14px;font-weight:500">지원서 보기</a>
+      </div>
+    </div>
+    <dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 20px;font-size:14px;border-top:1px solid rgba(13,13,13,.12)">
+      <dt style="padding:11px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6f;border-bottom:1px solid rgba(13,13,13,.12)">Name</dt>
+      <dd style="margin:0;padding:11px 0;font-weight:600;border-bottom:1px solid rgba(13,13,13,.12)">박세훈</dd>
+      <dt style="padding:11px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6f;border-bottom:1px solid rgba(13,13,13,.12)">Date</dt>
+      <dd style="margin:0;padding:11px 0;color:#5d5d5d;border-bottom:1px solid rgba(13,13,13,.12)">2026. 8.</dd>
+      <dt style="padding:11px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6f;border-bottom:1px solid rgba(13,13,13,.12)">Email</dt>
+      <dd style="margin:0;padding:11px 0;color:#5d5d5d;border-bottom:1px solid rgba(13,13,13,.12)">sun8070vvv20@gmail.com</dd>
+      <dt style="padding:11px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f6f6f;border-bottom:1px solid rgba(13,13,13,.12)">Mobile</dt>
+      <dd style="margin:0;padding:11px 0;color:#5d5d5d;border-bottom:1px solid rgba(13,13,13,.12)">010-7222-0473</dd>
+    </dl>
+  </header>
+
+  <nav style="display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid rgba(13,13,13,.12)">
+    <a href="#about" style="display:flex;align-items:baseline;gap:12px;padding:22px 22px 22px 0;border-right:1px solid rgba(13,13,13,.12)"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">01</span><span style="font-size:15px;font-weight:600">소개</span></a>
+    <a href="#cases" style="display:flex;align-items:baseline;gap:12px;padding:22px;border-right:1px solid rgba(13,13,13,.12)"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">02</span><span style="font-size:15px;font-weight:600">프로젝트</span></a>
+    <a href="#deliverables" style="display:flex;align-items:baseline;gap:12px;padding:22px;border-right:1px solid rgba(13,13,13,.12)"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">03</span><span style="font-size:15px;font-weight:600">산출물</span></a>
+    <a href="#strength" style="display:flex;align-items:baseline;gap:12px;padding:22px;border-right:1px solid rgba(13,13,13,.12)"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">04</span><span style="font-size:15px;font-weight:600">특장점</span></a>
+    <a href="#contact" style="display:flex;align-items:baseline;gap:12px;padding:22px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">05</span><span style="font-size:15px;font-weight:600">맺음말</span></a>
+  </nav>
+
+  <section id="about" style="padding:0 0 96px">
+    <div style="display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:56px;padding:56px 0 40px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">SECTION 01</div>
+        <h2 style="margin:16px 0 0;font-size:38px;font-weight:600;letter-spacing:-.035em;line-height:1.15">소개</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:17px;line-height:1.78;color:#5d5d5d;max-width:44em;text-wrap:pretty">공공·문화 포털과 면세 이커머스에서 기획 PL로 일했습니다. 5,000만원부터 1억원 미만 규모의 사업을 맡아 요구사항 접수부터 일정 관리, 검수와 정산까지 책임졌고, 관리자 시스템을 직접 설계해 이벤트와 쿠폰 발급을 운영했습니다.</p>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.75;color:#6f6f6f;max-width:44em">아래는 <b style="color:#0d0d0d;font-weight:600">02 프로젝트</b>에서 문제를 어떻게 풀었는지, <b style="color:#0d0d0d;font-weight:600">03 산출물</b>에서 무엇을 만들어 냈는지, <b style="color:#0d0d0d;font-weight:600">04 특장점</b>에서 어떤 일을 맡을 수 있는지 순서로 읽으시면 됩니다.</p>
+        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">기획 PL</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">사업 관리</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">라이브 운영</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">경력 4년 5개월</span>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f;padding-bottom:12px;border-bottom:1px solid #0d0d0d">PROFILE</div>
+    <dl style="margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px">
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">이름<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Name</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">박세훈 · Park Sehoon</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">생년월일<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Birth</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">1993. 6. 1.</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">경력<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Career</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">4년 5개월 · 서비스 기획 PL · 사업 관리</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">지원 분야<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Field</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">게임 사업 PM · 라이브 옵스</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">학력<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Education</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">울산대학교 역사·문화 졸업 (2012.03–2020.02)</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">병역<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Military</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">육군 만기전역 (2013.04–2015.01)</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">이메일<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Email</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">sun8070vvv20@gmail.com</dd></div>
+      <div style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;font-size:14px;font-weight:600">휴대폰 번호<small style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6f6f6f;margin-top:5px">Mobile</small></dt><dd style="margin:0;font-size:14.5px;color:#5d5d5d">010-7222-0473</dd></div>
+    </dl>
+
+    <div style="margin-top:64px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid #0d0d0d">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">CAREER</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6f6f6f">4년 5개월</span>
+      </div>
+      <div style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:40px;padding:28px 0;border-bottom:1px solid rgba(13,13,13,.12)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.06em;color:#6f6f6f;padding-top:4px">2025. 2. ~ 현재</span>
+        <div>
+          <div style="font-size:22px;font-weight:600;letter-spacing:-.03em;margin-bottom:6px">(주)이노디스 · 웹서비스팀 기획 PL</div>
+          <p style="margin:0;font-size:14px;color:#5d5d5d">공공·문화 포털의 유지보수, 고도화, 재구축 — 담당 프로젝트 전부 사업 관리 담당</p>
+          <p style="margin:14px 0 0;padding-top:12px;border-top:1px solid rgba(13,13,13,.12);font-size:14px;line-height:1.7;color:#5d5d5d"><b style="display:block;width:fit-content;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#0d0d0d;font-weight:600;margin-bottom:8px;padding:3px 8px;border:1px solid rgba(13,13,13,.24)">맡은 범위</b>사업 금액 5,000만원~1억원 미만 구간의 공기관 사업을 맡아 요구사항 접수부터 검수·정산까지 운영했습니다. WBS로 사업 일정과 소속 기획자의 업무를 함께 관리했고, 구축 이후의 상시 운영과 고도화도 이어서 담당했습니다.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:40px;padding:28px 0;border-bottom:1px solid rgba(13,13,13,.12)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.06em;color:#6f6f6f;padding-top:4px">2024. 1. ~ 2024. 11.</span>
+        <div>
+          <div style="font-size:22px;font-weight:600;letter-spacing:-.03em;margin-bottom:6px">(주)그라비티 네오싸이언 · 대리</div>
+          <p style="margin:0;font-size:14px;color:#5d5d5d">면세 이커머스 운영 기획 및 프로모션 이벤트 기획</p>
+          <p style="margin:14px 0 0;padding-top:12px;border-top:1px solid rgba(13,13,13,.12);font-size:14px;line-height:1.7;color:#5d5d5d"><b style="display:block;width:fit-content;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#0d0d0d;font-weight:600;margin-bottom:8px;padding:3px 8px;border:1px solid rgba(13,13,13,.24)">맡은 범위</b>상품 노출과 구매 흐름을 중심으로 사용자·관리자 화면 운영을 기획했습니다. 참여형 프로모션의 참여 조건과 회차 제한, 당첨 판정 규칙을 정하고 쿠폰·포인트 지급 규칙과 중복 지급·기간 만료 예외를 정의했습니다.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:40px;padding:28px 0;border-bottom:1px solid rgba(13,13,13,.12)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.06em;color:#6f6f6f;padding-top:4px">2021. 7. ~ 2023. 6.</span>
+        <div>
+          <div style="font-size:22px;font-weight:600;letter-spacing:-.03em;margin-bottom:6px">(주)이노컴즈 · 주임</div>
+          <p style="margin:0;font-size:14px;color:#5d5d5d">업무 시스템과 공공 홈페이지의 서비스 기획 실무</p>
+          <p style="margin:14px 0 0;padding-top:12px;border-top:1px solid rgba(13,13,13,.12);font-size:14px;line-height:1.7;color:#5d5d5d"><b style="display:block;width:fit-content;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#0d0d0d;font-weight:600;margin-bottom:8px;padding:3px 8px;border:1px solid rgba(13,13,13,.24)">맡은 범위</b>출입증 시스템과 전자결재 업무 시스템 등 폐쇄형 시스템의 화면과 API 연계를 기획했고, 공공 홈페이지 반응형 리뉴얼의 화면정의서를 작성했습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" style="padding:0 0 96px;border-top:1px solid #0d0d0d">
+    <div style="display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:56px;padding:56px 0 48px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">SECTION 02</div>
+        <h2 style="margin:16px 0 0;font-size:38px;font-weight:600;letter-spacing:-.035em;line-height:1.15">프로젝트</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:17px;line-height:1.78;color:#5d5d5d;max-width:44em;text-wrap:pretty">사업 관리를 맡은 일 가운데 결과가 뚜렷한 네 건입니다. 프로젝트마다 <b style="color:#0d0d0d;font-weight:600">사업 관리, 운영, 데이터 설계</b> 관점에서 무엇을 맡아 무엇이 달라졌는지를 한 줄씩 적었습니다.</p>
+        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">공공·문화 포털</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">면세 이커머스</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">4건</span>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <article style="display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:60px;align-items:start;padding-top:44px;border-top:1px solid rgba(13,13,13,.12)">
+      <div>
+        <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.16em;color:#6f6f6f;margin-bottom:14px">PROJECT 01</span>
+        <h3 style="margin:0 0 12px;font-size:30px;font-weight:600;letter-spacing:-.035em;line-height:1.2">서울영화센터 포털<br>재구축</h3>
+        <p style="margin:0 0 20px;font-size:14px;color:#5d5d5d">예술 포털 · 연 8천만원</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">라이브 운영</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">쿠폰 동기화</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">상태 설계</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">CMS 신규</span>
+        </div>
+      </div>
+      <div>
+        <figure style="margin:0 0 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:280px;padding:28px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">SITE-02</span>
+          <span style="font-size:16px;font-weight:600">서울영화센터 포털</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">서울영화센터.png</span>
+        </figure>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">이용자 유입을 늘리다</p>
+        <p style="margin:8px 0 0;font-size:14.5px;font-weight:600;line-height:1.6">통계 페이지 · 쿠폰 관리 페이지 신설</p>
+        <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span><b style="color:#0d0d0d;font-weight:600">일·월·년 단위 통계 페이지</b>를 신설해 유입 연령대와 방문 시간대를 파악</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>쿠폰 발급을 하드코딩 방식에서 <b style="color:#0d0d0d;font-weight:600">CMS의 기능</b>으로 기획·구축해 이벤트 혜택 구성의 유연성을 높임</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>고객사와 논의해 지속적인 유지보수를 이어가며 유입 인원 <b style="color:#0d0d0d;font-weight:600">2025년 대비 50% 상승</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:60px;align-items:start;margin-top:88px;padding-top:64px;border-top:1px solid rgba(13,13,13,.12)">
+      <div>
+        <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.16em;color:#6f6f6f;margin-bottom:14px">PROJECT 02</span>
+        <h3 style="margin:0 0 12px;font-size:30px;font-weight:600;letter-spacing:-.035em;line-height:1.2">서울영테크<br>청년 재무상담 포털</h3>
+        <p style="margin:0 0 20px;font-size:14px;color:#5d5d5d">공공 서비스 · 연 1억원</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">사업 관리</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">운영</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">유저 분석</span>
+        </div>
+      </div>
+      <div>
+        <figure style="margin:0 0 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:280px;padding:28px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">YT-01</span>
+          <span style="font-size:16px;font-weight:600">맞춤 재무 상담 신청</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">영테크.png</span>
+        </figure>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">신청자 유형을 그룹핑하다</p>
+        <p style="margin:8px 0 0;font-size:14.5px;font-weight:600;line-height:1.6">다양한 신청자의 유형을 경험 및 데이터 분석하여 그룹핑 진행</p>
+        <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>상담 신청 → 상담사 배정 → 상담 진행 → 상담 완료 <b style="color:#0d0d0d;font-weight:600">4단계 절차 화면</b> 구축 진행</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>운영 단계에서 <b style="color:#0d0d0d;font-weight:600">다양한 직종·연령층</b>을 접하는 경험을 함</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>직종 등 상담 유형에 따른 <b style="color:#0d0d0d;font-weight:600">그룹 강의</b>를 제시</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span><b style="color:#0d0d0d;font-weight:600">월 4회이던 강의를 월 8회까지 확대</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:60px;align-items:start;margin-top:88px;padding-top:64px;border-top:1px solid rgba(13,13,13,.12)">
+      <div>
+        <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.16em;color:#6f6f6f;margin-bottom:14px">PROJECT 03</span>
+        <h3 style="margin:0 0 12px;font-size:30px;font-weight:600;letter-spacing:-.035em;line-height:1.2">국립부여박물관<br>누리집 개편·고도화</h3>
+        <p style="margin:0 0 20px;font-size:14px;color:#5d5d5d">공공·문화 · 5,000만원 + 고도화 2건 2천만원</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">사업 관리</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">요구 명세</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">대안 비교</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">데이터 설계</span>
+        </div>
+      </div>
+      <div>
+        <figure style="margin:0 0 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:280px;padding:28px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">SITE-03</span>
+          <span style="font-size:16px;font-weight:600">국립부여박물관 누리집</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">국립부여.png</span>
+        </figure>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">사업을 관리하다</p>
+        <p style="margin:8px 0 0;font-size:14.5px;font-weight:600;line-height:1.6">3사 연동 일정 조율 · 발권 현황 노출 · 고도화 계약 2건</p>
+        <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>외부 키오스크 연동 작업에 <b style="color:#0d0d0d;font-weight:600">3개 고객사·협력사가 얽혀</b> 각자의 사정으로 일정이 모이지 않던 상황에서, <b style="color:#0d0d0d;font-weight:600">WBS로 작업 일정을 통보</b>해 내부 일정을 관리한 경험</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>예약 페이지 바로가기를 추가해 발권 현황을 파악하게 함으로써 <b style="color:#0d0d0d;font-weight:600">주말 매진율 60% → 80% 달성</b></li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>고객사의 불편한 부분을 기능 추가로 제시해 <b style="color:#0d0d0d;font-weight:600">고도화 계약 2건</b>을 진행</li>
+        </ul>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:60px;align-items:start;margin-top:88px;padding-top:64px;border-top:1px solid rgba(13,13,13,.12)">
+      <div>
+        <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.16em;color:#6f6f6f;margin-bottom:14px">PROJECT 04</span>
+        <h3 style="margin:0 0 12px;font-size:30px;font-weight:600;letter-spacing:-.035em;line-height:1.2">신세계DF<br>면세 이커머스</h3>
+        <p style="margin:0 0 20px;font-size:14px;color:#5d5d5d">이커머스</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">운영 기획</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">프로모션</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">쿠폰·포인트</span>
+          <span style="padding:6px 12px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:12.5px;color:#5d5d5d">구매 흐름</span>
+        </div>
+      </div>
+      <div>
+        <figure style="margin:0 0 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:280px;padding:28px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">EC-01</span>
+          <span style="font-size:16px;font-weight:600">면세 이커머스 혜택</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">신세계 이벤트.png</span>
+        </figure>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">대형 이커머스를 경험하다</p>
+        <p style="margin:8px 0 0;font-size:14.5px;font-weight:600;line-height:1.6">면세 이커머스 운영 기획 및 프로모션 이벤트 기획</p>
+        <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>상품 노출부터 주문·결제까지 <b style="color:#0d0d0d;font-weight:600">구매 흐름을 점검</b>해 개선안을 정리</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>상품 노출과 구매 흐름을 중심으로 <b style="color:#0d0d0d;font-weight:600">사용자·관리자 화면 운영</b>을 기획</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>참여형 프로모션의 <b style="color:#0d0d0d;font-weight:600">참여 조건과 회차 제한, 당첨 판정 규칙</b>을 설계</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>쿠폰·포인트 지급 규칙과 <b style="color:#0d0d0d;font-weight:600">중복 지급·기간 만료 예외</b>를 정의</li>
+          <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>실무 라인이라 주도적으로 사업 관리를 하는 입장은 아니었고, <b style="color:#0d0d0d;font-weight:600">판매와 BM을 상세하게 볼 수 있었던 경험</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <div style="margin-top:80px;padding-top:32px;border-top:1px solid #0d0d0d">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;color:#0d0d0d">공통업무 경험</span>
+      <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+        <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>기획서 · WBS 등 문서 작업</li>
+        <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>내부 기안 처리 및 계약 문서 작성</li>
+        <li style="position:relative;padding-left:19px;font-size:14px;color:#5d5d5d;line-height:1.68"><span style="position:absolute;left:2px;top:.78em;width:8px;height:1px;background:#5d5d5d;opacity:.5"></span>고객과의 커뮤니케이션</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="deliverables" style="padding:0 0 96px;border-top:1px solid #0d0d0d">
+    <div style="display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:56px;padding:56px 0 48px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">SECTION 03</div>
+        <h2 style="margin:16px 0 0;font-size:38px;font-weight:600;letter-spacing:-.035em;line-height:1.15">산출물</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:17px;line-height:1.78;color:#5d5d5d;max-width:44em;text-wrap:pretty">작성해 온 문서를 기획·데이터·관리 세 갈래로 정리했습니다. 아래 샘플 세 장은 각각 <b style="color:#0d0d0d;font-weight:600">기획서·WBS·플로우차트</b>를 대표하는 발췌본입니다.</p>
+        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">기획 문서</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">데이터 문서</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">관리 문서</span>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;padding-top:36px;border-top:1px solid rgba(13,13,13,.12)">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f;padding-bottom:12px;border-bottom:1px solid #0d0d0d">기획 문서</div>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:12px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:15px">화면기획서 · 화면정의서</li>
+          <li style="padding:12px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:15px">요구사항정의서</li>
+          <li style="padding:12px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:15px">정책 문서</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f;padding-bottom:12px;border-bottom:1px solid #0d0d0d">데이터 문서</div>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:12px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:15px">API 연계 기획서</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f;padding-bottom:12px;border-bottom:1px solid #0d0d0d">관리 문서</div>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li style="padding:12px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:15px">WBS · 일정 관리</li>
+          <li style="padding:12px 0;border-bottom:1px solid rgba(13,13,13,.12);font-size:15px">유지보수 보고서</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:64px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid #0d0d0d">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">문서 샘플</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6f6f6f">기획서 · WBS · 플로우차트 각 1장</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:30px">
+        <figure style="margin:0">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;padding:20px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">DOC-A</span><span style="font-size:15px;font-weight:600">기획서(화면 설계서)</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">work-screen.png</span></div>
+          <figcaption style="margin-top:12px;font-size:13px;color:#6f6f6f">기획서 — 환불계좌 등록 모달 정의</figcaption>
+        </figure>
+        <figure style="margin:0">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;padding:20px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">DOC-B</span><span style="font-size:15px;font-weight:600">WBS · 일정 관리</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">work-wbs.png</span></div>
+          <figcaption style="margin-top:12px;font-size:13px;color:#6f6f6f">WBS — 사업 일정과 담당 배분</figcaption>
+        </figure>
+        <figure style="margin:0">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:4/3;padding:20px;text-align:center;background:#fafafa;border:1px dashed rgba(13,13,13,.24)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f6f6f">DOC-C</span><span style="font-size:15px;font-weight:600">플로우차트</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6f6f6f">work-data.png</span></div>
+          <figcaption style="margin-top:12px;font-size:13px;color:#6f6f6f">플로우차트 — 대관 신청 승인·입금 흐름</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="strength" style="padding:0 0 96px;border-top:1px solid #0d0d0d">
+    <div style="display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:56px;padding:56px 0 48px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">SECTION 04</div>
+        <h2 style="margin:16px 0 0;font-size:38px;font-weight:600;letter-spacing:-.035em;line-height:1.15">특장점</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:17px;line-height:1.78;color:#5d5d5d;max-width:44em;text-wrap:pretty">사업 단위로 맡아 온 일을 여섯 가지 역량으로 정리했습니다. 아래 활용툴은 설계·문서·협업·구현 순으로 숙련도를 함께 표기했습니다.</p>
+        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">사업 관리</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">CMS 설계</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">데이터 연계</span>
+          <span style="padding:6px 13px;border:1px solid rgba(13,13,13,.24);border-radius:999px;font-size:13px;color:#5d5d5d">AI 활용</span>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <dl style="margin:0;border-top:1px solid #0d0d0d">
+      <div style="display:grid;grid-template-columns:240px minmax(0,1fr);padding:20px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;padding-right:24px;border-right:1px solid rgba(13,13,13,.12);font-size:15px;font-weight:600">사업 관리 · 검수와 정산</dt><dd style="margin:0;padding-left:24px;font-size:14.5px;color:#5d5d5d;line-height:1.7">기획 PL로 사업 하나를 통째로 맡습니다. 요구사항 접수, WBS 일정 수립, 소속 기획자 업무 배분, 검수와 정산까지 사업 단위로 책임집니다.</dd></div>
+      <div style="display:grid;grid-template-columns:240px minmax(0,1fr);padding:20px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;padding-right:24px;border-right:1px solid rgba(13,13,13,.12);font-size:15px;font-weight:600">이벤트 · 쿠폰 운영 설계</dt><dd style="margin:0;padding-left:24px;font-size:14.5px;color:#5d5d5d;line-height:1.7">참여 조건과 회차 제한, 당첨 판정 규칙을 정하고 쿠폰·포인트 지급 규칙과 중복 지급·기간 만료 예외를 정의합니다. 외부 시스템이 발급한 쿠폰을 내부 데이터와 맞추는 동기화도 설계했습니다.</dd></div>
+      <div style="display:grid;grid-template-columns:240px minmax(0,1fr);padding:20px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;padding-right:24px;border-right:1px solid rgba(13,13,13,.12);font-size:15px;font-weight:600">라이브 운영과 정책 확정</dt><dd style="margin:0;padding-left:24px;font-size:14.5px;color:#5d5d5d;line-height:1.7">돌아가는 서비스를 상시 운영하며 고도화합니다. 기존 기능을 바꿔야 할 때는 영향 범위를 전수 확인하고 대안을 비교한 뒤 정책 항목으로 확정해 문서로 남깁니다.</dd></div>
+      <div style="display:grid;grid-template-columns:240px minmax(0,1fr);padding:20px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;padding-right:24px;border-right:1px solid rgba(13,13,13,.12);font-size:15px;font-weight:600">관리자 시스템(CMS·BO) 설계</dt><dd style="margin:0;padding-left:24px;font-size:14.5px;color:#5d5d5d;line-height:1.7">운영자가 실제로 쓸 화면을 설계합니다. 신청·승인·반려·취소 상태 흐름과 전용 테이블, 목록 검색 조건, 일괄 처리, 권한 구분과 내려받기 규칙을 포함합니다.</dd></div>
+      <div style="display:grid;grid-template-columns:240px minmax(0,1fr);padding:20px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;padding-right:24px;border-right:1px solid rgba(13,13,13,.12);font-size:15px;font-weight:600">지표 화면과 데이터 연계</dt><dd style="margin:0;padding-left:24px;font-size:14.5px;color:#5d5d5d;line-height:1.7">쌓인 데이터를 운영이 볼 수 있는 통계 화면으로 만듭니다. 화면이 쓰는 데이터를 테이블과 컬럼 단위로 정의하고, 외부 시스템과 주고받는 항목의 명세를 작성합니다.</dd></div>
+      <div style="display:grid;grid-template-columns:240px minmax(0,1fr);padding:20px 0;border-bottom:1px solid rgba(13,13,13,.12)"><dt style="margin:0;padding-right:24px;border-right:1px solid rgba(13,13,13,.12);font-size:15px;font-weight:600">AI 활용 · 문서와 바이브 코딩</dt><dd style="margin:0;padding-left:24px;font-size:14.5px;color:#5d5d5d;line-height:1.7">문서 작업에 AI를 적극 사용하여 반복되는 단순 작업에 소요되는 시간을 줄였습니다. 사용 시 서브에이전트로 나누어 분업하고, 하네스·스킬로 코드·문서 산출물의 규격을 일원화했습니다. 계획 → 검토 → 구현 순서를 반드시 거치도록 작업 흐름을 구성했습니다.</dd></div>
+    </dl>
+
+    <div style="margin-top:64px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid #0d0d0d">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">활용툴</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6f6f6f">설계 · 문서 · 협업 · 구현</span>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;max-width:720px">
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">Figma</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:62%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">중</span></li>
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">PowerPoint · Slides</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:90%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">상</span></li>
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">Excel · Sheets</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:62%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">중</span></li>
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">한글 · Word</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:90%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">상</span></li>
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">Slack</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:90%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">상</span></li>
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">VS Code</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:62%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">중</span></li>
+        <li style="display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr) 28px;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-size:14.5px;font-weight:500">생성형 AI</span><span style="height:6px;background:rgba(13,13,13,.12);border-radius:999px"><i style="display:block;height:100%;width:62%;background:#0d0d0d;border-radius:999px"></i></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6f6f6f;text-align:right">중</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" style="border-top:1px solid #0d0d0d">
+    <div style="display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:56px;padding:56px 0 48px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;color:#6f6f6f">SECTION 05</div>
+        <h2 style="margin:16px 0 0;font-size:38px;font-weight:600;letter-spacing:-.035em;line-height:1.15">맺음말</h2>
+      </div>
+      <div>
+        <p style="margin:0;font-size:17px;line-height:1.8;max-width:44em;text-wrap:pretty">요구 정의부터 일정 관리, 검수와 정산까지 사업 단위로 책임져 왔으며 공공·면세 이커머스 등 다양한 프로젝트를 관리 경험 하였습니다.</p>
+        <p style="margin:15px 0 0;font-size:17px;line-height:1.8;max-width:44em">이 경험을 살려 전문적인 사업 관리자로 나아가고 싶습니다.</p>
+      </div>
+    </div>
+
+    <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #0d0d0d">
+      <li style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6f6f6f">Email</span><a href="mailto:sun8070vvv20@gmail.com" style="font-size:32px;font-weight:600;letter-spacing:-.035em">sun8070vvv20@gmail.com</a></li>
+      <li style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(13,13,13,.12)"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6f6f6f">Phone</span><a href="tel:010-7222-0473" style="font-size:32px;font-weight:600;letter-spacing:-.035em">010-7222-0473</a></li>
+    </ul>
+
+    <div style="display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:24px 0;margin-top:56px;border-top:1px solid rgba(13,13,13,.12)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">박세훈 · Game Business PM</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#6f6f6f">2026</span>
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;내용&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { showTags: this.props.showTags ?? true };
+  }
+}
+</script>
+</body>
+</html>

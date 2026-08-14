@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>박세훈 · 게임 사업 PM</title>
+<meta name="description" content="사업 관리와 라이브 운영을 맡아 온 게임 사업 PM 지원자. 공공·문화 포털과 이커머스에서 맡은 프로젝트 가운데 대표 세 건.">
+<meta property="og:title" content="박세훈 · 게임 사업 PM">
+<meta property="og:description" content="요구 정의부터 일정·검수·정산, 이벤트와 쿠폰 운영, 그리고 라이브 운영까지.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS · 화이트 단일 배경 · 무채색
+   ═══════════════════════════════════════ */
+:root{
+  --canvas:#ffffff;
+  --ink:#0d0d0d;
+  --graphite:#5d5d5d;
+  --flint:#6f6f6f;
+  --hair:rgba(13,13,13,.12);
+  --hair-2:rgba(13,13,13,.24);
+  --solid:#e6e6e6;
+  --fill:#f6f6f6;
+
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  /* 타입 스케일 · 최소 14px */
+  --t-micro:14px;   /* 모노 라벨, 캡션, 표 셀 */
+  --t-body:16px;    /* 본문 */
+  --t-lead:17px;    /* 리드 문장 */
+
+  --maxw:1180px;
+  --gut:clamp(20px,5vw,52px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-s:cubic-bezier(.4,0,.2,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.6;
+  letter-spacing:-.015em;word-break:keep-all;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.032em;line-height:1.15}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul{margin:0;padding:0;list-style:none}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--flint);font-feature-settings:"tnum" on}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+.prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ink);z-index:200;transition:width .08s linear}
+
+/* 맨 위로 · 스크롤 후 노출 */
+.totop{
+  position:fixed;right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,32px);z-index:180;
+  width:46px;height:46px;display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:#fff;border:1px solid var(--ink);border-radius:999px;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s,background .2s var(--ease-s);
+}
+.totop.on{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:#333;border-color:#333}
+.totop svg{width:17px;height:17px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:var(--t-micro);font-weight:500;cursor:pointer;white-space:nowrap;transition:all .25s var(--ease-s)}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-fill{background:var(--ink);color:#fff;border:1px solid var(--ink);border-radius:999px;padding:12px 24px}
+.btn-fill:hover{background:#333;border-color:#333}
+.btn-line{background:transparent;color:var(--ink);border:1px solid var(--hair-2);border-radius:0;padding:12px 24px}
+.btn-line:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ═══════════════════════════════════════
+   HERO · GNB 없음. 상단 식별 줄만.
+   ═══════════════════════════════════════ */
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:26px 0;border-bottom:1px dashed var(--hair)}
+.top .who{font-size:14px;font-weight:600}
+.top .who em{font-style:normal;font-weight:400;color:var(--flint)}
+/* 같은 배포 안의 소개 페이지로 되돌아가는 링크 */
+.top .who{transition:opacity .2s var(--ease-s)}
+.top .who:hover,.top .back:hover{opacity:.55}
+.top .back{transition:opacity .2s var(--ease-s)}
+@media print{.top .back{display:none}}
+
+.hero{padding:clamp(64px,11vw,140px) 0 clamp(56px,9vw,110px)}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(32px,6vw,72px);align-items:center}
+.hero h1{font-size:clamp(36px,6.6vw,80px);letter-spacing:-.042em;line-height:1.08}
+.hero h1 .lt{color:#949494}  /* 대형 텍스트 3:1 충족값 */
+.hero-eye{display:block;margin-bottom:clamp(18px,2.6vw,28px)}
+.hero-sub{font-size:clamp(15px,1.35vw,18px);color:var(--graphite);max-width:34em;margin:clamp(22px,3vw,32px) 0 clamp(26px,3.6vw,40px)}
+/* 상단 문구가 슬로건이 아니라 문장이므로, 디스플레이 크기 대신 문장 크기를 쓴다 */
+.hero h1.stmt{font-size:clamp(21px,2.6vw,33px);line-height:1.46;letter-spacing:-.028em;font-weight:600;
+  max-width:20em;word-break:keep-all;margin-bottom:clamp(26px,3.6vw,40px)}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.hero-fig svg{width:100%;max-width:280px;height:auto;margin:0 auto}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-fig{order:-1}.hero-fig svg{max-width:160px;margin:0}
+}
+
+/* 목차 · 섹션 인덱스 */
+.toc{border-top:1px dashed var(--hair);border-bottom:1px dashed var(--hair)}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr)}
+.toc li{border-right:1px dashed var(--hair)}
+.toc li:last-child{border-right:0}
+.toc a{display:flex;align-items:baseline;gap:12px;padding:22px 22px;transition:opacity .25s var(--ease-s)}
+.toc li:first-child a{padding-left:0}
+.toc a:hover{opacity:.5}
+.toc .t{font-size:15px;font-weight:600;letter-spacing:-.025em}
+@media(max-width:760px){
+  .toc ol{grid-template-columns:repeat(2,1fr)}
+  .toc li:nth-child(2n){border-right:0}
+  .toc li:last-child{grid-column:1/-1;border-right:0}
+  .toc a{padding:16px 16px}
+  .toc li:nth-child(2n+1) a{padding-left:0}
+}
+
+/* ═══════════════════════════════════════
+   SECTION
+   ═══════════════════════════════════════ */
+.sec{padding:clamp(64px,9vw,120px) 0;border-top:1px dashed var(--hair)}
+.sec--major{padding:clamp(80px,12vw,160px) 0}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,52px);align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.head h2{font-size:clamp(26px,3.9vw,46px)}
+.head--big h2{font-size:clamp(32px,5.6vw,68px);letter-spacing:-.04em}
+.head .lead{font-size:clamp(14.5px,1.3vw,17px);color:var(--graphite)}
+.head .mono{display:block;margin-bottom:14px}
+@media(max-width:880px){.head{grid-template-columns:1fr;gap:14px;align-items:start}}
+
+/* 상하 구성 — 제목 아래 설명을 한 줄로 잇는다 */
+.head--stack{display:block;margin-bottom:clamp(28px,4vw,48px)}
+.head--stack h2{margin-bottom:14px}
+.head--stack .lead,.head--stack .intro{max-width:52em}
+.sec--tight{padding:clamp(48px,6.5vw,84px) 0}
+
+/* ═══════════════════════════════════════
+   01 소개 · 간결
+   ═══════════════════════════════════════ */
+.intro{font-size:clamp(17px,2vw,24px);line-height:1.6;letter-spacing:-.028em;max-width:26em}
+.intro + .intro{margin-top:18px;font-size:clamp(14.5px,1.3vw,17px);line-height:1.7;color:var(--graphite);max-width:40em;letter-spacing:-.015em}
+/* 소개 부연 — 본문보다 한 단계 낮춘 보조 문장 */
+.intro-sub{margin-top:16px;padding-top:16px;border-top:1px dashed var(--hair);font-size:var(--t-lead);line-height:1.7;color:var(--graphite);max-width:46em}
+
+
+/* ═══════════════════════════════════════
+   02 스킬
+   ═══════════════════════════════════════ */
+.tools{display:flex;flex-wrap:wrap;gap:9px}
+/* 스킬 섹션은 제목 옆에 도구를 붙여 한 덩어리로 읽히게 한다 */
+.head--sk{margin-bottom:0;align-items:center}
+.tool{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:14px;font-weight:500;padding:10px 18px 10px 14px;
+  border:1px solid var(--hair-2);border-radius:999px;color:var(--ink);
+  transition:background .2s var(--ease-s),color .2s var(--ease-s),border-color .2s var(--ease-s);
+}
+.tool img{width:18px;height:18px;object-fit:contain;opacity:.9;transition:filter .2s var(--ease-s)}
+.tool:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:560px){.tool{font-size:var(--t-micro);padding:9px 15px 9px 12px}.tool img{width:16px;height:16px}}
+
+/* ── 숙련도 그래프 ──
+   막대 너비는 --w, 순차 지연은 --d로 항목마다 지정한다.
+   상위 .rv가 화면에 들어와 .on이 붙는 순간 0에서 --w까지 차오른다 */
+.lvs{list-style:none;margin:0;padding:0;max-width:640px;border-top:1px dashed var(--hair)}
+.lv{display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 24px;align-items:center;
+  gap:16px;padding:12px 0;border-bottom:1px dashed var(--hair)}
+.lv-n{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:500;color:var(--ink)}
+.lv-n img{width:18px;height:18px;object-fit:contain;flex:none}
+.lv-bar{height:6px;background:var(--hair);border-radius:999px;overflow:hidden}
+.lv-bar i{display:block;height:100%;width:0;background:var(--ink);border-radius:999px;
+  transition:width 1.1s var(--ease);transition-delay:var(--d,0s)}
+.rv.on .lv-bar i{width:var(--w)}
+.lv-t{font-family:var(--mono);font-size:var(--t-micro);font-weight:600;letter-spacing:.08em;
+  color:var(--flint);text-align:right}
+@media(max-width:560px){
+  .lv{grid-template-columns:minmax(0,1fr) 24px;gap:7px 12px;padding:13px 0}
+  .lv-n{grid-column:1/-1}
+}
+/* 동작 축소를 켠 환경에서는 차오르는 연출 없이 결과만 보여준다 */
+@media(prefers-reduced-motion:reduce){.lv-bar i{transition:none}}
+
+/* ═══════════════════════════════════════
+   03 작업 방식 · 최대 비중
+   ═══════════════════════════════════════ */
+.steps{border-top:1px solid var(--ink)}
+.step{
+  display:grid;grid-template-columns:1fr 1.05fr;grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4vw,56px);row-gap:0;
+  padding:clamp(32px,4.6vw,58px) 0;border-bottom:1px dashed var(--hair);
+}
+/* 제목은 1행 왼쪽에만 두고, 이미지와 설명을 2행에서 같은 높이로 시작시킨다 */
+.step-head{grid-column:1;grid-row:1;margin-bottom:clamp(18px,2.4vw,28px)}
+/* 설명이 길면 이미지가 스크롤을 따라 내려오고, 단계 끝에서 멈춘다.
+   grid 안에서 sticky 가 동작하려면 align-self:start 로 늘어남을 막아야 한다. */
+.step-t{grid-column:1;grid-row:2;position:sticky;top:28px;align-self:start}
+/* 이미지가 열의 첫 요소이므로 상단 여백을 없애 설명과 같은 선에서 시작시킨다 */
+.step-t .fig{margin-top:0}
+.step-t .fig img{max-height:calc(100vh - 140px);object-fit:contain}
+.step-d{grid-column:2;grid-row:2}
+.step:hover .step-n{color:var(--ink)}
+.step-n{transition:color .3s var(--ease-s)}
+.step-n{display:block;font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.08em;color:var(--flint);margin-bottom:12px}
+.step-head h3{font-size:clamp(22px,3.1vw,38px);letter-spacing:-.035em;margin-bottom:12px}
+.step-head .out{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.step-head .out span{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--hair-2);border-radius:999px;color:var(--flint)}
+.step-d p{font-size:15px;color:var(--graphite);line-height:1.7}
+.step-d ul{margin-top:16px}
+@media(max-width:900px){
+  .step{grid-template-columns:1fr;grid-template-rows:auto;row-gap:18px;padding:34px 0}
+  .step-head,.step-t,.step-d{grid-column:1;grid-row:auto}
+  .step-t{position:static}
+  .step-t .fig img{max-height:none}
+  .step-head{margin-bottom:0}
+}
+
+/* 스텝 상세 · 정의 행 */
+.dt{margin:20px 0 0;border-top:1px solid var(--ink)}
+.dt > div{display:grid;grid-template-columns:150px 1fr;gap:0;padding:14px 0;border-bottom:1px dashed var(--hair)}
+/* 라벨과 내용 사이에 세로 헤어라인을 둬 영역을 가른다 */
+.dt dt{padding-right:20px;border-right:1px dashed var(--hair)}
+.dt dd{padding-left:20px}
+.dt dt{font-size:var(--t-micro);font-weight:600;margin:0}
+.dt dt em{display:block;font-style:normal;font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--flint);margin-top:4px}
+.dt dd{margin:0;font-size:var(--t-micro);color:var(--graphite);line-height:1.65}
+
+/* 한 프로젝트에 작업이 둘 이상일 때 */
+.case-sub{font-family:var(--mono);font-size:var(--t-micro);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:34px 0 0}
+.case-sub:first-child{margin-top:0}
+.case .fig + .case-sub{margin-top:30px}
+.case-sub + .dt{margin-top:10px}
+
+/* 스텝 상세 · 3열 표 */
+.sub{margin-top:28px}
+.sub .mono{display:block;margin-bottom:0;color:var(--ink);font-weight:600;padding-bottom:10px}
+.g3{margin-top:12px;border-top:1px solid var(--ink)}
+.g3-h,.g3-r{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px;padding:13px 0;border-bottom:1px dashed var(--hair)}
+/* 표마다 글자 길이가 달라 열 비율을 따로 준다 */
+.g3--rel  .g3-h,.g3--rel  .g3-r{grid-template-columns:1fr .7fr 1.55fr}
+.g3--desc .g3-h,.g3--desc .g3-r{grid-template-columns:.55fr .68fr 2.3fr}
+/* 헤더는 본문보다 진하게 두고 실선으로 끊어 구분한다 */
+.g3-h{padding:11px 0;border-bottom:1px solid var(--hair-2)}
+.g3-h span{font-family:var(--mono);font-size:var(--t-micro);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.g3-r span{font-size:var(--t-micro);color:var(--graphite);line-height:1.55}
+.g3-r span:first-child{color:var(--ink);font-weight:600}
+@media(max-width:760px){
+  .g3-h{display:none}
+  .g3-r,.g3--rel .g3-r,.g3--desc .g3-r{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  .g3-r span:first-child{font-size:var(--t-micro)}
+}
+
+/* 스텝 상세 · 보조 목록 */
+.note{margin-top:20px;border:0}
+.note li{
+  font-size:var(--t-micro);color:var(--graphite);line-height:1.6;
+  position:relative;padding:0 0 0 15px;margin-bottom:9px;border:0;
+}
+/* 줄 높이 1.6 기준 첫 줄 중심은 0.8em. 점 지름의 절반을 빼서 맞춘다 */
+.note li::before{content:"";position:absolute;left:0;top:calc(.8em - 2px);width:4px;height:4px;border-radius:50%;background:var(--flint)}
+.note li:last-child{margin-bottom:0}
+
+/* 스텝 내부 이미지 */
+.step-d .fig{margin-top:26px}
+.step-d .slot{min-height:clamp(170px,20vw,240px)}
+
+@media(max-width:680px){
+  .dt > div{grid-template-columns:1fr;gap:5px;padding:13px 0}
+  .dt dt{padding-right:0;border-right:0}
+  .dt dd{padding-left:0}
+}
+
+
+/* ═══════════════════════════════════════
+   CASE
+   ═══════════════════════════════════════ */
+.case{display:grid;grid-template-columns:.76fr 1.24fr;gap:clamp(26px,5vw,68px);align-items:start}
+.case + .case{margin-top:clamp(60px,9vw,112px);padding-top:clamp(48px,7vw,84px);border-top:1px dashed var(--hair)}
+.case-aside{position:sticky;top:32px}
+.case-no{font-size:clamp(46px,6.4vw,84px);font-weight:600;line-height:1;color:#949494;display:block;margin-bottom:10px;letter-spacing:-.04em}
+.case-aside h3{font-size:clamp(21px,2.7vw,34px);margin-bottom:12px}
+.case-aside .meta{font-size:var(--t-micro);color:var(--graphite);margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--hair-2);border-radius:999px;color:var(--flint)}
+@media(max-width:880px){.case{grid-template-columns:1fr;gap:26px}.case-aside{position:static}}
+
+/* 프로필 스펙 — 기본 2열, 좁은 화면에서 1열로 접힌다 */
+.spec{border-top:1px dashed var(--hair);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(26px,4vw,56px)}
+.spec-row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px dashed var(--hair)}
+.spec-k{font-size:14px;font-weight:600}
+.spec-k small{display:block;font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--flint);margin-top:5px}
+.spec-v{font-size:14.5px;color:var(--graphite);word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:880px){.spec{grid-template-columns:1fr;column-gap:0}}
+@media(max-width:680px){.spec-row{grid-template-columns:1fr;gap:6px;padding:15px 0}}
+
+.flow{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--hair);margin-top:26px}
+.flow-i{background:var(--canvas);padding:20px;border-right:1px dashed var(--hair);border-bottom:1px dashed var(--hair)}
+.flow-i:nth-child(2n){border-right:0}
+.flow-i:nth-last-child(-n+2){border-bottom:0}
+.flow-i .mono{display:block;margin-bottom:9px}
+.flow-i b{display:block;font-weight:600;font-size:14.5px;margin-bottom:5px}
+.flow-i p{font-size:var(--t-micro);color:var(--graphite)}
+@media(max-width:680px){.flow{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════
+   FIGURE
+   ═══════════════════════════════════════ */
+.fig{margin:28px 0 0}
+.fig img{width:100%;height:auto;border:1px solid var(--solid);border-radius:3px}
+.fig figcaption{margin-top:10px;font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--flint)}
+.fig.empty img{display:none}
+.fig.empty .slot{display:flex}
+.slot{
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  min-height:clamp(190px,24vw,300px);padding:28px;text-align:center;
+  background:var(--canvas);border:1px dashed var(--hair-2);border-radius:3px;
+}
+.slot-id{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--flint)}
+.slot-nm{font-size:clamp(16px,1.6vw,19px);font-weight:600}
+.slot-f{font-family:var(--mono);font-size:var(--t-micro);color:var(--flint)}
+.figs2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.figs3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.figs2 .fig,.figs3 .fig{margin:0}
+.figs2 .slot,.figs3 .slot{min-height:180px;padding:20px}
+/* 경력 산출물 3장 — 비율이 달라 상단 기준으로 높이를 맞춘다 */
+.figs3 .fig img{aspect-ratio:4/3;object-fit:cover;object-position:top center}
+.figs3 .fig a{display:block;transition:opacity .25s var(--ease-s)}
+.figs3 .fig a:hover{opacity:.7}
+@media(max-width:760px){.figs2,.figs3{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════
+   아코디언
+   ═══════════════════════════════════════ */
+.acc{border-top:1px dashed var(--hair)}
+details.ac{border-bottom:1px dashed var(--hair)}
+details.ac summary{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:clamp(18px,2.4vw,28px) 0;cursor:pointer;list-style:none}
+details.ac summary::-webkit-details-marker{display:none}
+details.ac summary h3{font-size:clamp(19px,2.3vw,28px);transition:opacity .25s var(--ease-s)}
+details.ac summary:hover h3{opacity:.5}
+.ac-sign{position:relative;width:15px;height:15px;flex:none}
+.ac-sign::before,.ac-sign::after{content:"";position:absolute;background:var(--ink);transition:transform .3s var(--ease)}
+.ac-sign::before{left:0;top:7px;width:15px;height:1px}
+.ac-sign::after{left:7px;top:0;width:1px;height:15px}
+details.ac[open] .ac-sign::after{transform:rotate(90deg)}
+.ac-body{padding:0 0 clamp(20px,2.8vw,32px);max-width:62em}
+.ac-body li{font-size:14.5px;color:var(--graphite);position:relative;padding-left:16px;margin-bottom:10px;line-height:1.65}
+.ac-body li::before{content:"";position:absolute;left:0;top:calc(.825em - 2px);width:4px;height:4px;border-radius:50%;background:var(--flint)}
+.ac-body li:last-child{margin-bottom:0}
+.ac-cnt{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.14em;color:var(--flint);margin-right:14px}
+
+/* ═══════════════════════════════════════
+   TIMELINE
+   ═══════════════════════════════════════ */
+.tl{border-top:1px dashed var(--hair)}
+.tl-i{display:grid;grid-template-columns:145px 1fr;gap:clamp(14px,3vw,40px);padding:clamp(20px,2.8vw,32px) 0;border-bottom:1px dashed var(--hair)}
+.tl-when{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.08em;color:var(--flint);padding-top:5px}
+.tl-co{font-size:clamp(17px,2vw,23px);font-weight:600;margin-bottom:5px;letter-spacing:-.03em}
+.tl-d{font-size:14px;color:var(--graphite)}
+@media(max-width:680px){.tl-i{grid-template-columns:1fr;gap:7px}}
+
+.prose{max-width:44em}
+.prose p{font-size:15px;color:var(--graphite);line-height:1.75;margin-bottom:18px}
+.prose p:last-child{margin-bottom:0}
+
+/* 산출물 원본 다운로드 */
+.dl{margin-top:clamp(48px,7vw,88px);padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--ink)}
+.dl > .mono{display:block;color:var(--ink);font-weight:600;margin-bottom:clamp(20px,3vw,30px)}
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px)}
+.dl-item h3{font-size:clamp(17px,1.9vw,22px);margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed var(--hair)}
+.dl-btns{display:flex;flex-wrap:wrap;gap:8px}
+.dl-note{margin-top:clamp(20px,3vw,30px);font-size:var(--t-micro);color:var(--flint)}
+@media(max-width:760px){.dl-grid{grid-template-columns:1fr;gap:28px}}
+
+/* ═══════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════ */
+.ct-list{border-top:1px dashed var(--hair)}
+.ct-list li{display:grid;grid-template-columns:110px 1fr;gap:24px;align-items:baseline;padding:clamp(20px,2.8vw,30px) 0;border-bottom:1px dashed var(--hair)}
+.ct-list a{font-size:clamp(20px,3.2vw,40px);font-weight:600;letter-spacing:-.035em;transition:opacity .25s var(--ease-s)}
+.ct-list a:hover{opacity:.5}
+@media(max-width:680px){.ct-list li{grid-template-columns:1fr;gap:6px}}
+.foot{padding:24px 0;margin-top:clamp(40px,6vw,72px);border-top:1px dashed var(--hair)}
+.foot-in{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.rv-d1{transition-delay:.07s}.rv-d2{transition-delay:.14s}.rv-d3{transition-delay:.21s}.rv-d4{transition-delay:.28s}
+
+/* ═══════════════════════════════════════
+   PRINT — A4 인쇄본
+   웹 전용 인터랙션은 감추고 지면 기준으로 재배치한다.
+   ═══════════════════════════════════════ */
+
+/* ── 표지 메타 한 줄 ── */
+.hero-meta{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.03em;color:var(--flint);
+  line-height:1.95;margin:0 0 clamp(24px,3.2vw,34px);word-break:keep-all}
+.hero-meta b{font-weight:600;color:var(--ink)}
+/* ── 프로필 정의 목록(.spec 재사용) ── */
+.spec-v{margin:0}
+.spec dt.spec-k{margin:0}
+/* ── 02 역량 항목 ── */
+.caps{margin:0;border-top:1px solid var(--ink)}
+.caps > div{display:grid;grid-template-columns:200px 1fr;padding:15px 0;border-bottom:1px dashed var(--hair)}
+.caps dt{margin:0;padding-right:20px;border-right:1px dashed var(--hair);font-size:14px;font-weight:600}
+.caps dd{margin:0;padding-left:20px;font-size:var(--t-micro);color:var(--graphite);line-height:1.68}
+/* ── 단계별 산출 결과 ── */
+.res{margin-top:20px;padding-top:13px;border-top:1px solid var(--hair-2)}
+.res-l{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--flint);margin-bottom:7px}
+.res p{margin:0;font-size:var(--t-micro);color:var(--ink);line-height:1.72}
+/* ── 경력 맡은 범위 ── */
+.tl-r{margin:11px 0 0;padding-top:10px;border-top:1px dashed var(--hair);
+  font-size:var(--t-micro);color:var(--graphite);line-height:1.65}
+.tl-r b{display:block;width:fit-content;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink);font-weight:600;margin-bottom:7px;
+  padding:3px 8px;background:var(--hair);border-left:2px solid var(--ink)}
+/* ── 엔딩 타겟팅 메시지 ── */
+.target{max-width:44em;margin:0 0 clamp(36px,4.8vw,56px)}
+.target p{font-size:clamp(15px,1.5vw,17.5px);line-height:1.8;color:var(--ink);margin:0 0 15px}
+.target p:last-child{margin-bottom:0}
+@media (max-width:720px){
+  .caps > div{grid-template-columns:1fr;gap:5px;padding:13px 0}
+  .caps dt{padding-right:0;border-right:0}
+  .caps dd{padding-left:0}
+}
+
+@media print{
+  @page{ size:A4 portrait; margin:14mm 15mm 13mm; }
+
+  html{ font-size:10pt; }
+  body{ background:#fff; overflow:visible; }
+
+  /* 웹 전용 요소 제거 */
+  .prog,.totop,.toc,.hero-cta,.btn,.hero-fig,.slot,.dl-note{ display:none !important; }
+  /* 배경 그래픽을 끈 상태에서도 라벨이 구분되게 테두리로 대체 */
+  .tl-r b{ background:none !important; border:1px solid rgba(0,0,0,.35); border-left-width:2px; padding:1mm 2mm; font-size:8pt; }
+  .fig.empty{ display:none !important; }
+
+  /* 산출물 원본 — 버튼은 걷어내고 목록으로 남긴다 */
+  .dl{ margin-top:7mm; padding-top:5mm; border-top:1px solid rgba(0,0,0,.25); break-inside:avoid; }
+  .dl-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6mm; margin-top:3mm; }
+  .dl-item h3{ font-size:11.5pt; margin-bottom:2.5mm; padding-bottom:1.5mm; border-bottom:1px solid rgba(0,0,0,.2); }
+  .dl-btns{ display:block; }
+  .dl-btns .btn{ display:block !important; padding:0; border:0; font-size:9pt; line-height:1.7; white-space:normal; }
+  .dl-btns .btn svg{ display:none !important; }
+  .dl-btns .btn::before{ content:"· "; color:rgba(0,0,0,.45); }
+  .top{ padding:0 0 3mm; margin:0 0 5mm; border-bottom:1px solid rgba(0,0,0,.3); }
+  .top .who{ white-space:nowrap; }
+  .hero-meta{ font-size:8.5pt; margin:5mm 0 0; }
+  .caps > div{ grid-template-columns:150px 1fr; break-inside:avoid; }
+  .res{ break-inside:avoid; }
+  .target p{ font-size:10.5pt; }
+
+  /* 진입 애니메이션 해제 */
+  .rv{ opacity:1 !important; transform:none !important; }
+
+  .wrap{ max-width:none; padding:0; }
+  a{ color:inherit; text-decoration:none; }
+
+  /* 섹션 간격을 지면 기준으로 */
+  /* 강제 페이지 나눔을 걷어내 지면을 채운다. 구분은 상단 실선이 맡는다 */
+  .sec{ padding:5mm 0 3mm; border-top:1px solid rgba(0,0,0,.25); }
+  .sec--major,.sec--tight{ padding:5mm 0 3mm; }
+
+  /* 표지 */
+  .hero{ padding:0 0 4mm; min-height:0; }
+  .hero-grid{ display:block; }
+  .hero h1{ font-size:30pt; letter-spacing:-.04em; }
+  .hero h1.stmt{ font-size:13pt; line-height:1.45; max-width:none; margin-bottom:4mm; }
+  .hero-sub{ font-size:11pt; max-width:none; margin:4mm 0 0; }
+  .hero-eye{ margin-bottom:3mm; }
+
+  /* 제목 */
+  .head{ display:block; margin-bottom:4mm; break-after:avoid; }
+  .head h2{ font-size:15pt; margin-bottom:2mm; }
+  .head--big h2{ font-size:20pt; }
+  .head .lead,.head .intro{ font-size:10pt; max-width:none; }
+  h2,h3{ break-after:avoid; }
+
+  /* 스킬 */
+  .tools{ gap:2mm; }
+  .tool{ padding:1.5mm 3mm; font-size:9pt; border-color:rgba(0,0,0,.3); white-space:nowrap; }
+  .tool img{ width:4mm; height:4mm; }
+
+  /* 숙련도 그래프는 인쇄에서 연출 없이 결과 너비로 고정한다.
+     배경 생략 옵션에서도 막대가 사라지지 않게 색을 강제한다 */
+  .lvs{ border-top:1px solid #000; break-inside:avoid; }
+  .lv{ padding:2mm 0; gap:3mm; grid-template-columns:38mm 1fr 6mm; border-color:rgba(0,0,0,.18); break-inside:avoid; }
+  .lv-n{ font-size:9.5pt; gap:2mm; }
+  .lv-n img{ width:4mm; height:4mm; }
+  .lv-bar{ height:1.6mm; background:rgba(0,0,0,.12); print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .lv-bar i{ width:var(--w) !important; background:#000; transition:none; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .lv-t{ font-size:8pt; color:#000; }
+
+  /* 단계 */
+  .steps{ border-top:1px solid #000; }
+  .step{
+    display:block; padding:5mm 0; border-bottom:1px solid rgba(0,0,0,.2);
+  }
+  .step-head,.step-t,.step-d{ display:block; position:static; }
+  .step-head{ break-after:avoid; }
+  .step-n{ margin-bottom:2mm; font-size:8.5pt; }
+  .step-head h3{ font-size:15pt; margin-bottom:3mm; }
+  .step-head .out{ margin:0 0 4mm; gap:1.5mm; }
+  .step-head .out span{ font-size:7.5pt; padding:1mm 2.5mm; border-color:rgba(0,0,0,.3); }
+  .step-d{ margin-top:4mm; }
+  .step-d p{ font-size:10pt; }
+
+  /* 정의 행 · 표 */
+  .dt{ margin-top:4mm; border-top:1px solid #000; }
+  .dt > div{ padding:2.5mm 0; grid-template-columns:34mm 1fr; break-inside:avoid; }
+  .dt dt{ font-size:9pt; padding-right:4mm; border-right:1px solid rgba(0,0,0,.18); }
+  .dt dd{ font-size:9.5pt; padding-left:4mm; }
+  .dt dt em{ font-size:7pt; }
+  .sub{ margin-top:5mm; }
+  .g3{ margin-top:2mm; border-top:1px solid #000; }
+  .g3-h,.g3-r{ padding:2mm 0; gap:4mm; break-inside:avoid; }
+  .g3-h{ border-bottom:1px solid rgba(0,0,0,.35); }
+  .g3-h span{ font-size:7.5pt; }
+  .g3-r{ border-bottom:1px solid rgba(0,0,0,.15); }
+  .g3-r span{ font-size:9pt; }
+  .note{ margin-top:4mm; }
+  .note li{ font-size:9pt; margin-bottom:2mm; }
+
+  /* 이미지 */
+  .fig{ margin-top:3mm; break-inside:avoid; }
+  /* 큰 이미지는 쪽 경계에서 통째로 밀려 앞 쪽을 비운다 — 높이를 낮춰 밀림을 줄인다.
+     46mm보다 더 줄여도 쪽수는 그대로라, 여기가 읽히는 크기의 하한이다 */
+  .fig img{ width:100%; max-height:46mm; object-fit:contain; border:1px solid rgba(0,0,0,.2); }
+  .fig figcaption{ font-size:7.5pt; margin-top:2mm; }
+  .figs3{ grid-template-columns:repeat(3,1fr); gap:3mm; margin-top:4mm; }
+  .figs3 .fig img{ aspect-ratio:4/3; object-fit:cover; max-height:46mm; }
+
+  /* 경력 */
+  /* 프로필 표 — 2열 유지, 행 여백만 지면 기준으로 */
+  .spec-row{ padding:2mm 0; gap:4mm; grid-template-columns:26mm minmax(0,1fr); }
+  .spec-k{ font-size:9pt; }
+  .spec-k small{ font-size:7pt; margin-top:1mm; }
+  .spec-v{ font-size:9.5pt; }
+
+  .tl{ border-top:1px solid #000; }
+  .tl-i{ padding:2.4mm 0; grid-template-columns:30mm 1fr; border-bottom:1px solid rgba(0,0,0,.15); break-inside:avoid; }
+  .tl-when{ font-size:8.5pt; }
+  .tl-co{ font-size:12pt; }
+  .tl-d{ font-size:9.5pt; }
+  .prose{ max-width:none; margin-top:6mm; }
+  .prose p{ font-size:9.5pt; margin-bottom:3mm; }
+
+  /* 연락처 */
+  .ct-list{ border-top:1px solid #000; break-inside:avoid; }
+  .ct-list li{ padding:4mm 0; grid-template-columns:26mm 1fr; border-bottom:1px solid rgba(0,0,0,.15); break-inside:avoid; }
+  .ct-list a{ font-size:15pt; }
+  .foot{ margin-top:8mm; border-top:1px solid rgba(0,0,0,.25); break-inside:avoid; }
+
+  /* ── 페이지 분할 보정 ──
+     한 덩어리로 읽혀야 하는 블록이 쪽 경계에서 갈리지 않게 한다 */
+  /* .spec(433px) · .tl(564px) · .caps(469px)는 통짜로 묶기엔 커서,
+     쪽 경계에 걸릴 때마다 앞 쪽을 비우고 통째로 넘어간다.
+     행 단위(.spec-row · .tl-i · .caps > div)는 이미 안 쪼개지므로 컨테이너는 풀어 준다 */
+  .step,.dl-item,.target,.spec-row,.tools,.dl-btns,
+  .hero,.head,.blk{ break-inside:avoid; }
+  /* 샘플 3장 묶음(548px)도 통짜로는 커서 쪽을 비운다. 장별로만 안 쪼개지게 한다 */
+  .figs3 .fig{ break-inside:avoid; }
+
+  /* 01 소개와 04 특장점은 이제 한 쪽을 넘는 분량이다.
+     break-inside:avoid를 걸면 새 쪽으로 밀린 뒤 어차피 넘쳐, 앞 쪽만 비운다 */
+
+  /* 이미지와 그 설명이 떨어지지 않게 */
+  .step-t{ break-inside:avoid; break-after:avoid; }
+  .step-d{ break-before:avoid; }
+  .figs3 .fig{ break-inside:avoid; }
+
+  /* 제목 뒤에서 끊기지 않게 */
+  .sec > .wrap > .head,.head--stack,.head--big{ break-after:avoid; }
+  .step-head{ break-after:avoid; }
+
+  /* 한 줄만 남고 넘어가는 현상 방지 */
+  p,li,dd,dt{ orphans:3; widows:3; }
+
+  /* 05 마치며(438px)를 통짜로 묶으면 앞 쪽 아래가 그만큼 빈다 — 흐르게 둔다 */
+
+  /* ── 작업 사례(CASE) 인쇄 ── */
+  .case{ display:block; }
+  .case + .case{ margin-top:4mm; padding-top:3.5mm; border-top:1px solid rgba(0,0,0,.22); }
+  .case-aside{ position:static; margin-bottom:2.5mm; break-after:avoid; break-inside:avoid; }
+  .case-no{ font-size:9pt; font-family:var(--mono); letter-spacing:.1em; color:rgba(0,0,0,.5); margin-bottom:2mm; }
+  .case-aside h3{ font-size:14pt; line-height:1.3; margin-bottom:2.5mm; }
+  .case-aside .meta{ font-size:8.5pt; margin-bottom:3mm; }
+  .chips{ gap:1.5mm; }
+  .chips span{ font-size:7.5pt; padding:1mm 2.5mm; border-color:rgba(0,0,0,.3); }
+
+  /* ── 프로젝트 화면 캡쳐 인쇄 ── */
+  .case .fig{ break-inside:avoid; margin-top:2.5mm !important; max-width:100mm; }
+  .case .fig img{ max-height:40mm; object-fit:contain; object-position:left top; border-color:rgba(0,0,0,.25); }
+  .case .fig figcaption{ font-size:7.5pt; margin-top:1.5mm; }
+  .case .figs2{ gap:3mm; margin-top:3mm !important; max-width:130mm; }
+  .case .figs2 .fig{ max-width:none; }
+  .case-sub{ font-size:8pt; margin:5mm 0 1.5mm !important; break-after:avoid; }
+  .slot{ display:none !important; }
+
+  /* ── 그 밖의 작업(FLOW) 인쇄 ── */
+  .flow{ margin-top:3mm; border-color:rgba(0,0,0,.28); break-inside:avoid; }
+  .flow-i{ padding:3.5mm; border-color:rgba(0,0,0,.18); }
+  .flow-i .mono{ font-size:7.5pt; margin-bottom:1.5mm; }
+  .flow-i b{ font-size:10pt; margin-bottom:1.5mm; }
+  .flow-i p{ font-size:8.5pt; }
+
+  /* 페이지 분할 보정 추가분 */
+  .case-aside,.flow,.flow-i{ break-inside:avoid; }
+}
+
+/* ── 프로젝트 요점 목록 ── */
+.dom{font-size:var(--t-micro);color:var(--ink);font-weight:600;line-height:1.62;margin:8px 0 0}
+.pts{list-style:none;margin:20px 0 0;padding:0}
+.pts li{position:relative;padding-left:19px;margin:0 0 11px;font-size:var(--t-micro);color:var(--graphite);line-height:1.68}
+.pts li:last-child{margin-bottom:0}
+.pts li:before{content:"";position:absolute;left:2px;top:.78em;width:8px;height:1px;background:var(--graphite);opacity:.5}
+.pts li b{color:var(--ink);font-weight:600}
+
+/* 항목 수가 홀수일 때 마지막 칸이 비지 않게 */
+.flow-i:last-child:nth-child(odd){grid-column:1/-1}
+
+/* ── 작성 예정 자리표시 (배포 전 반드시 채우거나 삭제) ── */
+.is-draft .case-aside h3{opacity:.55}
+.draft-box{border:1px dashed var(--line2,#c9c9c9);border-width:1px;padding:22px 24px;background:repeating-linear-gradient(135deg,transparent,transparent 9px,rgba(0,0,0,.022) 9px,rgba(0,0,0,.022) 18px)}
+.draft-tag{display:inline-block;font-size:10.5px;letter-spacing:.14em;padding:3px 9px;border:1px solid currentColor;opacity:.7}
+.draft-note{font-size:var(--t-micro);color:var(--graphite);margin:12px 0 0;line-height:1.65}
+.draft-pts{opacity:.72}
+.draft-pts li:before{border-top:1px dashed currentColor;background:none;height:0}
+.draft-pts code{font-family:var(--mono);font-size:.9em;padding:1px 4px;background:rgba(0,0,0,.05)}
+@media print{
+  .draft-box{border-color:rgba(0,0,0,.4);background:none}
+}
+@media print{
+  .dom{font-size:9.5pt;margin-top:1.5mm}
+  .pts{margin-top:2.5mm}
+  .pts li{font-size:9.5pt;margin-bottom:1.6mm;padding-left:4mm;line-height:1.5;break-inside:avoid}
+  .pts li:before{left:0.6mm;width:2.4mm}
+}
+
+/* ── 작성자 확인 후 확정할 문구 표시 ── */
+.tbd{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;
+  color:#8a6d00;background:rgba(214,178,0,.10);border:1px dashed rgba(160,130,0,.5);
+  padding:2px 7px;border-radius:3px;line-height:1.5;white-space:normal}
+h1 .tbd,h2 .tbd,h3 .tbd{font-size:12px;vertical-align:middle}
+.tbd-note{display:block;font-family:var(--mono);font-size:11px;color:var(--flint);margin-top:8px;line-height:1.6}
+@media print{
+  .tbd{color:#000;background:none;border-color:rgba(0,0,0,.5);font-size:8pt}
+  .tbd-note{font-size:8pt}
+}
+
+/* ── 산출물 · 그룹 블록 ── */
+.grp{margin-top:clamp(40px,5.5vw,72px)}
+.grp:first-of-type{margin-top:0}
+.grp-h{display:flex;align-items:baseline;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.grp-h .n{font-family:var(--mono);font-size:var(--t-micro);font-weight:500;letter-spacing:.12em;color:var(--flint)}
+.grp-h h3{font-size:clamp(19px,2.2vw,26px);font-weight:600;letter-spacing:-.03em}
+.grp-h .c{margin-left:auto;font-family:var(--mono);font-size:var(--t-micro);color:var(--flint)}
+.grp-d{font-size:var(--t-micro);color:var(--graphite);line-height:1.7;margin:14px 0 0;max-width:52em}
+
+/* 하위 그룹 (사용자 화면 / 관리자 화면 …) */
+.sgrp{margin-top:clamp(26px,3.2vw,38px)}
+.sgrp-h{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+.sgrp-h .k{font-size:14.5px;font-weight:600;letter-spacing:-.02em}
+.sgrp-h .d{font-family:var(--mono);font-size:var(--t-micro);color:var(--flint)}
+.sgrp-h .d:before{content:"— ";opacity:.6}
+
+/* 문서 목록 */
+.doclist{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 26px;margin:16px 0 0;padding:0;list-style:none;border-top:1px dashed var(--hair)}
+.doclist li{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px dashed var(--hair);font-size:var(--t-micro)}
+.doclist li b{font-weight:600;color:var(--ink)}
+.doclist li span{color:var(--flint);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;margin-left:auto;white-space:nowrap}
+
+@media(max-width:760px){
+  .figs3{grid-template-columns:1fr 1fr}
+  .doclist{grid-template-columns:1fr}
+}
+@media print{
+  .grp{margin-top:8mm;break-inside:avoid}
+  .grp-h{padding-bottom:2mm;border-bottom:1px solid rgba(0,0,0,.35)}
+  .grp-h h3{font-size:13pt}
+  .grp-h .n,.grp-h .c{font-size:8pt}
+  .grp-d{font-size:9.5pt;margin-top:2mm}
+  .sgrp{margin-top:5mm;break-inside:avoid}
+  .sgrp-h .k{font-size:10.5pt}
+  .sgrp-h .d{font-size:8.5pt}
+  .doclist{gap:0 6mm;margin-top:3mm}
+  .doclist li{font-size:9pt;padding:1.4mm 0;break-inside:avoid}
+  .doclist li span{font-size:8pt}
+}
+</style>
+<noscript><style>.rv{opacity:1 !important;transform:none !important}.lv-bar i{width:var(--w) !important;transition:none}</style></noscript>
+<style>
+/* ═══ 작성 문서 — 그룹 라벨과 항목의 위계 분리 ═══ */
+.sgrp--doc .sgrp-h{margin-bottom:6px}
+.sgrp--doc .sgrp-h .k{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  color:var(--flint);
+}
+.sgrp--doc .doclist{
+  grid-template-columns:1fr;
+  max-width:520px;
+  border-top:1px solid var(--hair);
+}
+.sgrp--doc .doclist li{padding:10px 0}
+.sgrp--doc .doclist li b{
+  font-weight:450;
+  font-size:15px;
+  letter-spacing:-.01em;
+}
+.sgrp--doc .doclist li b:before{
+  content:"";
+  display:inline-block;
+  width:3px;height:3px;
+  margin:0 9px 4px 1px;
+  background:var(--flint);
+  vertical-align:middle;
+}
+@media print{
+  .sgrp--doc .sgrp-h .k{font-size:7.5pt}
+  .sgrp--doc .doclist{max-width:none}
+  .sgrp--doc .doclist li{padding:1.2mm 0}
+  .sgrp--doc .doclist li b{font-size:9.5pt}
+}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<a class="totop" id="totop" href="#top" aria-label="맨 위로">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M12 5l-7 7M12 5l7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+
+<!-- ══════════ 상단 식별 줄 ══════════ -->
+<div class="wrap">
+  <div class="top">
+    <a class="who" href="../">박세훈 <em>· 게임 사업 PM</em></a>
+    <a class="mono back" href="../">← 소개로</a>
+  </div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="mono hero-eye">Game Business PM · Live Ops</span>
+      <h1 class="stmt">웹·앱과 이커머스에서 쌓은 사업 및 프로젝트 경험을 바탕으로, 게임산업에서 새로운 사업 기회를 발굴하고 서비스의 가치를 만들어가고 싶습니다.</h1>
+      <p class="hero-meta">
+        게임 사업 PM 포트폴리오 · 2026. 8. · <b>박세훈</b><br>
+        sun8070vvv20@gmail.com · 010-7222-0473
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-fill" href="portfolio.pdf" download>PDF 내려받기</a>
+        <a class="btn btn-line" href="../application/" target="_blank" rel="noopener">지원서 보기</a>
+      </div>
+    </div>
+    <div class="hero-fig" aria-hidden="true">
+      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#9a9a9a" stroke-width=".45" fill="none">
+          <path d="M160 160 L160 38 M160 160 L246 74 M160 160 L282 160 M160 160 L246 246 M160 160 L160 282 M160 160 L74 246 M160 160 L38 160 M160 160 L74 74"/>
+          <path d="M160 160 L206 50 M160 160 L270 114 M160 160 L270 206 M160 160 L206 270 M160 160 L114 270 M160 160 L50 206 M160 160 L50 114 M160 160 L114 50"/>
+          <path d="M160 160 L234 60 M160 160 L260 86 M160 160 L86 260 M160 160 L60 234 M160 160 L234 260 M160 160 L86 60 M160 160 L260 234 M160 160 L60 86"/>
+        </g>
+        <g fill="#0d0d0d">
+          <circle cx="160" cy="38" r="3.6"/><circle cx="246" cy="74" r="2.6"/><circle cx="282" cy="160" r="3.1"/>
+          <circle cx="246" cy="246" r="2.6"/><circle cx="160" cy="282" r="3.6"/><circle cx="74" cy="246" r="2.6"/>
+          <circle cx="38" cy="160" r="3.1"/><circle cx="74" cy="74" r="2.6"/>
+        </g>
+        <g fill="#5d5d5d">
+          <circle cx="206" cy="50" r="2"/><circle cx="270" cy="114" r="2"/><circle cx="270" cy="206" r="2"/>
+          <circle cx="206" cy="270" r="2"/><circle cx="114" cy="270" r="2"/><circle cx="50" cy="206" r="2"/>
+          <circle cx="50" cy="114" r="2"/><circle cx="114" cy="50" r="2"/>
+        </g>
+        <g fill="#8f8f8f">
+          <circle cx="234" cy="60" r="1.4"/><circle cx="260" cy="86" r="1.4"/><circle cx="86" cy="260" r="1.4"/>
+          <circle cx="60" cy="234" r="1.4"/><circle cx="234" cy="260" r="1.4"/><circle cx="86" cy="60" r="1.4"/>
+          <circle cx="260" cy="234" r="1.4"/><circle cx="60" cy="86" r="1.4"/>
+        </g>
+        <circle cx="160" cy="160" r="5.2" fill="#0d0d0d"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="목차">
+  <div class="wrap">
+    <ol>
+      <li><a href="#about"><span class="mono">01</span><span class="t">소개</span></a></li>
+      <li><a href="#cases"><span class="mono">02</span><span class="t">프로젝트</span></a></li>
+      <li><a href="#deliverables"><span class="mono">03</span><span class="t">산출물</span></a></li>
+      <li><a href="#strength"><span class="mono">04</span><span class="t">특장점</span></a></li>
+      <li><a href="#contact"><span class="mono">05</span><span class="t">맺음말</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ══════════ 01 소개 ══════════ -->
+<section class="sec sec--tight" id="about">
+  <div class="wrap">
+    <div class="head head--stack rv">
+      <h2>01 · 소개</h2>
+      <p class="intro">
+        공공·문화 포털과 면세 이커머스에서 기획 PL로 일했습니다. 5,000만원부터 1억원 미만 규모의 사업을 맡아 요구사항 접수부터 일정 관리, 검수와 정산까지 책임졌고, 관리자 시스템을 직접 설계해 이벤트와 쿠폰 발급을 운영했습니다.
+        아래는 <b>02 프로젝트</b>에서 문제를 어떻게 풀었는지, <b>03 산출물</b>에서 무엇을 만들어 냈는지, <b>04 특장점</b>에서 어떤 일을 맡을 수 있는지 순서로 읽으시면 됩니다.
+      </p>
+    </div>
+
+    <dl class="spec rv" style="margin-top:clamp(30px,4vw,46px)">
+      <div class="spec-row"><dt class="spec-k">이름<small>Name</small></dt><dd class="spec-v">박세훈 · Park Sehoon</dd></div>
+      <div class="spec-row"><dt class="spec-k">생년월일<small>Birth</small></dt><dd class="spec-v">1993. 6. 1.</dd></div>
+      <div class="spec-row"><dt class="spec-k">경력<small>Career</small></dt><dd class="spec-v">4년 5개월 · 서비스 기획 PL · 사업 관리</dd></div>
+      <div class="spec-row"><dt class="spec-k">지원 분야<small>Field</small></dt><dd class="spec-v">게임 사업 PM · 라이브 옵스</dd></div>
+      <div class="spec-row"><dt class="spec-k">학력<small>Education</small></dt><dd class="spec-v">울산대학교 역사·문화 졸업 (2012.03–2020.02)</dd></div>
+      <div class="spec-row"><dt class="spec-k">병역<small>Military</small></dt><dd class="spec-v">육군 만기전역 (2013.04–2015.01)</dd></div>
+      <div class="spec-row"><dt class="spec-k">이메일<small>Email</small></dt><dd class="spec-v">sun8070vvv20@gmail.com</dd></div>
+      <div class="spec-row"><dt class="spec-k">휴대폰 번호<small>Mobile</small></dt><dd class="spec-v">010-7222-0473</dd></div>
+    </dl>
+
+    <!-- 경력 (구 04 경력 섹션 → 개요로 통합) -->
+    <div class="rv" style="margin-top:clamp(38px,5vw,64px)">
+      <span class="mono" style="display:block;font-size:11px;letter-spacing:.15em;color:var(--flint);margin-bottom:14px">경력 · 4년 5개월</span>
+      <div class="tl">
+        <div class="tl-i">
+          <span class="tl-when">2025. 2. ~ 현재</span>
+          <div><div class="tl-co">(주)이노디스 · 웹서비스팀 기획 PL</div><p class="tl-d">공공·문화 포털의 유지보수, 고도화, 재구축 — 담당 프로젝트 전부 사업 관리 담당</p>
+          <p class="tl-r"><b>맡은 범위</b>사업 금액 5,000만원~1억원 미만 구간의 공기관 사업을 맡아 요구사항 접수부터 검수·정산까지 운영했습니다. WBS로 사업 일정과 소속 기획자의 업무를 함께 관리했고, 구축 이후의 상시 운영과 고도화도 이어서 담당했습니다.</p></div>
+        </div>
+        <div class="tl-i">
+          <span class="tl-when">2024. 1. ~ 2024. 11.</span>
+          <div><div class="tl-co">(주)그라비티 네오싸이언 · 대리</div><p class="tl-d">면세 이커머스 운영 기획 및 프로모션 이벤트 기획</p>
+          <p class="tl-r"><b>맡은 범위</b>상품 노출과 구매 흐름을 중심으로 사용자·관리자 화면 운영을 기획했습니다. 참여형 프로모션의 참여 조건과 회차 제한, 당첨 판정 규칙을 정하고 쿠폰·포인트 지급 규칙과 중복 지급·기간 만료 예외를 정의했습니다.</p></div>
+        </div>
+        <div class="tl-i">
+          <span class="tl-when">2021. 7. ~ 2023. 6.</span>
+          <div><div class="tl-co">(주)이노컴즈 · 주임</div><p class="tl-d">업무 시스템과 공공 홈페이지의 서비스 기획 실무</p>
+          <p class="tl-r"><b>맡은 범위</b>출입증 시스템과 전자결재 업무 시스템 등 폐쇄형 시스템의 화면과 API 연계를 기획했고, 공공 홈페이지 반응형 리뉴얼의 화면정의서를 작성했습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ 02 프로젝트 · GUI 위주 ══════════ -->
+<section class="sec sec--major" id="cases">
+  <div class="wrap">
+    <div class="head head--stack rv">
+      <h2>02 · 프로젝트</h2>
+      <p class="lead">
+        사업 관리를 맡은 일 가운데 결과가 뚜렷한 네 건입니다. 프로젝트마다 <b>사업 관리, 운영, 데이터 설계</b> 관점에서 무엇을 맡아 무엇이 달라졌는지를 한 줄씩 적었습니다.
+      </p>
+    </div>
+
+    <div style="margin-top:clamp(40px,6vw,72px)">
+
+      <!-- PROJECT 01 · 서울영화센터 -->
+      <article class="case rv">
+        <div class="case-aside">
+          <span class="case-no">01</span>
+          <h3>서울영화센터 포털<br>재구축</h3>
+          <p class="meta">예술 포털 · 연 8천만원</p>
+          <div class="chips"><span>라이브 운영</span><span>쿠폰 동기화</span><span>상태 설계</span><span>CMS 신규</span></div>
+        </div>
+        <div>
+          <figure class="fig" style="margin-top:0">
+            <a href="images/%EC%84%9C%EC%9A%B8%EC%98%81%ED%99%94%EC%84%BC%ED%84%B0.png" target="_blank" rel="noopener" aria-label="서울영화센터 포털 원본 보기">
+              <img src="images/%EC%84%9C%EC%9A%B8%EC%98%81%ED%99%94%EC%84%BC%ED%84%B0.png" alt="서울영화센터 멤버십 안내 화면" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Site-02</span><span class="slot-nm">서울영화센터 포털</span><span class="slot-f">서울영화센터.png</span></div>
+            </a>
+          </figure>
+
+          <p class="case-sub">이용자 유입을 늘리다</p>
+          <p class="dom">통계 페이지 · 쿠폰 관리 페이지 신설</p>
+          <ul class="pts">
+            <li><b>일·월·년 단위 통계 페이지</b>를 신설해 유입 연령대와 방문 시간대를 파악</li>
+            <li>쿠폰 발급을 하드코딩 방식에서 <b>CMS의 기능</b>으로 기획·구축해 이벤트 혜택 구성의 유연성을 높임</li>
+            <li>고객사와 논의해 지속적인 유지보수를 이어가며 유입 인원 <b>2025년 대비 50% 상승</b></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- PROJECT 02 · 서울영테크 · 확인된 사실만 기재, 문구는 작성자 확인 후 확정 -->
+      <article class="case rv">
+        <div class="case-aside">
+          <span class="case-no">02</span>
+          <h3>서울영테크<br>청년 재무상담 포털</h3>
+          <p class="meta">공공 서비스 · 연 1억원</p>
+          <div class="chips"><span>사업 관리</span><span>운영</span><span>유저 분석</span></div>
+        </div>
+        <div>
+          <figure class="fig" style="margin-top:0">
+            <a href="images/%EC%98%81%ED%85%8C%ED%81%AC.png" target="_blank" rel="noopener" aria-label="서울영테크 맞춤 재무 상담 신청 원본 보기">
+              <img src="images/%EC%98%81%ED%85%8C%ED%81%AC.png" alt="서울영테크 맞춤 재무 상담 신청 화면" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Yt-01</span><span class="slot-nm">맞춤 재무 상담 신청</span><span class="slot-f">영테크.png</span></div>
+            </a>
+          </figure>
+
+          <p class="case-sub">신청자 유형을 그룹핑하다</p>
+          <p class="dom">다양한 신청자의 유형을 경험 및 데이터 분석하여 그룹핑 진행</p>
+          <ul class="pts">
+            <li>상담 신청 → 상담사 배정 → 상담 진행 → 상담 완료 <b>4단계 절차 화면</b> 구축 진행</li>
+            <li>운영 단계에서 <b>다양한 직종·연령층</b>을 접하는 경험을 함</li>
+            <li>직종 등 상담 유형에 따른 <b>그룹 강의</b>를 제시</li>
+            <li><b>월 4회이던 강의를 월 8회까지 확대</b></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- PROJECT 03 · 국립부여박물관 -->
+      <article class="case rv">
+        <div class="case-aside">
+          <span class="case-no">03</span>
+          <h3>국립부여박물관<br>누리집 개편·고도화</h3>
+          <p class="meta">공공·문화 · 5,000만원 + 고도화 2건 2천만원</p>
+          <div class="chips"><span>사업 관리</span><span>요구 명세</span><span>대안 비교</span><span>데이터 설계</span></div>
+        </div>
+        <div>
+          <figure class="fig" style="margin-top:0">
+            <a href="images/%EA%B5%AD%EB%A6%BD%EB%B6%80%EC%97%AC.png" target="_blank" rel="noopener" aria-label="국립부여박물관 누리집 원본 보기">
+              <img src="images/%EA%B5%AD%EB%A6%BD%EB%B6%80%EC%97%AC.png" alt="국립부여박물관 백제대향로관 전시안내 화면" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Site-03</span><span class="slot-nm">국립부여박물관 누리집</span><span class="slot-f">국립부여.png</span></div>
+            </a>
+          </figure>
+
+          <p class="case-sub">사업을 관리하다</p>
+          <p class="dom">3사 연동 일정 조율 · 발권 현황 노출 · 고도화 계약 2건</p>
+          <ul class="pts">
+            <li>외부 키오스크 연동 작업에 <b>3개 고객사·협력사가 얽혀</b> 각자의 사정으로 일정이 모이지 않던 상황에서, <b>WBS로 작업 일정을 통보</b>해 내부 일정을 관리한 경험</li>
+            <li>예약 페이지 바로가기를 추가해 발권 현황을 파악하게 함으로써 <b>주말 매진율 60% → 80% 달성</b></li>
+            <li>고객사의 불편한 부분을 기능 추가로 제시해 <b>고도화 계약 2건</b>을 진행</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- PROJECT 04 · 신세계DF 면세 이커머스 · 성과 헤드라인/금액 확인 필요 -->
+      <article class="case rv">
+        <div class="case-aside">
+          <span class="case-no">04</span>
+          <h3>신세계DF<br>면세 이커머스</h3>
+          <p class="meta">이커머스</p>
+          <div class="chips"><span>운영 기획</span><span>프로모션</span><span>쿠폰·포인트</span><span>구매 흐름</span></div>
+        </div>
+        <div>
+          <figure class="fig" style="margin-top:0">
+            <a href="images/%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%9D%B4%EB%B2%A4%ED%8A%B8.png" target="_blank" rel="noopener" aria-label="신세계DF 면세 이커머스 혜택 화면 원본 보기">
+              <img src="images/%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%9D%B4%EB%B2%A4%ED%8A%B8.png" alt="신세계면세점 혜택 모음 화면" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Ec-01</span><span class="slot-nm">면세 이커머스 혜택</span><span class="slot-f">신세계 이벤트.png</span></div>
+            </a>
+          </figure>
+
+          <p class="case-sub">대형 이커머스를 경험하다</p>
+          <p class="dom">면세 이커머스 운영 기획 및 프로모션 이벤트 기획</p>
+          <ul class="pts">
+            <li>상품 노출부터 주문·결제까지 <b>구매 흐름을 점검</b>해 개선안을 정리</li>
+            <li>상품 노출과 구매 흐름을 중심으로 <b>사용자·관리자 화면 운영</b>을 기획</li>
+            <li>참여형 프로모션의 <b>참여 조건과 회차 제한, 당첨 판정 규칙</b>을 설계</li>
+            <li>쿠폰·포인트 지급 규칙과 <b>중복 지급·기간 만료 예외</b>를 정의</li>
+            <li>실무 라인이라 주도적으로 사업 관리를 하는 입장은 아니었고, <b>판매와 BM을 상세하게 볼 수 있었던 경험</b></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="dl rv">
+      <span class="mono">공통업무 경험</span>
+      <ul class="pts">
+        <li>기획서 · WBS 등 문서 작업</li>
+        <li>내부 기안 처리 및 계약 문서 작성</li>
+        <li>고객과의 커뮤니케이션</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ 03 산출물 ══════════ -->
+<section class="sec sec--major" id="deliverables">
+  <div class="wrap">
+    <div class="head head--stack rv">
+      <h2>03 · 산출물</h2>
+      <p class="lead">
+        작성해 온 문서를 기획·데이터·관리 세 갈래로 정리했습니다. 아래 샘플 세 장은 각각 <b>기획서·WBS·플로우차트</b>를 대표하는 발췌본입니다.
+      </p>
+    </div>
+
+    <!-- 5. 기타 문서 -->
+    <div class="grp rv">
+      <div class="grp-h">
+        <h3>작성 문서</h3>
+        <span class="c">기획 · 데이터 · 관리</span>
+      </div>
+
+      <div class="sgrp sgrp--doc">
+        <div class="sgrp-h"><span class="k">기획 문서</span></div>
+        <ul class="doclist">
+          <li><b>화면기획서 · 화면정의서</b></li>
+          <li><b>요구사항정의서</b></li>
+          <li><b>정책 문서</b></li>
+        </ul>
+      </div>
+
+      <div class="sgrp sgrp--doc">
+        <div class="sgrp-h"><span class="k">데이터 문서</span></div>
+        <ul class="doclist">
+          <li><b>API 연계 기획서</b></li>
+        </ul>
+      </div>
+
+      <div class="sgrp sgrp--doc">
+        <div class="sgrp-h"><span class="k">관리 문서</span></div>
+        <ul class="doclist">
+          <li><b>WBS · 일정 관리</b></li>
+          <li><b>유지보수 보고서</b></li>
+        </ul>
+      </div>
+
+      <div class="sgrp">
+        <div class="sgrp-h"><span class="k">문서 샘플</span><span class="d">기획서 · WBS · 플로우차트 각 1장</span></div>
+        <div class="figs3">
+          <figure class="fig">
+            <a href="images/work-screen.png" target="_blank" rel="noopener" aria-label="화면 설계서 원본 보기">
+              <img src="images/work-screen.png" alt="화면 설계서 발췌" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Doc-A</span><span class="slot-nm">기획서(화면 설계서)</span><span class="slot-f">work-screen.png</span></div>
+            </a>
+            <figcaption>기획서 — 환불계좌 등록 모달 정의</figcaption>
+          </figure>
+          <figure class="fig">
+            <a href="images/work-wbs.png" target="_blank" rel="noopener" aria-label="WBS 일정 관리 원본 보기">
+              <img src="images/work-wbs.png" alt="WBS 일정 관리 발췌" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Doc-B</span><span class="slot-nm">WBS · 일정 관리</span><span class="slot-f">work-wbs.png</span></div>
+            </a>
+            <figcaption>WBS — 사업 일정과 담당 배분</figcaption>
+          </figure>
+          <figure class="fig">
+            <a href="images/work-data.png" target="_blank" rel="noopener" aria-label="플로우차트 원본 보기">
+              <img src="images/work-data.png" alt="대관 신청 플로우차트 발췌" onerror="this.closest('.fig').classList.add('empty')">
+              <div class="slot"><span class="slot-id">Doc-C</span><span class="slot-nm">플로우차트</span><span class="slot-f">work-data.png</span></div>
+            </a>
+            <figcaption>플로우차트 — 대관 신청 승인·입금 흐름</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ 04 특장점 ══════════ -->
+<section class="sec" id="strength">
+  <div class="wrap">
+    <div class="head head--stack rv" style="margin-bottom:clamp(26px,3.4vw,38px)">
+      <h2>04 · 특장점</h2>
+    </div>
+
+    <dl class="caps rv">
+      <div><dt>사업 관리 · 검수와 정산</dt><dd>기획 PL로 사업 하나를 통째로 맡습니다. 요구사항 접수, WBS 일정 수립, 소속 기획자 업무 배분, 검수와 정산까지 사업 단위로 책임집니다.</dd></div>
+      <div><dt>이벤트 · 쿠폰 운영 설계</dt><dd>참여 조건과 회차 제한, 당첨 판정 규칙을 정하고 쿠폰·포인트 지급 규칙과 중복 지급·기간 만료 예외를 정의합니다. 외부 시스템이 발급한 쿠폰을 내부 데이터와 맞추는 동기화도 설계했습니다.</dd></div>
+      <div><dt>라이브 운영과 정책 확정</dt><dd>돌아가는 서비스를 상시 운영하며 고도화합니다. 기존 기능을 바꿔야 할 때는 영향 범위를 전수 확인하고 대안을 비교한 뒤 정책 항목으로 확정해 문서로 남깁니다.</dd></div>
+      <div><dt>관리자 시스템(CMS·BO) 설계</dt><dd>운영자가 실제로 쓸 화면을 설계합니다. 신청·승인·반려·취소 상태 흐름과 전용 테이블, 목록 검색 조건, 일괄 처리, 권한 구분과 내려받기 규칙을 포함합니다.</dd></div>
+      <div><dt>지표 화면과 데이터 연계</dt><dd>쌓인 데이터를 운영이 볼 수 있는 통계 화면으로 만듭니다. 화면이 쓰는 데이터를 테이블과 컬럼 단위로 정의하고, 외부 시스템과 주고받는 항목의 명세를 작성합니다.</dd></div>
+      <div><dt>AI 활용 · 문서와 바이브 코딩</dt><dd>문서 작업에 AI를 적극 사용하여 반복되는 단순 작업에 소요되는 시간을 줄였습니다. 사용 시 서브에이전트로 나누어 분업하고, 하네스·스킬로 코드·문서 산출물의 규격을 일원화했습니다. 계획 → 검토 → 구현 순서를 반드시 거치도록 작업 흐름을 구성했습니다.</dd></div>
+    </dl>
+
+    <!-- 7. 활용툴 -->
+    <div class="grp rv">
+      <div class="grp-h">
+        <h3>활용툴</h3>
+        <span class="c">설계 · 문서 · 협업 · 구현</span>
+      </div>
+
+      <div class="sgrp">
+        <div class="sgrp-h"><span class="k">설계 · 프로토타입</span></div>
+        <ul class="lvs">
+          <li class="lv" style="--w:62%"><span class="lv-n"><img src="images/icons/figma.png" alt="">Figma</span><span class="lv-bar"><i></i></span><span class="lv-t">중</span></li>
+          <li class="lv" style="--w:90%;--d:.08s"><span class="lv-n"><img src="images/icons/ppt.png" alt="">PowerPoint · Slides</span><span class="lv-bar"><i></i></span><span class="lv-t">상</span></li>
+        </ul>
+      </div>
+
+      <div class="sgrp">
+        <div class="sgrp-h"><span class="k">문서</span></div>
+        <ul class="lvs">
+          <li class="lv" style="--w:62%;--d:.16s"><span class="lv-n"><img src="images/icons/excel.png" alt="">Excel · Sheets</span><span class="lv-bar"><i></i></span><span class="lv-t">중</span></li>
+          <li class="lv" style="--w:90%;--d:.24s"><span class="lv-n"><img src="images/icons/hwp.png" alt="">한글 · Word</span><span class="lv-bar"><i></i></span><span class="lv-t">상</span></li>
+        </ul>
+      </div>
+
+      <div class="sgrp">
+        <div class="sgrp-h"><span class="k">협업</span></div>
+        <ul class="lvs">
+          <li class="lv" style="--w:90%;--d:.32s"><span class="lv-n"><img src="images/icons/slack.png" alt="">Slack</span><span class="lv-bar"><i></i></span><span class="lv-t">상</span></li>
+        </ul>
+      </div>
+
+      <div class="sgrp">
+        <div class="sgrp-h"><span class="k">구현</span></div>
+        <ul class="lvs">
+          <li class="lv" style="--w:62%;--d:.40s"><span class="lv-n"><img src="images/icons/vscode.png" alt="">VS Code</span><span class="lv-bar"><i></i></span><span class="lv-t">중</span></li>
+          <li class="lv" style="--w:62%;--d:.48s"><span class="lv-n"><img src="images/icons/claude.png" alt="">생성형 AI</span><span class="lv-bar"><i></i></span><span class="lv-t">중</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ 05 맺음말 ══════════ -->
+<section class="sec" id="contact" style="border-top:1px solid var(--ink)">
+  <div class="wrap">
+    <div class="head rv" style="margin-bottom:clamp(28px,4vw,44px)">
+      <div><h2>05 · 맺음말</h2></div>
+    </div>
+    <div class="target rv">
+      <p>요구 정의부터 일정 관리, 검수와 정산까지 사업 단위로 책임져 왔으며 공공·면세 이커머스 등 다양한 프로젝트를 관리 경험 하였습니다.</p>
+      <p>이 경험을 살려 전문적인 사업 관리자로 나아가고 싶습니다.</p>
+    </div>
+    <ul class="ct-list rv">
+      <li>
+        <span class="mono">Email</span>
+        <a href="mailto:sun8070vvv20@gmail.com">sun8070vvv20@gmail.com</a>
+      </li>
+      <li>
+        <span class="mono">Phone</span>
+        <a href="tel:010-7222-0473">010-7222-0473</a>
+      </li>
+    </ul>
+    <div class="foot">
+      <div class="foot-in">
+        <span class="mono">박세훈 · Game Business PM</span>
+        <span class="mono">2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var prog = document.getElementById('prog'), tick = false;
+  function draw(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    tick = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!tick){ window.requestAnimationFrame(draw); tick = true; }
+  }, {passive:true});
+  draw();
+
+  /* 맨 위로 버튼 */
+  var totop = document.getElementById('totop');
+  function toggleTop(){ totop.classList.toggle('on', window.scrollY > 600); }
+  window.addEventListener('scroll', toggleTop, {passive:true});
+  toggleTop();
+
+  var els = document.querySelectorAll('.rv');
+  if(rm || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('on'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -6% 0px', threshold:.08});
+    els.forEach(function(el){ io.observe(el); });
+  }
+
+  document.querySelectorAll('.fig img').forEach(function(img){
+    if(img.complete && img.naturalWidth === 0){ img.closest('.fig').classList.add('empty'); }
+  });
+})();
+</script>
+</body>
+</html>
