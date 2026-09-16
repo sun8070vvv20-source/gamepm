@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>실시간 관람 현황 · 국립부여박물관 | 박세훈 포트폴리오</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  .dm-top{position:sticky;top:0;z-index:9999;background:#12161f;color:#fff;
+    font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+    border-bottom:1px solid rgba(255,255,255,.12)}
+  .dm-top *{box-sizing:border-box}
+  .dm-in{max-width:1180px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .dm-back{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;
+    border-radius:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;
+    font-size:13px;font-weight:700;white-space:nowrap;transition:background .18s}
+  .dm-back:hover{background:rgba(255,255,255,.2)}
+  .dm-ttl{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .dm-badge{flex:0 0 auto;padding:3px 9px;border-radius:5px;background:#f26522;color:#fff;
+    font-size:11.5px;font-weight:800;letter-spacing:.02em}
+  .dm-name{font-size:15px;font-weight:700;letter-spacing:-.02em}
+  .dm-org{font-size:12.5px;color:rgba(255,255,255,.55);font-weight:600}
+  .dm-note{flex:1 1 100%;margin:0;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);
+    font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.68)}
+  .dm-note b{color:#8fc0ff;font-weight:700}
+  .dm-stage{background:#fff}
+  @media(max-width:640px){ .dm-in{padding:12px 16px;gap:10px} .dm-name{font-size:14px} }
+
+body{margin:0;background:#fff}
+@keyframes s5spin{to{transform:rotate(360deg)}}
+@keyframes s5rowIn{0%{opacity:0;transform:translateY(16px)}60%{opacity:1;transform:translateY(-2px)}100%{opacity:1;transform:translateY(0)}}
+#sec5Wrap{background:#fff;color:#111827;font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif;padding:32px 24px 44px;box-sizing:border-box}
+#sec5Wrap *{box-sizing:border-box;margin:0;padding:0}
+#sec5Wrap .s5inner{max-width:1180px;margin:0 auto}
+#sec5Wrap .s5bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px;padding:14px 20px;background:#F9FAFB;border-radius:10px;border:1px solid #E5E7EB}
+#sec5Wrap .s5barL{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#sec5Wrap .s5barR{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+#sec5Wrap .s5clock{display:flex;align-items:baseline;gap:10px}
+#sec5Wrap .s5clock .s5date{font-size:13px;font-weight:600;color:#9CA3AF;letter-spacing:-0.01em}
+#sec5Wrap .s5clock .s5time{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;line-height:1;color:#111827}
+#sec5Wrap .s5cd{display:flex;align-items:center;gap:9px}
+#sec5Wrap .s5cd .s5spinner{width:24px;height:24px;border-radius:50%;border:2.5px solid #E5E7EB;border-top-color:#5BA4FF;animation:s5spin 1s linear infinite;flex-shrink:0}
+#sec5Wrap .s5cd .s5cdlbl{font-size:12px;font-weight:700;letter-spacing:0.04em;color:#9CA3AF}
+#sec5Wrap .s5cd .s5cdval{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-0.01em;color:#111827}
+#sec5Wrap .s5cd .s5cdval em{color:#5BA4FF;font-style:normal}
+#sec5Wrap .s5bardiv{width:1px;height:28px;background:#E5E7EB;flex-shrink:0}
+#sec5Wrap .s5btnRefresh{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#5BA4FF;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:-0.01em;cursor:pointer;transition:background 0.15s;flex-shrink:0;font-family:inherit}
+#sec5Wrap .s5btnRefresh:hover{background:#4A93EE}
+#sec5Wrap .s5btnRefresh:active{background:#3B82D6}
+#sec5Wrap .s5btnRefresh svg{width:14px;height:14px;flex-shrink:0}
+#sec5Wrap .s5halls{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:40px;margin-top:24px}
+#sec5Wrap .s5hhead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:20px}
+#sec5Wrap .s5hname{font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:#111827}
+#sec5Wrap .s5hnameen{font-size:13px;font-weight:600;color:#9CA3AF;letter-spacing:-0.005em;margin-top:5px}
+#sec5Wrap .s5hupd{text-align:right;flex-shrink:0}
+#sec5Wrap .s5hupd .s5huplbl{font-size:11px;font-weight:700;letter-spacing:0.05em;color:#9CA3AF}
+#sec5Wrap .s5hupd .s5hupval{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;color:#4B5563;margin-top:2px}
+#sec5Wrap .s5thead{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:12px;padding:0 6px 10px;font-size:12px;font-weight:700;letter-spacing:0.03em;color:#9CA3AF;border-bottom:2px solid #E5E7EB}
+#sec5Wrap .s5thead span{text-align:center}
+#sec5Wrap .s5row{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:12px;padding:14px 6px;border-bottom:1px solid #EEF0F3;opacity:0;animation:s5rowIn 0.5s cubic-bezier(.22,.68,.31,1) forwards;animation-delay:calc(var(--i,0) * 0.06s)}
+#sec5Wrap .s5row.ended{opacity:0.5}
+#sec5Wrap .s5row.soldout{color:#DC2626}
+#sec5Wrap .s5row.soldout .s5tm,#sec5Wrap .s5row.soldout .s5stlbl{color:#DC2626}
+#sec5Wrap .s5row .s5tm{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;text-align:center;color:#111827}
+#sec5Wrap .s5row.ended .s5tm{text-decoration:line-through}
+#sec5Wrap .s5st{display:inline-flex;align-items:center;justify-content:center;gap:9px}
+#sec5Wrap .s5st .s5dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+#sec5Wrap .s5st .s5dot.green{background:#22C55E}
+#sec5Wrap .s5st .s5dot.gray{background:#D1D5DB}
+#sec5Wrap .s5st .s5dot.red{background:#EF4444}
+#sec5Wrap .s5st .s5stlbl{font-size:16px;font-weight:700;color:#111827;letter-spacing:-0.01em}
+#sec5Wrap .s5rem{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-0.01em;text-align:center;color:#111827}
+#sec5Wrap .s5rem.soldout{color:#DC2626}
+#sec5Wrap .s5rem.ended{color:#9CA3AF}
+#sec5Wrap .s5cell{display:flex;align-items:center;justify-content:center}
+#sec5Wrap .s5tabs{display:none;margin-top:24px;border-bottom:2px solid #E5E7EB}
+#sec5Wrap .s5tab{flex:1;padding:12px 0;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-size:15px;font-weight:700;color:#9CA3AF;cursor:pointer;transition:color .15s,border-color .15s;font-family:inherit}
+#sec5Wrap .s5tab.active{color:#111827;border-bottom-color:#111827}
+#sec5Wrap .s5taben{display:block;font-size:11px;font-weight:600;color:#9CA3AF;margin-top:2px;letter-spacing:-0.005em}
+#sec5Wrap .s5tab.active .s5taben{color:#6B7280}
+#sec5Wrap .s5foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:36px;padding-top:22px;border-top:1px solid #E5E7EB}
+#sec5Wrap .s5foot .s5ftxt{font-size:14px;font-weight:500;color:#6B7280}
+@media(max-width:768px){
+  #sec5Wrap{padding:24px 16px}
+  #sec5Wrap .s5bar{gap:12px;padding:12px 16px}
+  #sec5Wrap .s5clock{flex-direction:column;align-items:flex-start;gap:2px}
+  #sec5Wrap .s5barR{flex-direction:column;align-items:flex-end;gap:8px}
+  #sec5Wrap .s5bardiv{display:none}
+  #sec5Wrap .s5tabs{display:flex}
+  #sec5Wrap .s5halls{gap:0;margin-top:0}
+  #sec5Wrap .s5hallPanel{display:none}
+  #sec5Wrap .s5hallPanel.active{display:block}
+  #sec5Wrap .s5hhead{margin-bottom:0;padding:14px 0;justify-content:flex-end}
+  #sec5Wrap .s5hhead>div:first-child{display:none}
+  #sec5Wrap .s5hupd .s5huplbl{display:inline;margin-right:6px}
+  #sec5Wrap .s5hupd .s5hupval{display:inline;margin-top:0}
+  #sec5Wrap .s5hname{font-size:22px}
+}
+@media(max-width:480px){
+  #sec5Wrap .s5halls{grid-template-columns:1fr}
+  #sec5Wrap .s5row .s5tm{font-size:17px}
+  #sec5Wrap .s5st .s5stlbl{font-size:14px}
+  #sec5Wrap .s5rem{font-size:15px}
+  #sec5Wrap .s5foot{flex-direction:column;align-items:flex-start;gap:6px}
+}
+
+/* ── 튜토리얼 : 대상 요소를 비추고 설명을 붙인다 ── */
+.tut[hidden]{display:none}
+.tut{position:fixed;inset:0;z-index:99999;pointer-events:auto;cursor:default;
+  overscroll-behavior:contain;-webkit-user-select:none;user-select:none;
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif}
+/* 튜토리얼 동안 본문은 선택·드래그 불가 (스크롤은 스크립트가 막는다) */
+html.tut-lock, html.tut-lock body{-webkit-user-select:none;user-select:none}
+html.tut-lock body{cursor:default}
+.tut__ring{position:absolute;border-radius:10px;pointer-events:none;
+  box-shadow:0 0 0 9999px rgba(0,12,30,.66), 0 0 0 3px #3182f6;
+  transition:top .32s cubic-bezier(.22,1,.36,1),left .32s cubic-bezier(.22,1,.36,1),
+             width .32s cubic-bezier(.22,1,.36,1),height .32s cubic-bezier(.22,1,.36,1)}
+.tut__pop{position:absolute;pointer-events:auto;width:min(360px,calc(100vw - 32px));padding:18px 20px 16px;
+  background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(0,12,30,.36);
+  transition:top .32s cubic-bezier(.22,1,.36,1),left .32s cubic-bezier(.22,1,.36,1)}
+.tut__no{display:flex;align-items:center;gap:7px;margin:0 0 8px;
+  font-size:12px;font-weight:800;letter-spacing:.06em;color:#3182f6}
+.tut__no i{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:#3182f6;font-style:normal}
+.tut__txt{margin:0;font-size:14px;line-height:1.72;color:#333d4b;word-break:keep-all}
+.tut__txt b{font-weight:700;color:#191f28}
+.tut__acts{display:flex;align-items:center;gap:8px;margin-top:16px}
+.tut__acts button{height:36px;padding:0 14px;border:0;border-radius:10px;cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.tut__skip{margin-right:auto;background:none;color:#8b95a1}
+.tut__skip:hover{color:#4e5968}
+.tut__prev{background:#f2f4f6;color:#4e5968}
+.tut__prev:hover{background:#e5e8eb}
+.tut__prev[disabled]{opacity:.4;cursor:default}
+.tut__next{background:#3182f6;color:#fff}
+.tut__next:hover{background:#2272eb}
+@media(max-width:640px){
+  .tut__pop{width:calc(100vw - 24px);left:12px !important}
+}
+@media(prefers-reduced-motion:reduce){
+  .tut__ring,.tut__pop{transition:none}
+}
+/* 상시 노출 : 튜토리얼을 다시 부르는 버튼 */
+.tut-open{position:fixed;right:16px;bottom:16px;z-index:9998;display:inline-flex;align-items:center;gap:7px;
+  height:38px;padding:0 15px;border:0;border-radius:999px;cursor:pointer;
+  background:#3182f6;color:#fff;box-shadow:0 6px 18px rgba(49,130,246,.34);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:-.01em;transition:background .16s,transform .16s}
+.tut-open:hover{background:#2272eb;transform:translateY(-2px)}
+.tut-open svg{width:15px;height:15px;flex:0 0 15px}
+.tut:not([hidden]) ~ .tut-open{display:none}
+@media(prefers-reduced-motion:reduce){ .tut-open:hover{transform:none} }
+</style>
+</head>
+<body>
+
+<div class="dm-stage">
+<div id="sec5Wrap">
+  <div class="s5inner">
+    <div class="s5bar">
+      <div class="s5barL">
+        <div class="s5clock">
+          <div class="s5date" id="s5date">2026년 9월 3일 목요일</div>
+          <div class="s5time" id="s5time">13:24:07</div>
+        </div>
+      </div>
+      <div class="s5barR">
+        <div class="s5cd">
+          <div class="s5spinner"></div>
+          <div>
+            <div class="s5cdlbl">다음 갱신</div>
+            <div class="s5cdval"><em id="s5cdVal">30</em>초</div>
+          </div>
+        </div>
+        <div class="s5bardiv"></div>
+        <button type="button" class="s5btnRefresh" id="s5btnRefresh"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 8a6 6 0 0 1-10.2 4.2L2 10.6"/><path d="M2 6.5V3.4h3.1"/><path d="M2 8a6 6 0 0 1 10.2-4.2L14 5.4"/><path d="M14 9.5v3.1h-3.1"/></svg> 새로고침</button>
+      </div>
+    </div>
+
+    <div class="s5tabs" id="s5tabs">
+      <button type="button" class="s5tab active" data-hall="baekje">백제대향로관<span class="s5taben">Baekje Incense Burner Hall</span></button>
+      <button type="button" class="s5tab" data-hall="kids">어린이박물관<span class="s5taben">Children's Museum</span></button>
+    </div>
+
+    <div class="s5halls">
+      <div class="s5hallPanel active" data-hall="baekje"><div class="s5hhead"><div><div class="s5hname">백제대향로관</div><div class="s5hnameen">Baekje Great Incense Burner Hall</div></div><div class="s5hupd"><div class="s5huplbl">최종 갱신</div><div class="s5hupval">13:24:02</div></div></div><div class="s5thead"><span>회차</span><span>진행 상태</span><span>잔여 발권수</span></div><div class="s5row ended" style="--i:0"><span class="s5tm">10:00</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:1"><span class="s5tm">10:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:2"><span class="s5tm">10:40</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:3"><span class="s5tm">11:00</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:4"><span class="s5tm">11:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:5"><span class="s5tm">11:40</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:6"><span class="s5tm">12:00</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:7"><span class="s5tm">12:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row " style="--i:8"><span class="s5tm">12:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">4명</span></div>
+<div class="s5row soldout" style="--i:9"><span class="s5tm">13:00</span><span class="s5cell"><span class="s5st"><span class="s5dot red"></span><span class="s5stlbl">매진</span></span></span><span class="s5rem soldout">0명</span></div>
+<div class="s5row " style="--i:10"><span class="s5tm">13:20</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">18명</span></div>
+<div class="s5row " style="--i:11"><span class="s5tm">13:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">22명</span></div>
+<div class="s5row " style="--i:12"><span class="s5tm">14:00</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">16명</span></div>
+<div class="s5row " style="--i:13"><span class="s5tm">14:20</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">13명</span></div>
+<div class="s5row " style="--i:14"><span class="s5tm">14:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">10명</span></div>
+<div class="s5row " style="--i:15"><span class="s5tm">15:00</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">29명</span></div>
+<div class="s5row ended" style="--i:16"><span class="s5tm">15:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">운영중지</span></span></span><span class="s5rem ended">-</span></div>
+<div class="s5row " style="--i:17"><span class="s5tm">15:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">23명</span></div></div>
+      <div class="s5hallPanel" data-hall="kids"><div class="s5hhead"><div><div class="s5hname">어린이박물관</div><div class="s5hnameen">Children's Museum</div></div><div class="s5hupd"><div class="s5huplbl">최종 갱신</div><div class="s5hupval">13:24:02</div></div></div><div class="s5thead"><span>회차</span><span>진행 상태</span><span>잔여 발권수</span></div><div class="s5row ended" style="--i:0"><span class="s5tm">10:00</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:1"><span class="s5tm">10:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:2"><span class="s5tm">10:40</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:3"><span class="s5tm">11:00</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:4"><span class="s5tm">11:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:5"><span class="s5tm">11:40</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:6"><span class="s5tm">12:00</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row ended" style="--i:7"><span class="s5tm">12:20</span><span class="s5cell"><span class="s5st"><span class="s5dot gray"></span><span class="s5stlbl">종료</span></span></span><span class="s5rem ended">마감</span></div>
+<div class="s5row " style="--i:8"><span class="s5tm">12:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">11명</span></div>
+<div class="s5row " style="--i:9"><span class="s5tm">13:00</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">26명</span></div>
+<div class="s5row " style="--i:10"><span class="s5tm">13:20</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">22명</span></div>
+<div class="s5row " style="--i:11"><span class="s5tm">13:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">19명</span></div>
+<div class="s5row soldout" style="--i:12"><span class="s5tm">14:00</span><span class="s5cell"><span class="s5st"><span class="s5dot red"></span><span class="s5stlbl">매진</span></span></span><span class="s5rem soldout">0명</span></div>
+<div class="s5row " style="--i:13"><span class="s5tm">14:20</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">13명</span></div>
+<div class="s5row " style="--i:14"><span class="s5tm">14:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">10명</span></div>
+<div class="s5row " style="--i:15"><span class="s5tm">15:00</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">29명</span></div>
+<div class="s5row " style="--i:16"><span class="s5tm">15:20</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">26명</span></div>
+<div class="s5row " style="--i:17"><span class="s5tm">15:40</span><span class="s5cell"><span class="s5st"><span class="s5dot green"></span><span class="s5stlbl">진행</span></span></span><span class="s5rem">23명</span></div></div>
+    </div>
+
+    <div class="s5foot">
+      <span class="s5ftxt">30초마다 자동 갱신 &middot; 매표 상황에 따라 실시간 변동됩니다</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  function pad(n){return (n<10?'0':'')+n}
+  var t=document.getElementById('s5time'), d=document.getElementById('s5date'), c=document.getElementById('s5cdVal'), n=30;
+  var DAY=['일','월','화','수','목','금','토'];
+  function tick(){
+    var now=new Date();
+    t.textContent=pad(now.getHours())+':'+pad(now.getMinutes())+':'+pad(now.getSeconds());
+    d.textContent=now.getFullYear()+'년 '+(now.getMonth()+1)+'월 '+now.getDate()+'일 '+DAY[now.getDay()]+'요일';
+    n = n<=1 ? 30 : n-1;
+    c.textContent=n;
+  }
+  tick(); setInterval(tick,1000);
+  document.getElementById('s5btnRefresh').addEventListener('click',function(){ n=30; c.textContent=n; });
+  document.querySelectorAll('.s5tab').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.s5tab').forEach(function(x){x.classList.remove('active')});
+      document.querySelectorAll('.s5hallPanel').forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+      document.querySelector('.s5hallPanel[data-hall="'+b.dataset.hall+'"]').classList.add('active');
+    });
+  });
+})();
+</script>
+
+
+<div class="tut" id="tut" hidden>
+  <div class="tut__ring" id="tutRing"></div>
+  <div class="tut__pop" id="tutPop">
+    <p class="tut__no"><i></i><span id="tutNo">1 / 4</span></p>
+    <p class="tut__txt" id="tutTxt"></p>
+    <div class="tut__acts">
+      <button type="button" class="tut__skip" id="tutSkip">건너뛰기</button>
+      <button type="button" class="tut__prev" id="tutPrev">이전</button>
+      <button type="button" class="tut__next" id="tutNext">다음</button>
+    </div>
+  </div>
+</div>
+<button type="button" class="tut-open" id="tutOpen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+  설명 보기
+</button>
+
+<script>
+(function(){
+  var KEY = 'tut:buyeo';
+  var STEPS = [{"sel": ".s5bar", "txt": "키오스크 정보는 <b>30초마다 자동으로 갱신합니다.</b> 다음 갱신까지 남은 시간도 함께 표시합니다."}, {"sel": ".s5hallPanel.active .s5thead", "txt": "현장에서는 <b>회차 · 진행 상태 · 잔여 발권 수</b>만 간단하게 확인합니다."}, {"sel": ".s5hallPanel.active .s5row.soldout", "txt": "매진된 회차는 <b>행 전체를 강조해 바로 구분합니다.</b>"}, {"sel": ".s5hallPanel.active .s5row.ended", "txt": "종료된 회차는 <b>반투명과 취소선으로 구분합니다.</b> 진행 중인 회차보다 덜 눈에 띄게 표시합니다."}, {"sel": ".s5hallPanel.active .s5hupd", "txt": "회차 상태는 <b>서버에서 받은 정보로 표시합니다.</b> 관람객 기기의 시간과 관계없이 같은 상태를 보여줍니다."}];
+  var el = document.getElementById('tut'), ring = document.getElementById('tutRing'),
+      pop = document.getElementById('tutPop'), no = document.getElementById('tutNo'),
+      txt = document.getElementById('tutTxt'), prev = document.getElementById('tutPrev'),
+      next = document.getElementById('tutNext'), skip = document.getElementById('tutSkip');
+  var i = 0;
+
+  function place(step){
+    if(step.before){ try{ (new Function(step.before))(); }catch(e){} }
+    var t = document.querySelector(step.sel);
+    if(!t){ return false; }
+    t.scrollIntoView({block:'center', behavior:'smooth'});
+    setTimeout(function(){
+      var r = t.getBoundingClientRect(), pad = 6;
+      ring.style.top    = (r.top - pad) + 'px';
+      ring.style.left   = (r.left - pad) + 'px';
+      ring.style.width  = (r.width + pad*2) + 'px';
+      ring.style.height = (r.height + pad*2) + 'px';
+      var pw = Math.min(360, window.innerWidth - 32), ph = pop.offsetHeight || 180;
+      var top = r.bottom + 14, left = r.left;
+      if(top + ph > window.innerHeight - 12) top = Math.max(12, r.top - ph - 14);
+      if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+      pop.style.top = Math.max(12, top) + 'px';
+      pop.style.left = Math.max(12, left) + 'px';
+    }, 220);
+    setTimeout(function(){                       // 스크롤이 멎은 뒤 재보정
+      var r2 = t.getBoundingClientRect(), pad = 6;
+      ring.style.top = (r2.top - pad) + 'px';
+      ring.style.left = (r2.left - pad) + 'px';
+      ring.style.width = (r2.width + pad*2) + 'px';
+      ring.style.height = (r2.height + pad*2) + 'px';
+      var pw2 = Math.min(360, window.innerWidth - 32), ph2 = pop.offsetHeight || 180;
+      var top2 = r2.bottom + 14, left2 = r2.left;
+      if(top2 + ph2 > window.innerHeight - 12) top2 = Math.max(12, r2.top - ph2 - 14);
+      if(left2 + pw2 > window.innerWidth - 12) left2 = window.innerWidth - pw2 - 12;
+      pop.style.top = Math.max(12, top2) + 'px';
+      pop.style.left = Math.max(12, left2) + 'px';
+    }, 620);
+    return true;
+  }
+
+  function show(n){
+    i = Math.max(0, Math.min(STEPS.length - 1, n));
+    var s = STEPS[i];
+    no.textContent = (i+1) + ' / ' + STEPS.length;
+    txt.innerHTML = s.txt;
+    prev.disabled = i === 0;
+    next.textContent = i === STEPS.length - 1 ? '완료' : '다음';
+    place(s);
+  }
+
+  /* ── 튜토리얼 중 외부 조작 차단 ──
+     스포트라이트가 가리키는 곳이 바뀌면 안 되므로 사용자 스크롤·클릭·포커스 이동을 막는다.
+     스크립트가 부르는 scrollIntoView 는 이벤트가 아니라서 그대로 동작한다. */
+  var SCROLLS = ['wheel','mousewheel','DOMMouseScroll','touchmove'];
+  function eat(e){ e.preventDefault(); e.stopPropagation(); }
+  function keyGuard(e){
+    if(e.key === 'Escape' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') return;
+    // 말풍선 버튼 위에서의 Enter / Space 는 살려 둔다
+    if(pop.contains(e.target) && (e.key === 'Enter' || e.key === ' ')) return;
+    e.preventDefault();          // 스크롤 키(Space·PageUp/Down·Home/End·↑↓) · Tab 이탈 차단
+    e.stopPropagation();
+  }
+  function lock(){
+    SCROLLS.forEach(function(t){ document.addEventListener(t, eat, {passive:false, capture:true}); });
+    window.addEventListener('wheel', eat, {passive:false, capture:true});
+    document.addEventListener('keydown', keyGuard, true);
+    document.addEventListener('contextmenu', eat, true);
+    document.documentElement.classList.add('tut-lock');
+  }
+  function unlock(){
+    SCROLLS.forEach(function(t){ document.removeEventListener(t, eat, true); });
+    window.removeEventListener('wheel', eat, true);
+    document.removeEventListener('keydown', keyGuard, true);
+    document.removeEventListener('contextmenu', eat, true);
+    document.documentElement.classList.remove('tut-lock');
+  }
+
+  function open(){ el.hidden = false; lock(); show(0); next.focus(); }
+  function close(){
+    el.hidden = true;
+    unlock();
+    try{ sessionStorage.setItem(KEY, '1'); }catch(e){}
+  }
+
+  var openBtn = document.getElementById('tutOpen');
+  if(openBtn) openBtn.addEventListener('click', open);
+
+  next.addEventListener('click', function(){ i === STEPS.length - 1 ? close() : show(i+1); });
+  prev.addEventListener('click', function(){ show(i-1); });
+  skip.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(el.hidden) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowRight') next.click();
+    else if(e.key === 'ArrowLeft' && i > 0) prev.click();
+  });
+  window.addEventListener('resize', function(){ if(!el.hidden) place(STEPS[i]); });
+
+  /* 부모(모달)에서 '설명 다시 보기' 요청 */
+  window.addEventListener('message', function(e){
+    if(e.data === 'tut:restart') open();
+  });
+
+  /* 탭 첫 진입에만 자동 실행 */
+  var seen = false;
+  try{ seen = sessionStorage.getItem(KEY) === '1'; }catch(e){}
+  if(!seen) setTimeout(open, 420);
+})();
+</script>
+</body>
+</html>

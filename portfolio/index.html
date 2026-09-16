@@ -2,518 +2,2439 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>포트폴리오 · 게임 사업 PM 박세훈</title>
 <meta name="description" content="웹·앱과 이커머스에서 쌓은 사업 관리와 라이브 운영 경험을 정리한 박세훈의 게임 사업 PM 포트폴리오입니다.">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-body{margin:0;background:#FBFAF8;color:#1A1A1A;font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;word-break:keep-all;-webkit-font-smoothing:antialiased}
-a{color:#A6462B;text-decoration:none}
-a:hover{color:#1A1A1A}
-.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:52px}
-@media (max-width:1080px){.tool-grid{grid-template-columns:minmax(0,1fr)}}
-@media print{
-  @page{size:A4 portrait;margin:12mm 12mm 14mm}
-  html{font-size:10pt}
-  body{background:#fff}
-  /* 웹 전용 요소 */
-  [data-prog]{display:none!important}
-  aside{display:none!important}
-  /* 진입 애니메이션 해제 — 없으면 본문이 통째로 안 찍힌다 */
-  [data-rv]{opacity:1!important;transform:none!important}
-  /* 지면 폭(794px)이 모바일 질의에 걸려 1열로 떨어지는 것을 되돌린다 */
-  .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:8mm}
-  .tool-grid li{grid-template-columns:34mm minmax(0,1fr) 8mm!important;gap:3mm!important}
-  /* 셸: 사이드바 2단 → 1단 */
-  div[style*="grid-template-columns:300px"]{display:block!important;
-    grid-template-columns:minmax(0,1fr)!important;max-width:none!important}
-  main{padding:0!important;width:auto!important;grid-column:1/-1!important}
-  header{padding:0 0 6mm!important}
-  section{padding:8mm 0 0!important}
-  h1{font-size:19pt!important;line-height:1.45!important;margin-top:4mm!important}
-  h2{font-size:17pt!important}
-  h3{font-size:13pt!important}
-  p,li,dd,dt,span{orphans:3;widows:3}
-  /* 이미지·카드 */
-  figure{box-shadow:none!important;transform:none!important;max-height:none!important;break-inside:avoid}
-  figure img{max-height:120mm!important;object-fit:contain!important}
-  div[style*="aspect-ratio:4/3"]{box-shadow:none!important;transform:none!important;break-inside:avoid}
-  article{break-inside:avoid}
-  h2,h3{break-after:avoid}
-  a{color:inherit!important}
+/* ═══════════════════════════════════════════════════════════
+   TDS Mobile 토큰 기반 · 토스페이먼츠 문서 레이아웃 아키타입 적용
+   컬러  : tds-colors.css (@toss/tds-colors 0.1.0 · adaptive* 토큰)
+   타이포: TDS t1~t7 스케일 (본문급 행간 1.5 고정 / 제목급 배율 축소)
+   간격  : TDS ListRow 스케일 (8·12·16·24)
+   ═══════════════════════════════════════════════════════════ */
+
+:root{
+  /* @toss/tds-colors 0.1.0 · colors.light.css 원본 토큰 112개 (인라인) */
+  /* -- Background -- */
+  --adaptiveBackground:#ffffff; --adaptiveBackgroundDimmed:rgba(0,0,0,0.2); --adaptiveBackgroundLevel01:#ffffff;
+  --adaptiveBackgroundLevel02:#ffffff; --adaptiveBackgroundLevelB01:#f2f4f6; --adaptiveDimmedBackground:rgba(0,0,0,0.2);
+  --adaptiveFloatBackground:#ffffff; --adaptiveGreyBackground:#f2f4f6; --adaptiveLayeredBackground:#ffffff;
+  /* -- HairlineBorder -- */
+  --adaptiveHairlineBorder:#e5e8eb;
+  /* -- PcScreenBg -- */
+  --adaptivePcScreenBg:#f6f7f9;
+  /* -- Blue -- */
+  --adaptiveBlue100:#c9e2ff; --adaptiveBlue200:#90c2ff; --adaptiveBlue300:#64a8ff;
+  --adaptiveBlue400:#4593fc; --adaptiveBlue50:#e8f3ff; --adaptiveBlue500:#3182f6;
+  --adaptiveBlue600:#2272eb; --adaptiveBlue700:#1b64da; --adaptiveBlue800:#1957c2;
+  --adaptiveBlue900:#194aa6; --adaptiveDisabledBlue500:#c9e2ff;
+  /* -- Grey -- */
+  --adaptiveGrey100:#f2f4f6; --adaptiveGrey200:#e5e8eb; --adaptiveGrey300:#d1d6db;
+  --adaptiveGrey400:#b0b8c1; --adaptiveGrey50:#f9fafb; --adaptiveGrey500:#8b95a1;
+  --adaptiveGrey600:#6b7684; --adaptiveGrey700:#4e5968; --adaptiveGrey800:#333d4b;
+  --adaptiveGrey900:#191f28; --adaptiveGreyOpacity100:rgba(2,32,71,0.05); --adaptiveGreyOpacity200:rgba(0,27,55,0.1);
+  --adaptiveGreyOpacity300:rgba(0,29,58,0.18); --adaptiveGreyOpacity400:rgba(0,25,54,0.31); --adaptiveGreyOpacity50:rgba(0,23,51,0.02);
+  --adaptiveGreyOpacity500:rgba(3,24,50,0.46); --adaptiveGreyOpacity600:rgba(0,19,43,0.58); --adaptiveGreyOpacity700:rgba(3,18,40,0.7);
+  --adaptiveGreyOpacity800:rgba(0,12,30,0.8); --adaptiveGreyOpacity900:rgba(2,9,19,0.91);
+  /* -- Opacity -- */
+  --adaptiveOpacity100:rgba(2,32,71,0.05); --adaptiveOpacity200:rgba(0,27,55,0.1); --adaptiveOpacity300:rgba(0,29,58,0.18);
+  --adaptiveOpacity400:rgba(0,25,54,0.31); --adaptiveOpacity50:rgba(0,23,51,0.02); --adaptiveOpacity500:rgba(3,24,50,0.46);
+  --adaptiveOpacity600:rgba(0,19,43,0.58); --adaptiveOpacity700:rgba(3,18,40,0.7); --adaptiveOpacity800:rgba(0,12,30,0.8);
+  --adaptiveOpacity900:rgba(2,9,19,0.91);
+  /* -- Green -- */
+  --adaptiveGreen100:#aeefd5; --adaptiveGreen200:#76e4b8; --adaptiveGreen300:#3fd599;
+  --adaptiveGreen400:#15c47e; --adaptiveGreen50:#f0faf6; --adaptiveGreen500:#03b26c;
+  --adaptiveGreen600:#02a262; --adaptiveGreen700:#029359; --adaptiveGreen800:#028450;
+  --adaptiveGreen900:#027648;
+  /* -- Red -- */
+  --adaptiveRed100:#ffd4d6; --adaptiveRed200:#feafb4; --adaptiveRed300:#fb8890;
+  --adaptiveRed400:#f66570; --adaptiveRed50:#ffeeee; --adaptiveRed500:#f04452;
+  --adaptiveRed600:#e42939; --adaptiveRed700:#d22030; --adaptiveRed800:#bc1b2a;
+  --adaptiveRed900:#a51926;
+  /* -- Orange -- */
+  --adaptiveOrange100:#ffe0b0; --adaptiveOrange200:#ffcd80; --adaptiveOrange300:#ffbd51;
+  --adaptiveOrange400:#ffa927; --adaptiveOrange50:#fff3e0; --adaptiveOrange500:#fe9800;
+  --adaptiveOrange600:#fb8800; --adaptiveOrange700:#f57800; --adaptiveOrange800:#ed6700;
+  --adaptiveOrange900:#e45600;
+  /* -- Yellow -- */
+  --adaptiveYellow100:#ffefbf; --adaptiveYellow200:#ffe69b; --adaptiveYellow300:#ffdd78;
+  --adaptiveYellow400:#ffd158; --adaptiveYellow50:#fff9e7; --adaptiveYellow500:#ffc342;
+  --adaptiveYellow600:#ffb331; --adaptiveYellow700:#faa131; --adaptiveYellow800:#ee8f11;
+  --adaptiveYellow900:#dd7d02;
+  /* -- Teal -- */
+  --adaptiveTeal100:#bce9e9; --adaptiveTeal200:#89d8d8; --adaptiveTeal300:#58c7c7;
+  --adaptiveTeal400:#30b6b6; --adaptiveTeal50:#edf8f8; --adaptiveTeal500:#18a5a5;
+  --adaptiveTeal600:#109595; --adaptiveTeal700:#0c8585; --adaptiveTeal800:#097575;
+  --adaptiveTeal900:#076565;
+  /* -- Purple -- */
+  --adaptivePurple100:#edccf8; --adaptivePurple200:#da9bef; --adaptivePurple300:#c770e4;
+  --adaptivePurple400:#b44bd7; --adaptivePurple50:#f9f0fc; --adaptivePurple500:#a234c7;
+  --adaptivePurple600:#9128b4; --adaptivePurple700:#8222a2; --adaptivePurple800:#73228e;
+  --adaptivePurple900:#65237b;
 }
-@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:.15}100%{transform:translateY(0);opacity:1}}
+
+:root{
+  /* ── 타이포 : TDS t1~t7 ── */
+  --t1: 30px; --t1-lh: 40px;
+  --t2: 26px; --t2-lh: 35px;
+  --t3: 22px; --t3-lh: 31px;
+  --t4: 20px; --t4-lh: 29px;
+  --t5: 17px; --t5-lh: 25.5px;
+  --t6: 15px; --t6-lh: 22.5px;
+  --t7: 13px; --t7-lh: 19.5px;
+
+  /* ── 데스크톱 확장 (t1 위 계단) ── */
+  --display: clamp(38px, 7vw, 76px);
+  --headline: clamp(26px, 3.4vw, 42px);
+  --title: clamp(21px, 2.2vw, 30px);
+
+  /* ── 간격 : TDS ListRow 스케일 ── */
+  --s1: 8px; --s2: 12px; --s3: 16px; --s4: 24px;
+  --s5: 40px; --s6: 64px; --s7: 96px; --s8: 140px;
+
+  /* ── 라운드 ── */
+  --r-card: 20px; --r-lg: 28px; --r-pill: 999px;
+
+  /* ── 레이아웃 ── */
+  --wrap: 1180px;
+  --gut: clamp(20px, 5vw, 64px);
+
+  /* ── 문서 아키타입 전용 색 (가이드 PDF 배지) ── */
+  --badge-step: #6b7fc7;
+  --badge-sample: #f26522;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  font-family:"Pretendard Variable",Pretendard,system-ui,-apple-system,sans-serif;
+  font-size:var(--t5); line-height:var(--t5-lh);
+  color:var(--adaptiveGrey800);
+  background:var(--adaptiveBackgroundLevelB01);
+  -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+h1,h2,h3,h4,p,ul,ol,figure{ margin:0; }
+ul{ list-style:none; padding:0; }
+
+.wrap{ max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gut); }
+.sec{ padding-block:var(--s8); }
+@media (max-width:720px){ .sec{ padding-block:var(--s7); } }
+
+/* ─────────────────────────────────────────────
+   워터마크 — 제안서 전 페이지 우상단 규칙
+   ───────────────────────────────────────────── */
+.watermark{
+  position:fixed; top:76px; right:clamp(16px,4vw,40px); z-index:40;  /* GNB(60px) 아래 */
+  font-size:var(--t7); line-height:var(--t7-lh); letter-spacing:.01em;
+  color:var(--adaptiveGrey400); pointer-events:none;
+  transition:color .3s ease, opacity .25s ease, visibility .25s ease;
+}
+.watermark.on-dark{ color:rgba(255,255,255,.55); }
+/* 표지를 지나 GNB가 상단에 붙으면 메뉴와 겹치므로 감춘다 */
+.watermark.is-hidden{ opacity:0; visibility:hidden; }
+
+/* ─────────────────────────────────────────────
+   내비게이션
+   ───────────────────────────────────────────── */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--adaptiveHairlineBorder);
+}
+.nav__in{
+  max-width:var(--wrap); margin-inline:auto; padding:0 var(--gut);
+  height:60px; display:flex; align-items:center; gap:var(--s4);
+}
+.nav__name{ font-size:var(--t6); font-weight:700; color:var(--adaptiveGrey900); letter-spacing:-.01em; white-space:nowrap; }
+.nav__links{ display:flex; gap:var(--s4); margin-left:auto; overflow-x:auto; scrollbar-width:none; }
+.nav__links::-webkit-scrollbar{ display:none; }
+.nav__links a{
+  font-size:var(--t7); line-height:var(--t7-lh); text-decoration:none;
+  color:var(--adaptiveGrey600); white-space:nowrap; padding:6px 0;
+  border-bottom:2px solid transparent; transition:color .18s, border-color .18s;
+}
+.nav__links a:hover{ color:var(--adaptiveBlue500); border-bottom-color:var(--adaptiveBlue500); }
+.nav__links a .n{ color:var(--adaptiveGrey400); margin-right:5px; font-variant-numeric:tabular-nums; }
+/* GNB 우측 액션 — 표지를 지나면 등장 (자리를 미리 잡아 레이아웃이 튀지 않게) */
+.nav__acts{
+  display:flex; gap:8px; margin-left:var(--s3); flex-shrink:0;
+  opacity:0; transform:translateY(-4px); pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.nav--acts .nav__acts{ opacity:1; transform:none; pointer-events:auto; }
+.nav__acts .btn{
+  height:36px; padding:0 14px; border-radius:10px;
+  font-size:var(--t7); font-weight:700;
+}
+/* 900px 이하에서는 GNB 액션을 감추고 우하단 플로팅 메뉴가 대신한다 */
+@media (max-width:900px){ .nav .nav__acts{ display:none; } }
+@media (max-width:640px){
+  .nav__name{ display:none; }
+  .nav__links{ margin-left:0; }
+}
+
+/* ─────────────────────────────────────────────
+   [A] 표지 — 대각선 블루 그라데이션 + 좌측 정렬
+   제안서 p1 아키타입
+   ───────────────────────────────────────────── */
+.cover{
+  position:relative; overflow:hidden; isolation:isolate;
+  min-height:min(88vh,760px); display:flex; align-items:center;
+  background:linear-gradient(118deg,#1957c2 0%,#2272eb 42%,#0d8fd6 100%);
+}
+.cover::before,.cover::after{ content:""; position:absolute; inset:0; z-index:-1; }
+/* 대각선으로 갈라지는 면 — 표지의 핵심 */
+.cover::before{
+  background:#3182f6;
+  clip-path:polygon(58% 0,100% 0,100% 100%,0 100%);
+  opacity:.55;
+}
+.cover::after{
+  background:#1b64da;
+  clip-path:ellipse(56% 78% at 96% 34%);
+  opacity:.42;
+}
+.cover__in{ position:relative; width:100%; padding-block:var(--s7); }
+.cover__eyebrow{
+  font-size:var(--t7); line-height:var(--t7-lh); letter-spacing:.14em;
+  text-transform:uppercase; color:rgba(255,255,255,.72); margin-bottom:var(--s4);
+}
+.cover h1{
+  font-size:var(--display); line-height:1.06; font-weight:800; letter-spacing:-.035em;
+  color:#fff; margin-bottom:var(--s2);
+}
+.cover__role{
+  font-size:var(--headline); line-height:1.24; font-weight:700; letter-spacing:-.025em;
+  color:rgba(255,255,255,.94); margin-bottom:var(--s4);
+}
+/* 한글 밑 얇은 영문 부제 — 제안서 표지 규칙 */
+.cover__sub{
+  font-size:clamp(15px,1.5vw,21px); line-height:1.4; font-weight:400;
+  color:rgba(255,255,255,.7); letter-spacing:.01em; margin-bottom:var(--s5);
+}
+.cover__lead{
+  font-size:clamp(16px,1.5vw,20px); line-height:1.65; color:rgba(255,255,255,.9);
+  max-width:37em; margin-bottom:var(--s5);
+}
+.cover__lead b{ font-weight:700; color:#fff; }
+.cover__acts{ display:flex; flex-wrap:wrap; gap:var(--s2); }
+/* 표지 우측 인물 사진 */
+.cover__top{
+  display:grid; grid-template-columns:1fr auto;
+  gap:clamp(28px,5vw,72px); align-items:center;
+}
+.cover__txt{ min-width:0; }
+.cover__photo{
+  position:relative; margin:0; padding:0; border:0; background:none;
+  -webkit-appearance:none; appearance:none; cursor:pointer;
+  width:clamp(120px,12vw,164px); aspect-ratio:1;
+  transition:transform .3s ease;
+}
+.cover__photo:active{ transform:scale(.96); }
+.cover__photo:focus-visible{ outline:3px solid #fff; outline-offset:6px; border-radius:50%; }
+.cover__photo img{
+  position:absolute; inset:0; display:block; width:100%; height:100%;
+  border-radius:50%; object-fit:cover;
+  box-shadow:0 0 0 4px rgba(255,255,255,.16), 0 16px 38px rgba(0,25,54,.28);
+  transition:opacity .35s ease;
+}
+/* 평소엔 캐릭터, 올리면 실사로 */
+.cover__photo--char{ object-position:center 46%; opacity:1; }
+.cover__photo--real{ object-position:center 36%; opacity:0; }
+/* 마우스가 있는 환경 : 올리면 실사 */
+@media (hover:hover){
+  .cover__photo:hover{ transform:translateY(-3px); }
+  .cover__photo:hover .cover__photo--char{ opacity:0; }
+  .cover__photo:hover .cover__photo--real{ opacity:1; }
+}
+/* 터치 환경 : 한 번 누르면 실사, 다시 누르면 캐릭터 */
+.cover__photo.is-real .cover__photo--char{ opacity:0; }
+.cover__photo.is-real .cover__photo--real{ opacity:1; }
+@media (max-width:900px){
+  .cover__top{ grid-template-columns:1fr; gap:var(--s5); justify-items:start; }
+  .cover__photo{ order:-1; }          /* MO 에서는 사진이 먼저 */
+  .cover__photo{ width:104px; }
+  .cover__photo img{ box-shadow:0 0 0 3px rgba(255,255,255,.16), 0 10px 26px rgba(0,25,54,.26); }
+}
+/* 화면설계서는 PC에서만 — 900px 이하는 우하단 플로팅 메뉴가 담당한다 */
+@media (max-width:900px){ .cover__acts--pc{ display:none; } }
+
+/* TDS Button — color × variant × display × size 4축 구조 차용 */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  height:52px; padding:0 26px; border-radius:14px; border:0;
+  font-family:inherit; font-size:var(--t5); font-weight:600; letter-spacing:-.01em;
+  text-decoration:none; cursor:pointer; white-space:nowrap;
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn--light-fill{ background:#fff; color:var(--adaptiveBlue700); box-shadow:0 8px 24px rgba(0,0,0,.16); }
+.btn--light-weak{ background:rgba(255,255,255,.16); color:#fff; box-shadow:inset 0 0 0 1px rgba(255,255,255,.42); }
+.btn--primary-fill{ background:var(--adaptiveBlue500); color:#fff; box-shadow:0 8px 22px rgba(49,130,246,.3); }
+.btn--primary-weak{ background:var(--adaptiveBlue50); color:var(--adaptiveBlue700); }
+.btn--sm{ height:42px; padding:0 18px; font-size:var(--t6); border-radius:11px; }
+
+.cover__meta{
+  margin-top:var(--s6); padding-top:var(--s4);
+  border-top:1px solid rgba(255,255,255,.22);
+  display:flex; flex-wrap:wrap; gap:var(--s2) var(--s5);
+  font-size:var(--t7); line-height:var(--t7-lh); color:rgba(255,255,255,.72);
+}
+.cover__meta b{ color:#fff; font-weight:600; }
+
+/* ─────────────────────────────────────────────
+   섹션 헤더 — 제목 좌상단 고정 + 회색 부제
+   ───────────────────────────────────────────── */
+.shead{ margin-bottom:var(--s6); }
+.shead__no{
+  display:inline-block; font-size:var(--t7); line-height:var(--t7-lh); font-weight:700;
+  letter-spacing:.16em; color:var(--adaptiveBlue500); margin-bottom:var(--s2);
+}
+.shead h2{
+  font-size:var(--headline); line-height:1.22; font-weight:800;
+  letter-spacing:-.03em; color:var(--adaptiveGrey900);
+}
+.shead h2 em{ font-style:normal; color:var(--adaptiveBlue500); }
+.shead p{
+  margin-top:var(--s3); font-size:var(--t5); line-height:1.6;
+  color:var(--adaptiveGrey600); max-width:60em;
+}
+.shead p b{ color:var(--adaptiveGrey800); font-weight:600; }
+/* 안내 페이지 가로 구분선 — 가이드 p2·p4 규칙 */
+.shead--ruled{ border-bottom:1px solid var(--adaptiveHairlineBorder); padding-bottom:var(--s4); }
+
+/* ─────────────────────────────────────────────
+   [B] 섹션 간지 — 단색 블루 전면 + 제목 한 줄
+   제안서 p23 아키타입 (부제·목차 없음)
+   ───────────────────────────────────────────── */
+.divider{
+  background:var(--adaptiveBlue500);
+  min-height:min(46vh,380px); display:flex; align-items:flex-end;
+  padding-block:var(--s6);
+}
+.divider__in{ width:100%; }
+.divider__no{
+  font-size:var(--t7); line-height:var(--t7-lh); letter-spacing:.18em;
+  color:rgba(255,255,255,.62); margin-bottom:var(--s2);
+}
+.divider h2{
+  font-size:clamp(32px,5.2vw,64px); line-height:1.08; font-weight:800;
+  letter-spacing:-.035em; color:#fff;
+}
+
+/* ─────────────────────────────────────────────
+   프로필 표 — 라운드 박스 + 가로선만 (제안서 p24)
+   ───────────────────────────────────────────── */
+.dl{ display:grid; grid-template-columns:minmax(96px,150px) 1fr; }
+.dl > div{
+  display:contents;
+}
+.dl dt,.dl dd{
+  padding:15px 4px; border-bottom:1px solid var(--adaptiveGrey100); margin:0;
+  font-size:var(--t6); line-height:var(--t6-lh);
+}
+.dl dt{ color:var(--adaptiveGrey600); font-weight:600; }
+.dl dd{ color:var(--adaptiveGrey800); }
+.dl dt:last-of-type,.dl dd:last-of-type{ border-bottom:0; }
+/* 인적사항 — 카드 없이 표만 (dt/dd 2쌍 4열) */
+.dl--plain{
+  grid-template-columns:minmax(88px,128px) 1fr minmax(88px,128px) 1fr;
+  column-gap:var(--s5);
+}
+.dl--plain dt,.dl--plain dd{ border-bottom:1px solid var(--adaptiveGrey200); }
+.dl--plain dt:nth-last-of-type(-n+2),
+.dl--plain dd:nth-last-of-type(-n+2){ border-bottom:0; }
+@media (max-width:820px){
+  .dl--plain{ grid-template-columns:minmax(88px,128px) 1fr; column-gap:0; }
+  .dl--plain dt:nth-last-of-type(-n+2),
+  .dl--plain dd:nth-last-of-type(-n+2){ border-bottom:1px solid var(--adaptiveGrey200); }
+  .dl--plain dt:last-of-type,.dl--plain dd:last-of-type{ border-bottom:0; }
+}
+
+.foot-note{
+  margin-top:var(--s3); font-size:var(--t7); line-height:1.7; color:var(--adaptiveGrey500);
+}
+.foot-note li::before{ content:"* "; }
+
+/* 섹션 내부 블록 제목 */
+.blk-h{
+  font-size:var(--t3); font-weight:800; color:var(--adaptiveGrey900);
+  letter-spacing:-.025em; margin-bottom:var(--s5);
+}
+/* 제목 옆 수치 배지 */
+.blk-h__badge{
+  display:inline-block; vertical-align:middle; margin-left:var(--s3);
+  padding:5px 12px; border-radius:99px;
+  background:var(--adaptiveBlue50); color:var(--adaptiveBlue600);
+  font-size:var(--t6); font-weight:700; letter-spacing:-.01em;
+  transform:translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────
+   [C] 순서 도식 — 화살표 도형 세로 적층, 색 농도 진행
+   가이드 p3 아키타입 (경력 타임라인에 적용)
+   ───────────────────────────────────────────── */
+.flow{ display:grid; grid-template-columns:minmax(200px,268px) 1fr; gap:0 var(--s5); }
+.flow__steps{ display:flex; flex-direction:column; gap:6px; }
+.flow__step{ flex:1 1 auto; }
+.flow__step{
+  position:relative; padding:22px 16px 30px; text-align:center;
+  clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%); /* ↓ 향하는 화살표 */
+  color:#fff; font-weight:700; font-size:var(--t6); line-height:var(--t6-lh);
+}
+/* 아래로 갈수록 진해짐 */
+.flow__step:nth-child(1){ background:#c9e2ff; color:var(--adaptiveBlue900); }
+.flow__step:nth-child(2){ background:#90c2ff; color:var(--adaptiveBlue900); }
+.flow__step:nth-child(3){ background:#4593fc; }
+.flow__step:nth-child(4){ background:#1b64da; }
+.flow__step small{ display:block; font-size:var(--t7); font-weight:500; opacity:.82; margin-top:3px; }
+.flow__descs{ display:flex; flex-direction:column; gap:var(--s5); }
+.flow__desc h4{
+  font-size:var(--t4); line-height:var(--t4-lh); font-weight:700;
+  color:var(--adaptiveGrey900); letter-spacing:-.02em; margin-bottom:var(--s1);
+}
+.flow__desc .org{ font-size:var(--t7); color:var(--adaptiveBlue500); font-weight:600; margin-bottom:var(--s2); }
+.flow__desc p{ font-size:var(--t6); line-height:1.68; color:var(--adaptiveGrey700); }
+/* ">" 하위 항목 — 가이드 p3 규칙 */
+.chev{ margin-top:var(--s2); display:flex; flex-wrap:wrap; gap:6px 14px; }
+.chev li{ font-size:var(--t7); line-height:var(--t7-lh); color:var(--adaptiveGrey600); }
+.chev li::before{ content:"›"; color:var(--adaptiveBlue400); font-weight:700; margin-right:6px; }
+@media (max-width:820px){
+  .flow{ grid-template-columns:1fr; gap:var(--s4); }
+  .flow__steps{ flex-direction:row; gap:4px; }
+  .flow__step{ flex:1; clip-path:polygon(0 0,86% 0,100% 50%,86% 100%,0 100%); padding:16px 10px; font-size:var(--t7); }
+  .flow__step small{ display:none; }
+}
+
+/* ─────────────────────────────────────────────
+   프로젝트 — 단계 배지 + 파란 실선 강조
+   가이드 p6~19 반복 템플릿
+   ───────────────────────────────────────────── */
+.proj{ margin-bottom:var(--s8); }
+.proj:last-child{ margin-bottom:0; }
+/* 청보라 알약 배지, 상단 중앙 고정 */
+.stepbadge{
+  display:block; width:fit-content; margin:0 auto var(--s4);
+  background:var(--badge-step); color:#fff; border-radius:var(--r-pill);
+  padding:9px 26px; font-size:var(--t6); line-height:var(--t6-lh); font-weight:700;
+  letter-spacing:-.01em;
+}
+.proj__head{ text-align:center; margin-bottom:var(--s5); }
+/* 굵은 지시문 1줄 */
+.proj__claim{
+  font-size:var(--title); line-height:1.3; font-weight:800;
+  letter-spacing:-.028em; color:var(--adaptiveGrey900); margin-bottom:var(--s2);
+}
+.proj__claim em{ font-style:normal; color:var(--adaptiveBlue500); }
+/* 회색 보조 설명 */
+.proj__sub{ font-size:var(--t6); line-height:var(--t6-lh); color:var(--adaptiveGrey500); }
+.tags{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:var(--s3); }
+.tag{
+  font-size:var(--t7); line-height:1; padding:7px 12px; border-radius:var(--r-pill);
+  background:var(--adaptiveGrey100); color:var(--adaptiveGrey700); font-weight:600;
+}
+.tag--key{ background:var(--adaptiveBlue50); color:var(--adaptiveBlue700); }
+
+/* 파란 실선 강조 — 가이드의 "여기를 보라" 표시 */
+.shot{
+  position:relative; border:1px solid var(--adaptiveGrey200);
+  overflow:hidden; background:var(--adaptiveBackgroundLevel01);
+}
+.shot img{ width:100%; height:100%; object-fit:cover; object-position:top center; }
+/* 주황 "예시" 배지 — 실제 화면이 아님을 못 박음 */
+.samplebadge{
+  position:absolute; top:12px; right:12px; z-index:3;
+  background:var(--badge-sample); color:#fff; border-radius:8px;
+  padding:6px 14px; font-size:var(--t7); line-height:1; font-weight:700;
+  letter-spacing:.02em; box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.proj__body{ display:grid; grid-template-columns:1.15fr 1fr; gap:var(--s5); align-items:stretch; }
+@media (max-width:900px){
+  .proj__body{ grid-template-columns:1fr; align-items:start; }
+  .shot img{ height:auto; object-fit:fill; }
+}
+
+/* 아이콘 + 설명 2줄 세로 나열 — 제안서 p20 아키타입 */
+.points{ display:flex; flex-direction:column; gap:var(--s4); justify-content:space-between; }
+.point{ display:flex; gap:var(--s3); align-items:flex-start; }
+.point__ico{
+  flex:0 0 auto; width:42px; height:42px; border-radius:50%;
+  display:grid; place-items:center; font-size:17px; font-weight:800;
+  background:var(--adaptiveBlue50); color:var(--adaptiveBlue600);
+  font-variant-numeric:tabular-nums;
+}
+.point p{ font-size:var(--t6); line-height:1.68; color:var(--adaptiveGrey700); }
+.point p b{ color:var(--adaptiveGrey900); font-weight:700; }
+.point p .hl{ color:var(--adaptiveBlue600); font-weight:700; }
+.point__who{ display:block; margin-bottom:2px; font-size:var(--t7); font-weight:700; color:var(--adaptiveBlue500); letter-spacing:-.01em; }
+/* 성과 강조 */
+.result{
+  margin-top:var(--s4); padding-top:var(--s3);
+  border-top:1px solid var(--adaptiveBlue200);
+  font-size:var(--t6); line-height:1.6; color:var(--adaptiveBlue700); font-weight:600;
+}
+.result b{ font-size:var(--t4); font-weight:800; letter-spacing:-.02em; }
+
+/* ─────────────────────────────────────────────
+   [G] AS-IS / TO-BE — 명암 반전 좌우 분할
+   제안서 p10 아키타입
+   ───────────────────────────────────────────── */
+.compare{
+  display:grid; grid-template-columns:1fr auto 1fr; gap:0;
+  margin-top:var(--s5);
+}
+.compare__side{ padding:clamp(24px,3.4vw,46px); }
+.compare__side--as{ background:#17171c; color:#fff; }
+.compare__side--to{ background:var(--adaptiveBackgroundLevel01); }
+.compare__tag{
+  font-size:var(--t7); line-height:var(--t7-lh); font-weight:700;
+  letter-spacing:.1em; margin-bottom:var(--s3);
+}
+.compare__side--as .compare__tag{ color:rgba(255,255,255,.55); }
+.compare__side--to .compare__tag{ color:var(--adaptiveBlue500); }
+.compare__side h4{
+  font-size:var(--t3); line-height:var(--t3-lh); font-weight:800;
+  letter-spacing:-.025em; margin-bottom:var(--s3);
+}
+.compare__side--to h4{ color:var(--adaptiveGrey900); }
+.compare__list li{
+  font-size:var(--t6); line-height:1.62; padding:11px 0 11px 20px; position:relative;
+}
+.compare__side--as .compare__list li{ color:rgba(255,255,255,.72); border-bottom:1px solid rgba(255,255,255,.1); }
+.compare__side--to .compare__list li{ color:var(--adaptiveGrey700); border-bottom:1px solid var(--adaptiveGrey100); }
+.compare__list li::before{
+  content:""; position:absolute; left:2px; top:19px;
+  width:6px; height:6px; border-radius:50%;
+}
+.compare__side--as .compare__list li::before{ background:rgba(255,255,255,.32); }
+.compare__side--to .compare__list li::before{ background:var(--adaptiveBlue400); }
+.compare__list li:last-child{ border-bottom:0; }
+/* 가운데 흰 화살표 */
+.compare__arrow{
+  display:grid; place-items:center; background:var(--adaptiveGrey100);
+  padding-inline:clamp(12px,2vw,26px); color:var(--adaptiveBlue500);
+  font-size:28px; font-weight:800;
+}
+@media (max-width:820px){
+  .compare{ grid-template-columns:1fr; }
+  /* 박스를 돌리면 세로 띠가 되므로, 박스는 그대로 두고 글리프만 아래 화살표로 바꾼다 */
+  .compare__arrow{
+    transform:none; padding:12px 0; font-size:0; line-height:0;
+  }
+  .compare__arrow::after{ content:"↓"; font-size:24px; line-height:1; }
+}
+
+/* ─────────────────────────────────────────────
+   [J] 스윔레인 프로세스 — 2행, 담당 구분, 색 농도 진행
+   제안서 p25 아키타입
+   ───────────────────────────────────────────── */
+.swim{
+  margin-top:var(--s5); background:var(--adaptiveBackgroundLevel01);
+  border-radius:var(--r-lg); padding:clamp(20px,3vw,40px); overflow-x:auto;
+}
+.swim__grid{ min-width:660px; display:grid; grid-template-columns:118px 1fr; gap:var(--s4) var(--s4); align-items:center; }
+.swim__who{
+  font-size:var(--t7); line-height:1.5; font-weight:700; color:var(--adaptiveGrey700); text-align:center;
+}
+.swim__who span{
+  display:grid; place-items:center; width:46px; height:46px; margin:0 auto 8px;
+  border-radius:50%; font-size:20px;
+}
+.swim__who--me span{ background:var(--adaptiveBlue50); }
+.swim__who--them span{ background:var(--adaptiveGrey100); }
+.swim__lane{ display:flex; align-items:center; gap:10px; }
+.swim__box{
+  flex:1; text-align:center; border-radius:14px; padding:16px 10px;
+  font-size:var(--t7); line-height:1.42; font-weight:700;
+}
+.swim__box small{ display:block; font-weight:500; opacity:.8; margin-top:4px; font-size:11.5px; }
+.swim__lane--me .swim__box:nth-child(1){ background:#c9e2ff; color:var(--adaptiveBlue900); }
+.swim__lane--me .swim__box:nth-child(3){ background:#90c2ff; color:var(--adaptiveBlue900); }
+.swim__lane--me .swim__box:nth-child(5){ background:#4593fc; color:#fff; }
+.swim__lane--me .swim__box:nth-child(7){ background:#1957c2; color:#fff; }
+.swim__lane--them .swim__box{ background:var(--adaptiveGrey100); color:var(--adaptiveGrey700); }
+/* 실선 / 점선 화살표 2종 */
+.arw{ flex:0 0 26px; text-align:center; color:var(--adaptiveGrey400); font-weight:800; }
+.arw--dot{ letter-spacing:2px; font-weight:600; }
+
+/* ─────────────────────────────────────────────
+   [F] 3열 카드 — 제안서 p6·8·15·18 (최다 사용)
+   카피(강조어만 블루) → 아이콘 → 설명
+   ───────────────────────────────────────────── */
+.cards{ display:grid; gap:var(--s4); }
+.cards--3{ grid-template-columns:repeat(3,1fr); }
+.cards--2{ grid-template-columns:repeat(2,1fr); }
+@media (max-width:900px){ .cards--3{ grid-template-columns:1fr; } .cards--2{ grid-template-columns:1fr; } }
+.card{
+  background:var(--adaptiveBackgroundLevel01); border-radius:var(--r-lg);
+  padding:clamp(24px,2.6vw,36px);
+  display:flex; flex-direction:column;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 14px 40px rgba(0,25,54,.09); }
+@media (prefers-reduced-motion:reduce){ .card:hover{ transform:none; } }
+.card__copy{
+  font-size:var(--t4); line-height:1.42; font-weight:700;
+  letter-spacing:-.022em; color:var(--adaptiveGrey900); margin-bottom:var(--s4);
+}
+.card__copy em{ font-style:normal; color:var(--adaptiveBlue500); }
+.card__fig{
+  margin:auto 0 var(--s4); border-radius:14px; overflow:hidden;
+  background:var(--adaptiveGrey50); border:1px solid var(--adaptiveGrey100);
+}
+.card__fig img{ width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; }
+.card__desc{ font-size:var(--t6); line-height:1.68; color:var(--adaptiveGrey600); }
+.card__desc b{ color:var(--adaptiveGrey800); font-weight:600; }
+.card__no{
+  font-size:var(--t7); line-height:1; font-weight:800; letter-spacing:.1em;
+  color:var(--adaptiveBlue400); margin-bottom:var(--s2); font-variant-numeric:tabular-nums;
+}
+/* 지시 + 이유 2단 구조 — 가이드 p4 규칙 */
+
+/* 산출물 3열 — 예시 배지 얹은 도큐먼트 카드 */
+/* 문서 샘플은 카드로 되돌리지 않는다 */
+.doccard{
+  background:none; border-radius:0; padding:var(--s4) 0 0;
+  border-top:2px solid var(--adaptiveGrey300);
+}
+.doccard:hover{ transform:none; box-shadow:none; }
+.doccard__shot{ position:relative; border:1px solid var(--adaptiveGrey200); }
+.doccard__shot img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top center; }
+.doccard__txt{ padding:var(--s3) 0 0; }
+.doccard__kind{ font-size:var(--t7); font-weight:700; color:var(--adaptiveBlue500); margin-bottom:6px; }
+.doccard__name{ font-size:var(--t5); line-height:1.42; font-weight:700; color:var(--adaptiveGrey900); letter-spacing:-.02em; }
+
+/* 문서 갈래 3분류 */
+.kinds{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-bottom:var(--s6); }
+.kind{ padding:0 var(--s5); border-left:1px solid var(--adaptiveHairlineBorder); }
+.kind:first-child{ padding-left:0; border-left:0; }
+.kind:last-child{ padding-right:0; }
+/* 분류마다 색이 한 단계씩 진해지는 키라인 */
+.kind::before{
+  content:""; display:block; width:38px; height:3px; border-radius:2px;
+  margin-bottom:var(--s3); background:var(--adaptiveBlue300);
+}
+.kind:nth-child(2)::before{ background:var(--adaptiveBlue500); }
+.kind:nth-child(3)::before{ background:var(--adaptiveBlue700); }
+.kind h4{
+  font-size:var(--t4); font-weight:800; color:var(--adaptiveGrey900);
+  letter-spacing:-.025em; margin-bottom:var(--s3);
+}
+.kind ul{ display:flex; flex-direction:column; gap:9px; }
+.kind ul li{
+  position:relative; padding-left:15px;
+  font-size:var(--t6); line-height:1.5; color:var(--adaptiveGrey600);
+}
+.kind ul li::before{
+  content:""; position:absolute; left:0; top:.66em;
+  width:7px; height:1.5px; border-radius:1px; background:var(--adaptiveBlue200);
+}
+@media (max-width:760px){
+  .kinds{ grid-template-columns:1fr; gap:var(--s4); }
+  .kind{ padding:var(--s4) 0 0; border-left:0; border-top:1px solid var(--adaptiveHairlineBorder); }
+  .kind:first-child{ padding-top:0; border-top:0; }
+}
+
+/* ─────────────────────────────────────────────
+   활용 툴
+   ───────────────────────────────────────────── */
+/* ───────────────────────────────────────────
+   활용 툴 — 아이콘 + 숙련도 게이지 (순차 차오름)
+   ─────────────────────────────────────────── */
+.tools{ display:grid; grid-template-columns:repeat(7,1fr); gap:var(--s4) var(--s3); }
+@media (max-width:1080px){ .tools{ grid-template-columns:repeat(4,1fr); } }
+@media (max-width:640px){ .tools{ grid-template-columns:repeat(2,1fr); gap:var(--s4) var(--s2); } }
+.tool{ display:flex; flex-direction:column; text-align:center; }
+.tool img{ width:38px; height:38px; margin:0 auto 12px; object-fit:contain; }
+.tool__n{
+  font-size:var(--t7); line-height:1.4; font-weight:700;
+  letter-spacing:-.02em; color:var(--adaptiveGrey800);
+  flex:1 0 auto;   /* 게이지를 아래로 밀어 모든 칸의 기준선을 맞춘다 */
+}
+
+/* 숙련도 게이지 — 화면에 들어오면 왼쪽 항목부터 차례로 채워진다 */
+.tool__meter{
+  margin-top:14px; height:7px; border-radius:99px;
+  background:var(--adaptiveGrey200); overflow:hidden;
+}
+.tool__meter i{
+  display:block; height:100%; width:0; border-radius:99px;
+  background:var(--adaptiveBlue700);   /* 상 — 진한 파랑 */
+  transition:width 1s cubic-bezier(.22,1,.36,1);
+}
+.rise.in .tool__meter i{ width:var(--lv); }
+.tool--mid .tool__meter i{ background:var(--adaptiveBlue200); }   /* 중 — 옅은 파랑 */
+.tool:nth-child(1) .tool__meter i{ transition-delay:0.12s; }
+.tool:nth-child(2) .tool__meter i{ transition-delay:0.28s; }
+.tool:nth-child(3) .tool__meter i{ transition-delay:0.44s; }
+.tool:nth-child(4) .tool__meter i{ transition-delay:0.60s; }
+.tool:nth-child(5) .tool__meter i{ transition-delay:0.76s; }
+.tool:nth-child(6) .tool__meter i{ transition-delay:0.92s; }
+.tool:nth-child(7) .tool__meter i{ transition-delay:1.08s; }
+
+/* ─────────────────────────────────────────────
+   맺음말 — 블루 전면 + 중앙 CTA (제안서 p26)
+   ───────────────────────────────────────────── */
+.closing{
+  background:linear-gradient(118deg,#1957c2 0%,#2272eb 44%,#0d8fd6 100%);
+  position:relative; overflow:hidden; isolation:isolate; text-align:center;
+  padding-block:var(--s8);
+}
+.closing::before{
+  content:""; position:absolute; inset:0; z-index:-1; background:#3182f6;
+  clip-path:polygon(52% 0,100% 0,100% 100%,10% 100%); opacity:.5;
+}
+.closing h2{
+  font-size:clamp(26px,3.8vw,50px); line-height:1.24; font-weight:800;
+  letter-spacing:-.032em; color:#fff; margin-bottom:var(--s4);
+}
+.closing p{
+  font-size:clamp(15px,1.5vw,19px); line-height:1.7; color:rgba(255,255,255,.86);
+  max-width:44em; margin:0 auto var(--s6);
+}
+.closing__acts{ display:flex; flex-wrap:wrap; gap:var(--s2); justify-content:center; }
+/* 맺음말 연락처 — 버튼 대신 글자로 한 번 더 */
+.closing__contact{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:var(--s2) var(--s4);
+}
+.closing__contact a{
+  font-size:clamp(19px,2.3vw,30px); line-height:1.35; font-weight:700;
+  letter-spacing:-.02em; color:#fff; text-decoration:none;
+  padding-bottom:3px; border-bottom:1.5px solid rgba(255,255,255,.34);
+  transition:border-color .18s ease;
+}
+.closing__contact a:hover{ border-bottom-color:#fff; }
+.closing__sep{
+  width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.5);
+}
+@media (max-width:560px){ .closing__sep{ display:none; } }
+
+/* ─────────────────────────────────────────────
+   푸터
+   ───────────────────────────────────────────── */
+.foot{ background:#17171c; color:rgba(255,255,255,.55); padding-block:var(--s5); }
+.foot__in{ display:flex; flex-wrap:wrap; gap:var(--s3) var(--s5); align-items:center; justify-content:space-between; }
+.foot__name{ font-size:var(--t7); letter-spacing:.1em; font-weight:700; color:rgba(255,255,255,.8); }
+.foot__c{ display:flex; flex-wrap:wrap; gap:var(--s4); font-size:var(--t7); }
+.foot__c a{ text-decoration:none; color:rgba(255,255,255,.7); }
+.foot__c a:hover{ color:#fff; }
+
+/* ─────────────────────────────────────────────
+   문서 뷰어 모달 — 화면설계서 상세보기
+   ───────────────────────────────────────────── */
+.doccard__more{ margin-top:var(--s3); }
+.doccard__more span{ font-size:1.05em; line-height:1; }
+
+.docmodal{
+  position:fixed; inset:0; z-index:200;
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(12px,2.4vw,32px);
+}
+.docmodal[hidden]{ display:none; }
+.docmodal__scrim{
+  position:fixed; inset:0; background:rgba(0,12,30,.84);
+  animation:dm-fade .2s ease;
+}
+.docmodal__panel{
+  position:relative; z-index:1;
+  width:min(1420px,100%); height:100%;
+  display:flex; flex-direction:column;
+  background:var(--adaptiveBackgroundLevel01); border-radius:var(--r-lg);
+  box-shadow:0 30px 80px rgba(0,12,30,.4); overflow:hidden;
+  animation:dm-pop .24s cubic-bezier(.22,1,.36,1);
+}
+@keyframes dm-fade{ from{ opacity:0 } to{ opacity:1 } }
+@keyframes dm-pop{ from{ opacity:0; transform:translateY(14px) scale(.985) } to{ opacity:1; transform:none } }
+
+.docmodal__head{
+  flex:0 0 auto;
+  display:flex; align-items:flex-start; gap:var(--s3);
+  padding:var(--s4) var(--s4) var(--s3);
+  border-bottom:1px solid var(--adaptiveGrey200);
+}
+.docmodal__headtxt{ min-width:0; }
+.docmodal__eyebrow{
+  font-size:var(--t7); line-height:var(--t7-lh); font-weight:700;
+  color:var(--adaptiveBlue500); letter-spacing:.02em; margin-bottom:4px;
+}
+.docmodal__title{
+  font-size:var(--t3); line-height:1.3; font-weight:800;
+  color:var(--adaptiveGrey900); letter-spacing:-.025em;
+  overflow-wrap:anywhere;
+}
+.docmodal__tools{ margin-left:auto; display:flex; align-items:center; gap:var(--s3); flex-shrink:0; }
+.docmodal__count{ font-size:var(--t6); font-weight:600; color:var(--adaptiveGrey500); white-space:nowrap; }
+.docmodal__count b{ color:var(--adaptiveGrey900); font-weight:800; }
+.docmodal__x{
+  width:40px; height:40px; border:0; border-radius:12px; cursor:pointer;
+  background:var(--adaptiveGrey100); color:var(--adaptiveGrey700);
+  font-family:inherit; font-size:17px; line-height:1;
+  transition:background .16s ease, color .16s ease;
+}
+.docmodal__x:hover{ background:var(--adaptiveGrey200); color:var(--adaptiveGrey900); }
+
+.docmodal__stage{
+  position:relative; flex:1 1 auto; min-height:0; overflow:hidden;
+  background:var(--adaptiveGrey50);
+}
+.docmodal__scroll{
+  width:100%; height:100%; padding:var(--s3);
+  display:flex; align-items:center; justify-content:center;
+}
+.docmodal__stage img{
+  display:block; width:100%; height:100%;
+  object-fit:contain; object-position:center;
+}
+#dm-img2{ display:none; }
+.docmodal__arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:48px; height:48px; border:0; border-radius:50%; cursor:pointer;
+  background:var(--adaptiveBackgroundLevel01); color:var(--adaptiveGrey800);
+  box-shadow:0 4px 16px rgba(0,25,54,.18);
+  font-family:inherit; font-size:26px; line-height:1; padding:0 0 3px;
+  transition:transform .16s ease, background .16s ease;
+}
+.docmodal__arrow:hover:not(:disabled){ transform:translateY(-50%) scale(1.06); }
+.docmodal__arrow:disabled{ opacity:.32; cursor:default; }
+.docmodal__arrow{ z-index:2; }
+.docmodal__arrow--prev{ left:var(--s3); }
+.docmodal__arrow--next{ right:var(--s3); }
+
+.docmodal__rail{
+  flex:0 0 auto;
+  display:flex; flex-wrap:wrap; gap:6px;
+  padding:var(--s3) var(--s4); border-top:1px solid var(--adaptiveGrey200);
+}
+.docmodal__dot{
+  min-width:34px; height:34px; padding:0 9px; border:0; border-radius:10px; cursor:pointer;
+  background:var(--adaptiveGrey100); color:var(--adaptiveGrey600);
+  font-family:inherit; font-size:var(--t7); font-weight:700;
+  transition:background .16s ease, color .16s ease;
+}
+.docmodal__dot:hover{ background:var(--adaptiveGrey200); }
+.docmodal__dot[aria-current="true"]{ background:var(--adaptiveBlue500); color:#fff; }
+
+@media (max-width:760px){
+  .docmodal{ padding:0; }
+  .docmodal__panel{ height:100%; max-height:100%; border-radius:0; }
+  .docmodal__head{ padding:var(--s3); }
+  .docmodal__title{ font-size:var(--t5); }
+  .docmodal__eyebrow{ font-size:11.5px; }
+  .docmodal__x{ width:36px; height:36px; }
+  .docmodal__arrow{ width:40px; height:40px; font-size:22px; }
+  .docmodal__rail{ padding:var(--s2) var(--s3); overflow-x:auto; flex-wrap:nowrap; }
+  .docmodal__dot{ flex:0 0 auto; }
+}
+/* ── MO·태블릿 : 2장을 위아래로 쌓고 세로 스크롤, 폭 기준으로 축소 ── */
+@media (max-width:1024px){
+  .docmodal__scroll{
+    flex-direction:column; justify-content:flex-start; align-items:stretch; gap:var(--s2);
+    overflow-y:auto; overflow-x:hidden;
+    padding:var(--s2) var(--s2) 62px; -webkit-overflow-scrolling:touch; overflow-anchor:none;
+  }
+  .docmodal__stage img{
+    flex:0 0 auto; width:100%; height:auto; aspect-ratio:16/9;
+    background:#fff; border-radius:8px;
+    box-shadow:0 1px 6px rgba(0,25,54,.1);
+  }
+  #dm-img2{ display:block; }
+  #dm-img2[hidden]{ display:none; }
+  .docmodal .docmodal__hint{ display:block; }
+  .docmodal .dm-swipe{ display:flex; }
+  /* 화살표가 문서를 가리지 않게 안쪽에서 살짝 띄운다 */
+  .docmodal__arrow{ top:auto; bottom:calc(var(--s3) + 46px); transform:none; }
+  .docmodal__arrow:hover:not(:disabled){ transform:none; }
+  .docmodal__title{
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+}
+
+/* ── 좌우 스와이프 안내 — MO·태블릿에서만, 첫 스와이프 뒤 사라짐 ── */
+.dm-swipe{
+  display:none; position:absolute; left:50%; bottom:var(--s3);
+  transform:translateX(-50%); z-index:3; pointer-events:none;
+  align-items:center; gap:8px;
+  padding:9px 15px 9px 12px; border-radius:var(--r-pill);
+  background:rgba(0,12,30,.72); color:#fff;
+  box-shadow:0 6px 20px rgba(0,12,30,.28);
+  animation:dm-swipe-in .3s ease both;
+}
+.dm-swipe.is-gone{ animation:dm-swipe-out .3s ease both; }
+.dm-swipe__hand{ width:24px; height:24px; flex:0 0 auto; animation:dm-hand 2.1s ease-in-out infinite; }
+.dm-swipe__chev{
+  font-size:19px; line-height:1; opacity:.5;
+  animation:dm-chev 2.1s ease-in-out infinite;
+}
+.dm-swipe__chev--r{ animation-delay:1.05s; }
+.dm-swipe__txt{ font-size:var(--t7); font-weight:600; letter-spacing:-.01em; white-space:nowrap; }
+@keyframes dm-hand{
+  0%,100%{ transform:translateX(0) }
+  25%{ transform:translateX(-7px) }
+  75%{ transform:translateX(7px) }
+}
+@keyframes dm-chev{
+  0%,100%{ opacity:.32 }
+  50%{ opacity:1 }
+}
+@keyframes dm-swipe-in{ from{ opacity:0; transform:translateX(-50%) translateY(8px) } to{ opacity:1 } }
+@keyframes dm-swipe-out{ from{ opacity:1 } to{ opacity:0; transform:translateX(-50%) translateY(8px) } }
+
+.docmodal__hint{
+  display:none; flex:0 0 auto; padding:0 var(--s3) var(--s2);
+  font-size:11.5px; color:var(--adaptiveGrey500); text-align:center;
+}
+@media (prefers-reduced-motion:reduce){
+  .docmodal__scrim,.docmodal__panel{ animation:none; }
+  .dm-swipe,.dm-swipe__hand,.dm-swipe__chev{ animation:none; }
+  .docmodal__arrow:hover:not(:disabled){ transform:translateY(-50%); }
+}
+
+
+/* ───────────────────────────────────────────
+   사업 관리 — 계약 관리 / 프로젝트 관리
+   ─────────────────────────────────────────── */
+.blk-lead{ max-width:78ch; margin:calc(var(--s5) * -1 + 4px) 0 var(--s4); font-size:var(--t6); line-height:1.72; color:var(--adaptiveGrey600); }
+.blk-lead b{ color:var(--adaptiveGrey800); font-weight:600; }
+
+.mgmt{ display:grid; grid-template-columns:1fr 1.08fr; gap:var(--s5); align-items:stretch; }
+.mgmt__col{ display:flex; flex-direction:column; }
+.mgmt__col .track{ flex:1 1 auto; }
+@media (max-width:900px){
+  .mgmt{ grid-template-columns:1fr; gap:var(--s4); align-items:start; }
+  .mgmt__fig{ max-height:none; }
+  .track__i{ flex:0 0 auto; }
+}
+
+/* 세로 타임라인 — 반복 절차 */
+.track{ position:relative; padding-left:28px; display:flex; flex-direction:column; }
+.track__i{ position:relative; padding-bottom:var(--s4); flex:1 1 auto; }
+/* 연결선은 항목마다 "다음 점까지"만 긋는다 — 마지막 점 아래로 늘어지지 않게 */
+.track__i::after{
+  content:""; position:absolute; left:-23px; top:16px; bottom:-5px; width:2px;
+  background:var(--adaptiveBlue100);
+}
+.track__i:last-child::after{ content:none; }
+.track__i:last-child{ padding-bottom:0; flex:0 0 auto; }
+.track__i::before{
+  content:""; position:absolute; left:-28px; top:5px; width:12px; height:12px; border-radius:50%;
+  background:var(--adaptiveBlue400); box-shadow:0 0 0 4px var(--adaptiveBlue50);
+}
+.track__i:last-child::before{ background:var(--adaptiveBlue700); }
+.track__t{ font-size:var(--t6); line-height:var(--t6-lh); font-weight:700; letter-spacing:-.02em; color:var(--adaptiveGrey900); }
+.track__t .n{ color:var(--adaptiveBlue400); margin-right:7px; font-variant-numeric:tabular-nums; }
+.track__d{ margin-top:4px; font-size:var(--t7); line-height:1.66; color:var(--adaptiveGrey600); }
+
+/* 수치 타일 */
+.stats{ display:grid; grid-template-columns:1fr; gap:var(--s2); margin-top:var(--s4); }
+.stat{ padding:var(--s3) 0 0; border-top:1px solid var(--adaptiveHairlineBorder); }
+.stat b{
+  display:block; font-size:var(--t3); line-height:1.2; font-weight:800;
+  letter-spacing:-.03em; color:var(--adaptiveBlue700); font-variant-numeric:tabular-nums;
+}
+.stat span{ display:block; margin-top:4px; font-size:var(--t7); line-height:1.5; color:var(--adaptiveGrey600); }
+
+/* 근거 캡처 */
+.mgmt__fig{
+  position:relative; overflow:hidden;
+  border:1px solid var(--adaptiveGrey200);
+  max-height:520px;   /* 넘치는 부분은 아래를 잘라 좌측 타임라인과 높이를 맞춘다 */
+}
+.mgmt__fig img{ width:100%; }
+
+/* ── 팀 캐릭터 — 디자이너 / 프로그래머 ── */
+.crew{ display:grid; grid-template-columns:repeat(2,1fr); gap:var(--s4); }
+@media (max-width:820px){ .crew{ grid-template-columns:1fr; } }
+.crew__c{
+  display:grid; grid-template-columns:96px 1fr; gap:var(--s4); align-items:start;
+  padding:clamp(20px,2.3vw,28px);
+  background:var(--adaptiveBackgroundLevel01);
+  border:1px solid var(--adaptiveGrey200); border-radius:var(--r-card);
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.crew__c:hover{ transform:translateY(-4px); border-color:var(--adaptiveBlue200); box-shadow:0 14px 40px rgba(0,25,54,.09); }
+@media (max-width:420px){ .crew__c{ grid-template-columns:1fr; } }
+.crew__av{ width:96px; height:112px; display:block; }
+.crew__c:hover .crew__av{ animation:crew-bob 1.7s ease-in-out infinite; }
+@keyframes crew-bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+.crew__role{
+  display:inline-block; padding:4px 12px; border-radius:var(--r-pill);
+  background:var(--adaptiveBlue50); color:var(--adaptiveBlue700);
+  font-size:var(--t7); line-height:var(--t7-lh); font-weight:700;
+}
+.crew__n{ margin-top:10px; font-size:var(--t5); line-height:1.42; font-weight:700; letter-spacing:-.02em; color:var(--adaptiveGrey900); }
+.crew__d{ margin-top:6px; font-size:var(--t7); line-height:1.66; color:var(--adaptiveGrey600); }
+
+/* ── 캐릭터 상시 애니메이션 ── */
+@keyframes cha-rock { 0%,100%{ transform:rotate(-9deg); } 50%{ transform:rotate(9deg); } }
+@keyframes cha-float{ 0%,100%{ transform:translateY(0); }  50%{ transform:translateY(-6px); } }
+@keyframes cha-spin { 0%,100%{ transform:rotate(0); }      50%{ transform:rotate(22deg); } }
+@keyframes cha-beat { 0%,100%{ transform:scale(1); }       45%{ transform:scale(1.18); } }
+@keyframes cha-type { 0%{ stroke-dashoffset:16; } 40%,100%{ stroke-dashoffset:0; } }
+.cha-pen{ transform-box:fill-box; transform-origin:50% 8%;  animation:cha-rock 2.9s ease-in-out infinite; }
+.cha-f1 { transform-box:fill-box; transform-origin:center;  animation:cha-float 3.2s ease-in-out infinite; }
+.cha-f2 { transform-box:fill-box; transform-origin:center;  animation:cha-spin 4.1s ease-in-out infinite; }
+.cha-f3 { transform-box:fill-box; transform-origin:center;  animation:cha-float 3.7s ease-in-out infinite .6s; }
+.cha-win{ transform-box:fill-box; transform-origin:center;  animation:cha-float 3.4s ease-in-out infinite; }
+.cha-l1 { stroke-dasharray:16; animation:cha-type 2.6s ease-in-out infinite; }
+.cha-l2 { stroke-dasharray:16; animation:cha-type 2.6s ease-in-out infinite .45s; }
+.cha-b1 { transform-box:fill-box; transform-origin:center;  animation:cha-float 3.1s ease-in-out infinite; }
+.cha-b2 { transform-box:fill-box; transform-origin:center;  animation:cha-float 3.1s ease-in-out infinite .8s; }
+.cha-dot{ transform-box:fill-box; transform-origin:center;  animation:cha-beat 2.5s ease-in-out infinite; }
+@media (prefers-reduced-motion:reduce){
+  .crew__c:hover{ transform:none; }
+  .crew__c:hover .crew__av{ animation:none; }
+  .cha-pen,.cha-f1,.cha-f2,.cha-f3,.cha-win,.cha-l1,.cha-l2,.cha-b1,.cha-b2,.cha-dot{ animation:none; }
+  .cha-l1,.cha-l2{ stroke-dasharray:none; }
+}
+
+
+/* ─────────────────────────────────────────────
+   MO 플로팅 메뉴 — GNB 액션을 우하단으로
+   ───────────────────────────────────────────── */
+.fab{ display:none; }
+@media (max-width:900px){
+  .fab{
+    display:block; position:fixed; z-index:45;
+    right:clamp(16px,4vw,24px); bottom:clamp(16px,4vw,24px);
+  }
+}
+.fab__btn{
+  position:relative; z-index:1;
+  width:56px; height:56px; padding:0; border:0; border-radius:50%; cursor:pointer;
+  display:grid; place-items:center;
+  background:var(--adaptiveBlue500); color:#fff;
+  box-shadow:0 10px 28px rgba(49,130,246,.42);
+  transition:transform .2s ease, background .2s ease;
+}
+.fab__btn:active{ transform:scale(.94); }
+.fab.is-open .fab__btn{ background:var(--adaptiveGrey800); box-shadow:0 10px 28px rgba(0,25,54,.32); }
+.fab__bars{ position:relative; display:block; width:22px; height:16px; }
+.fab__bars i{
+  position:absolute; left:0; width:100%; height:2px; border-radius:2px; background:#fff;
+  transition:transform .24s ease, opacity .16s ease;
+}
+.fab__bars i:nth-child(1){ top:0; }
+.fab__bars i:nth-child(2){ top:7px; }
+.fab__bars i:nth-child(3){ top:14px; }
+.fab.is-open .fab__bars i:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.fab.is-open .fab__bars i:nth-child(2){ opacity:0; }
+.fab.is-open .fab__bars i:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+.fab__sheet{
+  position:absolute; right:0; bottom:68px; z-index:1;
+  display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+}
+.fab__sheet[hidden]{ display:none; }
+.fab__item{
+  display:inline-flex; align-items:center; gap:9px;
+  height:44px; padding:0 18px; border:0; border-radius:var(--r-pill); cursor:pointer;
+  background:var(--adaptiveBackgroundLevel01); color:var(--adaptiveGrey800);
+  font-family:inherit; font-size:var(--t7); line-height:1; font-weight:700; letter-spacing:-.01em;
+  white-space:nowrap; text-decoration:none;
+  box-shadow:0 6px 20px rgba(0,25,54,.16), inset 0 0 0 1px var(--adaptiveGrey200);
+  animation:fab-in .22s ease both;
+}
+.fab__item:active{ background:var(--adaptiveGrey50); }
+.fab__ico{ font-size:13px; line-height:1; color:var(--adaptiveBlue500); }
+.fab__sheet .fab__item:nth-child(1){ animation-delay:.02s; }
+.fab__sheet .fab__item:nth-child(2){ animation-delay:.06s; }
+.fab__sheet .fab__item:nth-child(3){ animation-delay:.10s; }
+@keyframes fab-in{ from{ opacity:0; transform:translateY(10px) scale(.96); } to{ opacity:1; transform:none; } }
+/* 열렸을 때 본문을 살짝 눌러 준다 */
+.fab__scrim{
+  position:fixed; inset:0; z-index:-1; background:rgba(0,12,30,.3);
+  opacity:0; transition:opacity .22s ease; pointer-events:none;
+}
+.fab.is-open .fab__scrim{ opacity:1; pointer-events:auto; }
+@media (prefers-reduced-motion:reduce){
+  .fab__item{ animation:none; }
+  .fab__bars i{ transition:none; }
+  .fab__btn:active{ transform:none; }
+}
+
+
+/* ───────────────────────────────────────────
+   AI 활용 — 좌 : 제목 + 진행 순서 / 우 : 일러스트 6종
+   ─────────────────────────────────────────── */
+.ai{
+  display:grid; grid-template-columns:360px 1fr; gap:56px; align-items:stretch;
+  margin-top:calc(var(--s5) * -1);
+}
+@media (max-width:1000px){ .ai{ grid-template-columns:1fr; gap:var(--s5); align-items:start; } }
+.ai__head{ display:flex; flex-direction:column; }
+.ai__head .blk-h{ margin-bottom:var(--s4); }
+.ai__head .track{ flex:1 1 auto; }
+
+.ai__grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:44px 28px; }
+@media (max-width:640px){ .ai__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:34px 18px; } }
+.ai__i{ display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; }
+.ai__no{
+  font-size:11.5px; line-height:1; font-weight:800; letter-spacing:.12em;
+  color:var(--adaptiveBlue300); font-variant-numeric:tabular-nums;
+}
+.ai__disc{
+  display:grid; place-items:center;
+  width:clamp(94px,9vw,114px); aspect-ratio:1; border-radius:50%;
+  background:var(--adaptiveBlue50);
+  box-shadow:inset 0 0 0 1.5px var(--adaptiveBlue100);
+  transition:background .24s ease, box-shadow .24s ease, transform .24s ease;
+}
+.ai__i:hover .ai__disc{
+  background:#dbeaff; box-shadow:inset 0 0 0 1.5px var(--adaptiveBlue200);
+  transform:translateY(-4px);
+}
+.ai__ill{ display:block; width:64%; height:64%; }
+.ai__ill svg{ display:block; width:100%; height:100%; overflow:visible; }
+.ai__t{
+  font-size:var(--t6); line-height:1.4; font-weight:700;
+  letter-spacing:-.02em; color:var(--adaptiveGrey800); transition:color .2s ease;
+}
+.ai__i:hover .ai__t{ color:var(--adaptiveBlue600); }
+@media (prefers-reduced-motion:reduce){ .ai__i:hover .ai__disc{ transform:none; } }
+
+/* ── 일러스트 상시 반복 애니메이션 (요소 단위) ── */
+@keyframes aia-pulse  { 0%,100%{ transform:scale(1); }        45%{ transform:scale(1.16); } }
+@keyframes aia-breathe{ 0%,100%{ transform:scale(1); }        50%{ transform:scale(1.07); } }
+@keyframes aia-rock   { 0%,100%{ transform:rotate(0); }       30%{ transform:rotate(-6deg); } 62%{ transform:rotate(4deg); } }
+@keyframes aia-rotate { to{ transform:rotate(360deg); } }
+@keyframes aia-slide  { 0%,100%{ transform:translateY(0); }   50%{ transform:translateY(-4px); } }
+@keyframes aia-grow   { 0%,100%{ transform:scaleY(1); }       50%{ transform:scaleY(.6); } }
+@keyframes aia-drop   { 0%,100%{ transform:translateY(0); }   50%{ transform:translateY(3px); } }
+@keyframes aia-tilt   { 0%,100%{ transform:rotate(-8deg); }   50%{ transform:rotate(-12.5deg); } }
+
+/* 01 MCP 연결 — 허브가 숨쉬고 노드 3개가 차례로 뛴다 */
+.aia-hub{ transform-box:fill-box; transform-origin:center; animation:aia-breathe 3.4s ease-in-out infinite; }
+.aia-node{ transform-box:fill-box; transform-origin:center; animation:aia-pulse 2.7s ease-in-out infinite; }
+.aia-node--2{ animation-delay:.6s; }
+.aia-node--3{ animation-delay:1.2s; }
+
+/* 02 작업 툴 — 손잡이가 흔들리고 걸쇠가 뛴다 */
+.aia-handle{ transform-box:fill-box; transform-origin:50% 100%; animation:aia-rock 4.4s ease-in-out infinite; }
+.aia-latch{ transform-box:fill-box; transform-origin:center; animation:aia-pulse 3.3s ease-in-out infinite .4s; }
+
+/* 03 자동화 — 순환 화살표가 계속 돌고 시곗바늘이 따라 돈다 */
+.aia-spin{ transform-box:view-box; transform-origin:32px 32px; animation:aia-rotate 7s linear infinite; }
+.aia-hand{ transform-box:view-box; transform-origin:32px 32px; animation:aia-rotate 12s linear infinite; }
+
+/* 04 폴더 — 안쪽 서류가 올라왔다 내려간다 */
+.aia-paper{ transform-box:fill-box; animation:aia-slide 3.6s ease-in-out infinite; }
+
+/* 05 데이터 — 막대가 시차를 두고 오르내린다 */
+.aia-bar{ transform-box:fill-box; transform-origin:50% 100%; animation:aia-grow 3s ease-in-out infinite; }
+.aia-bar--2{ animation-delay:.35s; }
+.aia-bar--3{ animation-delay:.7s; }
+
+/* 06 보고자료 — 뒷장이 기울고 북마크가 내려온다 */
+.aia-back{ transform-box:fill-box; transform-origin:center; transform:rotate(-8deg); animation:aia-tilt 5.2s ease-in-out infinite; }
+.aia-mark{ transform-box:fill-box; animation:aia-drop 3.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion:reduce){
+  .aia-hub,.aia-node,.aia-handle,.aia-latch,.aia-spin,.aia-hand,
+  .aia-paper,.aia-bar,.aia-mark{ animation:none; }
+  .aia-back{ animation:none; }
+}
+
+/* ───────────────────────────────────────────
+   바이브코딩 산출물 버튼 — 기존 .btn 변형을 그대로 쓰고
+   눌러 볼 수 있는 화면이라는 신호만 점으로 더한다
+   ─────────────────────────────────────────── */
+.live-dot{
+  position:relative; flex:0 0 7px; width:7px; height:7px; border-radius:50%;
+  background:currentColor;
+}
+.live-dot::after{
+  content:""; position:absolute; inset:0; border-radius:50%; background:currentColor;
+  animation:live-ping 1.9s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes live-ping{ 0%{ transform:scale(1); opacity:.55; } 80%,100%{ transform:scale(2.8); opacity:0; } }
+.proj__live{ display:flex; justify-content:center; margin-top:var(--s3); }
+@media (prefers-reduced-motion:reduce){ .live-dot::after{ animation:none; } }
+
+/* ───────────────────────────────────────────
+   바이브코딩 산출물 모달 — 탭이 곧 헤더 (별도 타이틀 없음)
+   탭 스타일은 GNB(.nav__links)의 밑줄 강조 방식을 따른다
+   ─────────────────────────────────────────── */
+.lvmodal{
+  position:fixed; inset:0; z-index:210;
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(10px,2.2vw,28px);
+}
+.lvmodal[hidden]{ display:none; }
+.lvmodal__scrim{ position:absolute; inset:0; background:rgba(0,12,30,.62); }
+.lvmodal__panel{
+  position:relative; display:flex; flex-direction:column;
+  width:100%; max-width:1280px; height:100%; max-height:92vh;
+  background:var(--adaptiveBackgroundLevel01); border-radius:var(--r-lg); overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,12,30,.4);
+}
+/* 탭 바 = 헤더 */
+.lvmodal__bar{
+  display:flex; align-items:center; gap:var(--s4);
+  padding:0 var(--s4); border-bottom:1px solid var(--adaptiveHairlineBorder);
+}
+.lvmodal__tabs{
+  flex:1 1 auto; min-width:0; display:flex; gap:var(--s5);
+  overflow-x:auto; scrollbar-width:none;
+}
+.lvmodal__tabs::-webkit-scrollbar{ display:none; }
+.lvtab{
+  flex:0 0 auto; padding:18px 0 15px; border:0; border-bottom:2px solid transparent;
+  margin-bottom:-1px; background:none; cursor:pointer; text-align:left;
+  font-family:inherit; font-size:var(--t5); font-weight:700; letter-spacing:-.02em;
+  color:var(--adaptiveGrey600); transition:color .18s, border-color .18s;
+}
+.lvtab small{
+  display:block; margin-top:3px; font-size:var(--t7); font-weight:500;
+  color:var(--adaptiveGrey400); letter-spacing:-.01em;
+}
+.lvtab:hover{ color:var(--adaptiveGrey900); }
+.lvtab[aria-selected="true"]{ color:var(--adaptiveBlue500); border-bottom-color:var(--adaptiveBlue500); }
+.lvtab[aria-selected="true"] small{ color:var(--adaptiveBlue400); }
+.lvmodal__x{
+  flex:0 0 auto; width:40px; height:40px; border:0; border-radius:12px;
+  background:var(--adaptiveGrey100); color:var(--adaptiveGrey600);
+  font-size:22px; line-height:1; cursor:pointer;
+}
+.lvmodal__x:hover{ background:var(--adaptiveGrey200); color:var(--adaptiveGrey900); }
+/* 화면 */
+.lvmodal__stage{ flex:1 1 auto; min-height:0; background:var(--adaptiveGrey100); }
+.lvmodal__stage iframe{ display:block; width:100%; height:100%; border:0; background:#fff; }
+.lvmodal__foot{
+  display:flex; align-items:center; gap:var(--s3); flex-wrap:wrap;
+  padding:10px var(--s4); border-top:1px solid var(--adaptiveHairlineBorder);
+  font-size:var(--t7); line-height:1.6; color:var(--adaptiveGrey500);
+}
+.lvmodal__foot a{ color:var(--adaptiveBlue600); font-weight:700; }
+.lvmodal__replay{
+  margin-left:auto; height:30px; padding:0 12px; border:0; border-radius:8px;
+  background:var(--adaptiveBlue50); color:var(--adaptiveBlue700);
+  font-family:inherit; font-size:var(--t7); font-weight:700; cursor:pointer;
+}
+.lvmodal__replay:hover{ background:var(--adaptiveBlue100); }
+@media (max-width:760px){
+  .lvmodal{ padding:0; }
+  .lvmodal__panel{ max-height:100%; border-radius:0; }
+  .lvmodal__bar{ padding:0 var(--s3); gap:var(--s3); }
+  .lvmodal__tabs{ gap:var(--s4); }
+  .lvtab{ padding:14px 0 12px; font-size:var(--t6); }
+  .lvmodal__foot{ padding:8px var(--s3); }
+}
+
+/* ── 스크롤 등장 ── */
+.rise{ opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+.rise.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  .rise{ opacity:1; transform:none; transition:none; }
+  .cover__photo,.cover__photo img{ transition:none; }
+  .cover__photo:active{ transform:none; }
+  .tool__meter i{ transition:none; transition-delay:0s; }
+  html{ scroll-behavior:auto; }
+  .btn:hover,.card:hover{ transform:none; }
+}
+
+/* ── 인쇄 ── */
+@page{ size:A4; margin:14mm 15mm; }
+
+/* ═══════════════════════════════════════════════════════════
+   인쇄 = 문서 타입 · 무채색
+   면 채움과 색을 전부 걷어내고 글자·괘선·여백만으로 위계를 만든다.
+   화면 스타일에는 영향이 없다.
+   ═══════════════════════════════════════════════════════════ */
+@media print{
+  /* ── 화면 전용 요소 제거 ── */
+  .nav,.watermark,.fab,.cover__acts,.closing__acts,.doccard__more,
+  .cover::before,.cover::after,.closing::before{ display:none !important; }
+
+  /* ── 색 전면 제거 ── */
+  *,*::before,*::after{
+    background:none !important;
+    box-shadow:none !important;
+    text-shadow:none !important;
+    color:#1a1a1a !important;
+    border-color:#c8c8c8 !important;
+    border-radius:0 !important;
+  }
+  html,body{ background:#fff !important; }
+  img{ filter:grayscale(1) !important; }
+  svg{ filter:grayscale(1) !important; }
+
+  /* ── 회색 단계로 위계 ── */
+  .shead p,.blk-lead,.track__d,.crew__d,.cover__sub,.cover__eyebrow,
+  .proj__sub,.foot-note,.doccard__kind,.kind ul li,.stat span,
+  .card__desc,.compare__tag,.swim__who span,.foot__name,.foot__c a{
+    color:#5a5a5a !important;
+  }
+  em,b,strong,.hl,.result b{ color:#000 !important; font-style:normal; }
+
+  /* ── 표지 : 문서 표제지 ── */
+  .cover{
+    min-height:0 !important; display:block !important;
+    padding-block:0 26px !important;
+    border-bottom:2px solid #1a1a1a !important;
+    break-after:page;
+  }
+  .cover__in{ padding-block:0 !important; }
+  .cover__top{ display:flex !important; align-items:center; gap:22px; }
+  .cover__photo{ width:88px !important; order:0 !important; }
+  .cover__photo img{ border-radius:50% !important; }
+  .cover h1{ font-size:34px !important; margin-bottom:2px; }
+  .cover__role{ font-size:17px !important; }
+  .cover__lead{ font-size:12pt !important; }
+  .cover__meta{ border-top:1px solid #c8c8c8 !important; }
+
+  /* ── 간지 : 장 제목 ── */
+  .divider{
+    min-height:0 !important; padding-block:10px 6px !important;
+    border-top:2px solid #1a1a1a !important; border-bottom:1px solid #c8c8c8 !important;
+    break-before:page; break-after:avoid;
+  }
+  .divider h2{ font-size:19px !important; }
+  .divider__no{ font-size:9.5pt !important; color:#5a5a5a !important; }
+
+  /* ── 섹션 ── */
+  .sec{ padding-block:20px !important; }
+  .shead{ margin-bottom:16px !important; }
+  .shead--ruled{ border-bottom:1px solid #c8c8c8 !important; }
+  .shead h2{ font-size:17px !important; }
+  .blk-h{ font-size:14pt !important; border-bottom:1px solid #dcdcdc; padding-bottom:5px; }
+
+  /* ── 배지·칩 : 채움 대신 괘선 ── */
+  .stepbadge,.tag,.blk-h__badge,.crew__role,.samplebadge{
+    border:1px solid #b4b4b4 !important; padding:2px 8px !important;
+    font-size:9pt !important; font-weight:600 !important;
+  }
+  .samplebadge{ position:static !important; display:inline-block; margin-bottom:4px; }
+
+  /* ── 도식 : 면 대신 테두리 ── */
+  .flow__step,.swim__box,.compare__side,.card,.crew__c,.doccard,.kind,.stat,.tool{
+    border:1px solid #c8c8c8 !important;
+  }
+  .flow__step,.swim__box{ padding:8px 12px !important; font-size:10pt !important; }
+  .compare__side{ padding:14px 16px !important; }
+  .card,.crew__c,.doccard{ padding:14px 16px !important; }
+  .kind,.stat,.tool{ border:0 !important; border-top:1px solid #c8c8c8 !important; padding-top:10px !important; }
+  .kind::before{ background:#1a1a1a !important; height:2px !important; width:26px !important; }
+  .kind ul li::before,.compare__list li::before,.chev li::before{ background:#8a8a8a !important; color:#8a8a8a !important; }
+  .result{ border-top:1px solid #1a1a1a !important; padding-top:8px !important; }
+  .point__ico{ border:1px solid #b4b4b4 !important; }
+
+  /* ── 타임라인 ── */
+  .track__i::before{ background:#1a1a1a !important; }
+  .track__i::after{ background:#c8c8c8 !important; }
+  .track__i{ flex:0 0 auto !important; padding-bottom:12px !important; }
+
+  /* ── 활용 툴 게이지 ── */
+  .tool__meter{ background:#e4e4e4 !important; height:6px !important; }
+  .tool__meter i{ background:#1a1a1a !important; width:var(--lv) !important; transition:none !important; }
+  .tools{ grid-template-columns:repeat(4,1fr) !important; }
+
+  /* ── AI 활용 ── */
+  .ai__disc{ border:1px solid #c8c8c8 !important; border-radius:50% !important; }
+  .ai__no{ color:#5a5a5a !important; }
+
+  /* ── 프로필 사진은 실사, 캐릭터는 숨김 ── */
+  .cover__photo--char{ opacity:0 !important; }
+  .cover__photo--real{ opacity:1 !important; }
+
+  /* ── 스크롤 등장 해제 ── */
+  .rise{ opacity:1 !important; transform:none !important; }
+
+  /* ── 캡처 : 축소해 통째로 싣는다 ── */
+  .mgmt__fig{ max-height:none !important; }
+  .mgmt,.proj__body,.ai{ align-items:start !important; }
+  .shot,.mgmt__fig,.doccard__shot{
+    width:fit-content !important; margin-inline:auto !important;
+    border:1px solid #c8c8c8 !important;
+  }
+  .shot img,.mgmt__fig img{
+    height:auto !important; max-height:88mm !important;
+    width:auto !important; max-width:100% !important; object-fit:contain !important;
+  }
+  .doccard__shot img{ height:auto !important; max-height:46mm !important; object-fit:contain !important; }
+
+  /* ── 페이지 분할 ── */
+  .card,.doccard,.crew__c,.tool,.ai__i,.track__i,.kind,.compare,.shot,.mgmt__fig,
+  .flow__desc,.point{ break-inside:avoid; }
+  .shead,.blk-h,.proj__head{ break-after:avoid; }
+
+  /* ── 스윔레인 : 이모지 무채색화 + 지면 폭 안으로 ── */
+  .swim__who span{ filter:grayscale(1) !important; }
+  .swim{ overflow:visible !important; }
+  .swim__grid{ min-width:0 !important; grid-template-columns:72px 1fr !important; gap:10px !important; }
+  .swim__lane{ flex-wrap:wrap !important; row-gap:6px !important; }
+  .swim__box{ font-size:9pt !important; padding:6px 9px !important; }
+  .arw{ flex:0 0 18px !important; }
+
+  /* ── 맺음말 · 푸터 ── */
+  .closing{ border-top:2px solid #1a1a1a !important; padding-block:22px !important; }
+  .closing h2{ font-size:16px !important; }
+  .foot{ border-top:1px solid #c8c8c8 !important; padding-block:10px !important; }
+}
 </style>
-</helmet>
+</head>
+<body>
 
-<div style="position:fixed;top:0;left:0;height:3px;width:0;background:#A6462B;z-index:60" data-prog></div>
+<!-- 워터마크 : 제안서 전 페이지 우상단 규칙 -->
+<div class="watermark" id="wm">박세훈 · Game Business PM</div>
 
-<div ref="{{ setRoot }}" style="display:grid;grid-template-columns:300px minmax(0,1fr);align-items:start;max-width:1440px;margin:0 auto">
+<nav class="nav">
+  <div class="nav__in">
+    <span class="nav__name">박세훈 · 포트폴리오</span>
+    <div class="nav__links">
+      <a href="#about"><span class="n">01</span>소개</a>
+      <a href="#projects"><span class="n">02</span>프로젝트</a>
+      <a href="#deliverables"><span class="n">03</span>산출물</a>
+      <a href="#management"><span class="n">04</span>사업관리</a>
+      <a href="#strengths"><span class="n">05</span>특장점</a>
+      <a href="#closing"><span class="n">06</span>맺음말</a>
+    </div>
+    <div class="nav__acts">
+      <button type="button" class="btn btn--primary-fill" data-live-open aria-haspopup="dialog"><span class="live-dot" aria-hidden="true"></span>바이브코딩 산출물 예시</button>
+      <button type="button" class="btn btn--primary-weak" data-doc-open aria-haspopup="dialog">화면설계서</button>
+      <a class="btn btn--primary-weak" href="portfolio.pdf" target="_blank" rel="noopener">PDF 내려받기</a>
+      <a class="btn btn--primary-fill" href="../">지원서 페이지로</a>
+    </div>
+  </div>
+</nav>
 
-  <aside style="position:sticky;top:0;max-height:100vh;overflow-y:auto;box-sizing:border-box;padding:44px 40px 36px 60px;display:flex;flex-direction:column;gap:44px;justify-content:space-between">
-    <div>
-      <div style="font-size:26px;font-weight:700;letter-spacing:-.03em">박세훈</div>
-      <div style="margin-top:8px;font-size:14px;color:#8A8681">게임 사업 PM · Live Ops</div>
-      <nav style="margin-top:52px;display:flex;flex-direction:column;gap:2px">
-        <a href="#s1" data-nav="s1" style="display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;padding:12px 0 12px 14px;border-left:2px solid #E7E3DD;font-size:15px;font-weight:600;color:#8A8681;transition:all .25s ease"><span style="font-size:12px;letter-spacing:.1em">01</span>소개</a>
-        <a href="#s2" data-nav="s2" style="display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;padding:12px 0 12px 14px;border-left:2px solid #E7E3DD;font-size:15px;font-weight:600;color:#8A8681;transition:all .25s ease"><span style="font-size:12px;letter-spacing:.1em">02</span>프로젝트</a>
-        <a href="#s3" data-nav="s3" style="display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;padding:12px 0 12px 14px;border-left:2px solid #E7E3DD;font-size:15px;font-weight:600;color:#8A8681;transition:all .25s ease"><span style="font-size:12px;letter-spacing:.1em">03</span>산출물</a>
-        <a href="#s4" data-nav="s4" style="display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;padding:12px 0 12px 14px;border-left:2px solid #E7E3DD;font-size:15px;font-weight:600;color:#8A8681;transition:all .25s ease"><span style="font-size:12px;letter-spacing:.1em">04</span>특장점</a>
-        <a href="#s5" data-nav="s5" style="display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;padding:12px 0 12px 14px;border-left:2px solid #E7E3DD;font-size:15px;font-weight:600;color:#8A8681;transition:all .25s ease"><span style="font-size:12px;letter-spacing:.1em">05</span>맺음말</a>
+<!-- ═══ [A] 표지 ═══ -->
+<header class="cover" data-dark>
+  <div class="cover__in wrap">
+    <div class="cover__top">
+    <div class="cover__txt">
+    <p class="cover__eyebrow">Portfolio · 2026. 8.</p>
+    <h1>박세훈</h1>
+    <p class="cover__role">게임 사업 PM</p>
+    <p class="cover__sub">Game Business PM Portfolio</p>
+    <p class="cover__lead">
+      기관 포털과 이커머스에서 PL로 사업을 맡아 왔습니다.<br>
+      계약과 일정, 협력사 조율을 해 온 경험으로 <b>게임 사업 PM</b>으로 일하고 싶습니다.
+    </p>
+    <div class="cover__acts">
+      <a class="btn btn--light-fill" href="portfolio.pdf" target="_blank" rel="noopener">PDF 버전 내려받기</a>
+      <button type="button" class="btn btn--light-weak" data-live-open aria-haspopup="dialog"><span class="live-dot" aria-hidden="true"></span>바이브코딩 산출물 예시</button>
+      <button type="button" class="btn btn--light-weak cover__acts--pc" data-doc-open aria-haspopup="dialog">화면설계서 보기</button>
+      <a class="btn btn--light-weak" href="../">지원서 페이지로</a>
+    </div>
+    </div>
+    <button type="button" class="cover__photo" id="cover-photo" aria-pressed="false" aria-label="프로필 사진 전환">
+      <img class="cover__photo--char" src="images/%EC%84%B8%ED%9B%88%20%EA%B7%B8%EB%A6%BC.jpg" alt="박세훈" width="1024" height="1024">
+      <img class="cover__photo--real" src="../application/photo.jpg" alt="" aria-hidden="true" width="413" height="532">
+    </button>
+    </div>
+    <div class="cover__meta">
+      <span>경력 <b>4년 5개월</b></span>
+      <span>사업 규모 <b>5,000만원 ~ 1억원</b></span>
+      <span><b>sun8070vvv20@gmail.com</b></span>
+      <span><b>010-7222-0473</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ 01 소개 ═══ -->
+<section class="sec" id="about" style="background:var(--adaptiveBackgroundLevelB01)">
+  <div class="wrap">
+    <div class="shead shead--ruled rise">
+      <span class="shead__no">01</span>
+      <h2>기관 포털 사업을 맡아<br><em>계약부터 정산까지</em> 관리했습니다.</h2>
+      <p>5,000만원에서 1억원 미만 규모의 기관 사업을 PL로 맡았습니다. <b>고객사 요구사항 접수, WBS 일정 수립, 작업자 배분, 협력사 일정 조율</b>을 했고, 착수계부터 대금청구·완료계까지 계약 문서도 직접 작성했습니다.</p>
+    </div>
+
+    <h3 class="blk-h rise">인적사항</h3>
+    <dl class="dl dl--plain rise" style="margin-bottom:var(--s7)">
+      <dt>이름</dt><dd>박세훈 · Park Sehoon</dd>
+      <dt>생년월일</dt><dd>1993. 6. 1.</dd>
+      <dt>경력</dt><dd>4년 5개월 · 서비스 기획 PL · 사업 관리</dd>
+      <dt>지원 분야</dt><dd>게임 사업 PM · 라이브 옵스</dd>
+      <dt>학력</dt><dd>울산대학교 졸업 (2012.03–2020.02)</dd>
+      <dt>병역</dt><dd>육군 만기전역 (2013.04–2015.01)</dd>
+      <dt>이메일</dt><dd>sun8070vvv20@gmail.com</dd>
+      <dt>휴대폰</dt><dd>010-7222-0473</dd>
+    </dl>
+
+    <h3 class="blk-h rise">활용 툴</h3>
+    <div class="rise" style="margin-bottom:var(--s6)">
+      <div class="tools">
+        <div class="tool"><img src="images/icons/ppt.png" alt=""><div class="tool__n">PowerPoint · Slides</div><div class="tool__meter" role="img" aria-label="숙련도 상"><i style="--lv:90%"></i></div></div>
+        <div class="tool"><img src="images/icons/hwp.png" alt=""><div class="tool__n">한글 · Word</div><div class="tool__meter" role="img" aria-label="숙련도 상"><i style="--lv:90%"></i></div></div>
+        <div class="tool"><img src="images/icons/slack.png" alt=""><div class="tool__n">Slack</div><div class="tool__meter" role="img" aria-label="숙련도 상"><i style="--lv:90%"></i></div></div>
+        <div class="tool tool--mid"><img src="images/icons/excel.png" alt=""><div class="tool__n">Excel · Sheets</div><div class="tool__meter" role="img" aria-label="숙련도 중"><i style="--lv:65%"></i></div></div>
+        <div class="tool tool--mid"><img src="images/icons/figma.png" alt=""><div class="tool__n">Figma</div><div class="tool__meter" role="img" aria-label="숙련도 중"><i style="--lv:65%"></i></div></div>
+        <div class="tool tool--mid"><img src="images/icons/vscode.png" alt=""><div class="tool__n">VS Code</div><div class="tool__meter" role="img" aria-label="숙련도 중"><i style="--lv:65%"></i></div></div>
+        <div class="tool tool--mid"><img src="images/icons/claude.png" alt=""><div class="tool__n">생성형 AI</div><div class="tool__meter" role="img" aria-label="숙련도 중"><i style="--lv:65%"></i></div></div>
+      </div>
+    </div>
+
+    <!-- [C] 순서 도식 — 화살표 적층, 색 농도 진행 -->
+    <h3 class="blk-h rise">경력 — 실무에서 사업 관리로<span class="blk-h__badge">4년 5개월</span></h3>
+    <div class="flow rise">
+      <div class="flow__steps">
+        <div class="flow__step">① 실무 기획<small>2021.07 – 2023.06</small></div>
+        <div class="flow__step">② 운영 기획<small>2024.01 – 2024.11</small></div>
+        <div class="flow__step">③ 기획 PL<small>2025.02 – 현재</small></div>
+        <div class="flow__step">④ 사업 관리<small>담당 전 프로젝트</small></div>
+      </div>
+      <div class="flow__descs">
+        <div class="flow__desc">
+          <h4>업무 시스템·기관 홈페이지 기획과 요구사항 접수 방식 정리</h4>
+          <p class="org">(주)이노컴즈 · 주임 &nbsp;|&nbsp; 2021. 7. ~ 2023. 6.</p>
+          <p>출입증 발급 시스템, 전자결재 업무 시스템, 기관 홈페이지 반응형 리뉴얼의 화면정의서를 작성했습니다. 한국석유공사 리뉴얼에서는 수시로 들어오던 요구사항을 기간을 정해 한 번에 받도록 바꾸고, 진행 상황은 공유 시트로 정리했습니다.</p>
+          <ul class="chev"><li>화면정의서</li><li>요구사항 일괄 접수</li><li>진행 현황 공유</li></ul>
+        </div>
+        <div class="flow__desc">
+          <h4>면세 이커머스 운영과 이벤트 일정 관리</h4>
+          <p class="org">(주)그라비티 네오싸이언 · 대리 &nbsp;|&nbsp; 2024. 1. ~ 2024. 11.</p>
+          <p>신세계DF 사용자·관리자 화면 운영을 기획했습니다. 프로모션 이벤트의 참여 조건, 당첨 판정, 쿠폰·포인트 지급 예외를 정리했고, 이벤트 일정에 맞춰 백오피스 모듈 작업 일정을 잡았습니다.</p>
+          <ul class="chev"><li>이벤트 운영 규칙</li><li>쿠폰·포인트</li><li>백오피스 일정</li></ul>
+        </div>
+        <div class="flow__desc">
+          <h4>기관 포털 사업의 PL · 사업 관리</h4>
+          <p class="org">(주)이노디스 · 웹서비스팀 기획 PL &nbsp;|&nbsp; 2025. 2. ~ 현재</p>
+          <p>5,000만원에서 1억원 미만 규모의 기관 사업을 맡아 요구사항 접수부터 검수·정산까지 진행했습니다. 사업 일정과 소속 기획자 업무를 WBS로 함께 관리했고, 구축이 끝난 뒤 유지보수 계약으로 이어진 운영도 계속 맡고 있습니다.</p>
+          <ul class="chev"><li>WBS 일정 관리</li><li>검수·정산</li><li>유지보수 운영</li><li>고도화 계약</li></ul>
+        </div>
+        <div class="flow__desc">
+          <h4>맡은 사업마다 해 온 관리 업무</h4>
+          <p class="org">공통 업무 &nbsp;|&nbsp; 프로젝트와 상관없이 늘 맡아 온 일</p>
+          <p>착수계, 월 업무보고, 대금청구 기안, 완료계를 작성해 내부 결재와 고객사 제출까지 처리했습니다. 회의가 끝나면 회의록을 정리해 공유했습니다.</p>
+          <ul class="chev"><li>계약 · 기안 문서</li><li>월 업무보고</li><li>회의록</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ [B] 간지 ═══ -->
+<section class="divider" data-dark>
+  <div class="divider__in wrap">
+    <p class="divider__no">02 &nbsp;/&nbsp; PROJECTS</p>
+    <h2>프로젝트</h2>
+  </div>
+</section>
+
+<!-- ═══ 02 프로젝트 ═══ -->
+<section class="sec" id="projects" style="background:var(--adaptiveBackground)">
+  <div class="wrap">
+    <div class="shead shead--ruled rise">
+      <h2>대표 프로젝트 <em>4건</em></h2>
+      <p>프로젝트마다 <b>고객사, 협력사, 작업자</b>와 일정을 어떻게 맞추고 요청을 어떻게 처리했는지 적었습니다.</p>
+    </div>
+
+    <!-- ── 01 서울영화센터 ── -->
+    <article class="proj rise">
+      <span class="stepbadge">① 서울영화센터 포털 재구축</span>
+      <div class="proj__head">
+        <p class="proj__claim">연간 유지보수 계약을 <em>분기별 청구</em>로 운영하다</p>
+        <p class="proj__sub">예술 포털 · 연 8천만원 &nbsp;|&nbsp; 운영·유지보수 사업 · 분기별 대금청구</p>
+        <div class="tags">
+          <span class="tag tag--key">사업 관리</span><span class="tag">유지보수 계약</span>
+          <span class="tag">정책 확정</span><span class="tag">외부 연동</span><span class="tag">분기 정산</span>
+        </div>
+        <div class="proj__live"><button type="button" class="btn btn--primary-weak btn--sm" data-live-open data-live-tab="0" aria-haspopup="dialog"><span class="live-dot" aria-hidden="true"></span>공유오피스 대관 화면 보기</button></div>
+      </div>
+      <div class="proj__body">
+        <figure class="shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/%EC%84%9C%EC%9A%B8%EC%98%81%ED%99%94%EC%84%BC%ED%84%B0.png" alt="서울영화센터 포털 화면" loading="lazy">
+        </figure>
+        <div class="points">
+          <div class="point"><span class="point__ico">01</span><p><span class="point__who">고객사</span>착수계 작성부터 <b>PRD 정의와 대금 납부 협의</b>를 진행했고, 내부 기안을 거쳐 <span class="hl">고객사에 세금계산서를 요청</span>하는 단계까지 처리했습니다.</p></div>
+          <div class="point"><span class="point__ico">02</span><p><span class="point__who">협력사</span>내부 작업자와 일정을 맞추기 위해 <b>협력사의 요구와 요건</b>을 파악하고, 정리해서 작업자에게 전달했습니다.</p></div>
+          <div class="point"><span class="point__ico">03</span><p><span class="point__who">작업자</span>고객사 요구에 맞춰 <b>협력사와 공수를 조율</b>했고, 서로 다른 직군 사이의 작업 조율도 맡았습니다.</p></div>
+          <div class="result">유지보수를 이어 가며 유입 인원 <b>2025년 대비 50% 상승</b></div>
+        </div>
+      </div>
+
+      <!-- 사업 관리 흐름 요약 — 스윔레인 1줄 -->
+      <div class="swim">
+        <div class="swim__grid">
+          <div class="swim__who swim__who--me"><span>🧑‍💻</span>사업 관리<br>흐름</div>
+          <div class="swim__lane swim__lane--me">
+            <div class="swim__box">착수 · PRD 정의<small>착수계 작성</small></div>
+            <div class="arw">→</div>
+            <div class="swim__box">협력사 요건 정리<small>작업자에게 전달</small></div>
+            <div class="arw">→</div>
+            <div class="swim__box">공수 · 직군 조율<small>고객사 요구 반영</small></div>
+            <div class="arw">→</div>
+            <div class="swim__box">대금 청구<small>내부 기안 · 세금계산서 요청</small></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 02 서울영테크 ── -->
+    <article class="proj rise">
+      <span class="stepbadge">② 서울영테크 청년 재무상담 포털</span>
+      <div class="proj__head">
+        <p class="proj__claim">회의록과 WBS로 <em>과업 진척</em>을 관리하다</p>
+        <p class="proj__sub">청년 정책 포털 · 연 1억원 &nbsp;|&nbsp; WBS 일정 관리 · 회의록 · 과업 진행 현황 관리</p>
+        <div class="tags">
+          <span class="tag tag--key">사업 관리</span><span class="tag">회의록</span><span class="tag">WBS 일정 관리</span><span class="tag">요구 조정</span>
+        </div>
+      </div>
+      <div class="proj__body">
+        <figure class="shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/%EC%98%81%ED%85%8C%ED%81%AC.png" alt="서울영테크 청년 재무상담 포털 화면" loading="lazy">
+        </figure>
+        <div class="points">
+          <div class="point"><span class="point__ico">01</span><p><span class="point__who">고객사</span>회의가 끝나면 <b>회의록</b>을 정리했고, 과업별 진행 현황을 따로 관리해 진척을 보고했습니다.</p></div>
+          <div class="point"><span class="point__ico">02</span><p><span class="point__who">작업자</span>WBS를 세워 <span class="hl">복잡한 상담 플로우</span>의 구현 작업을 관리했습니다.</p></div>
+          <div class="point"><span class="point__ico">03</span><p><span class="point__who">요구 조정</span>고객사의 요구조건이 <b>구현 환경과 맞지 않는 부분</b>을 조정한 뒤 작업을 진행했습니다.</p></div>
+          <div class="result">월 4회이던 강의를 <b>월 8회까지 확대</b></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 03 국립부여박물관 ── -->
+    <article class="proj rise">
+      <span class="stepbadge">③ 국립부여박물관 누리집 개편·고도화</span>
+      <div class="proj__head">
+        <p class="proj__claim">3사 연동 일정을 조율하고 <em>고도화 계약</em>까지 잇다</p>
+        <p class="proj__sub">박물관·문화 · 5,000만원 + 고도화 2건 2천만원 &nbsp;|&nbsp; 누리집 개편 4개월 · 키오스크 발권 현황 연동</p>
+        <div class="tags">
+          <span class="tag tag--key">사업 관리</span><span class="tag">일정 조율</span>
+          <span class="tag">계약 · 정산</span><span class="tag">고도화 계약</span>
+        </div>
+        <div class="proj__live"><button type="button" class="btn btn--primary-weak btn--sm" data-live-open data-live-tab="1" aria-haspopup="dialog"><span class="live-dot" aria-hidden="true"></span>실시간 관람 현황 보기</button></div>
+      </div>
+      <div class="proj__body">
+        <figure class="shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/%EA%B5%AD%EB%A6%BD%EB%B6%80%EC%97%AC.png" alt="국립부여박물관 누리집 화면" loading="lazy">
+        </figure>
+        <div class="points">
+          <div class="point"><span class="point__ico">01</span><p><span class="point__who">고객사</span>유지보수와 별도로 고객사에 건의해 <span class="hl">고도화 계약 2건</span>을 맺었고, 두 건 모두 <b>착수 → 수행 → 완료</b>까지 진행했습니다.</p></div>
+          <div class="point"><span class="point__ico">02</span><p><span class="point__who">작업자 (바이브 코딩)</span>캐시·프록시 2개 안을 비교해 적용 방식을 정했고, 키오스크 API와 콘텐츠 페이지 수정 일부는 <b>바이브 코딩</b>으로 직접 처리했습니다.</p></div>
+          <div class="point"><span class="point__ico">03</span><p><span class="point__who">협력사</span>고객사와 협력사의 참여가 적극적이지 않아, 과업이 멈추지 않도록 <span class="hl">일정을 먼저 정리해 데드라인을 제시</span>했습니다. 내부에서 세운 일정에 맞춰 과업을 진행했고, <b>요구사항 명세서와 API 명세서</b> 등 필요한 자료를 요청했습니다.</p></div>
+          <div class="result">주말 매진율 <b>60% → 80%</b> · <b>고도화 계약 2건</b> 체결</div>
+        </div>
+      </div>
+
+      <!-- [J] 스윔레인 프로세스 -->
+      <div class="swim">
+        <div class="swim__grid">
+          <div class="swim__who swim__who--me"><span>🧑‍💻</span>내가<br>맡은 일</div>
+          <div class="swim__lane swim__lane--me">
+            <div class="swim__box">요구사항 접수<small>고객사 · 협력사</small></div>
+            <div class="arw">→</div>
+            <div class="swim__box">WBS 수립<small>일정 통보</small></div>
+            <div class="arw arw--dot">⋯</div>
+            <div class="swim__box">진행 관리<small>작업자 배분</small></div>
+            <div class="arw">→</div>
+            <div class="swim__box">검수 · 정산<small>완료계 · 대금청구</small></div>
+          </div>
+          <div class="swim__who swim__who--them"><span>🏛️</span>외부<br>3사</div>
+          <div class="swim__lane swim__lane--them">
+            <div class="swim__box">박물관 요구 정리</div>
+            <div class="arw arw--dot">⋯</div>
+            <div class="swim__box">키오스크사 일정</div>
+            <div class="arw arw--dot">⋯</div>
+            <div class="swim__box">예매사 연동 확인</div>
+            <div class="arw">→</div>
+            <div class="swim__box">연동 완료</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── 04 신세계DF ── -->
+    <article class="proj rise">
+      <span class="stepbadge">④ 신세계DF 면세 이커머스</span>
+      <div class="proj__head">
+        <p class="proj__claim">고객사 이벤트 일정에 맞춰 <em>작업 일정</em>을 잡다</p>
+        <p class="proj__sub">이커머스 · 그라비티 네오싸이언 &nbsp;|&nbsp; 신세계DF 운영 기획 · 프로모션 이벤트 (실무 담당)</p>
+        <div class="tags">
+          <span class="tag tag--key">운영 기획</span><span class="tag">이벤트 일정</span>
+          <span class="tag">쿠폰·포인트</span><span class="tag">구매 흐름</span>
+        </div>
+      </div>
+      <div class="proj__body">
+        <figure class="shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%9D%B4%EB%B2%A4%ED%8A%B8.png" alt="신세계DF 프로모션 이벤트 화면" loading="lazy">
+        </figure>
+        <div class="points">
+          <div class="point"><span class="point__ico">01</span><p><span class="point__who">고객사</span>신세계DF 이벤트 일정에 맞춰 <span class="hl">참여 조건, 회차 제한, 당첨 판정 규칙</span>을 정리했습니다.</p></div>
+          <div class="point"><span class="point__ico">02</span><p><span class="point__who">작업자</span>이벤트 일정에 맞춰 <span class="hl">백오피스 모듈 작업 일정을 조정</span>했습니다. 쿠폰·포인트 중복 지급과 기간 만료 같은 예외는 미리 정의해 함께 전달했습니다.</p></div>
+          <div class="point"><span class="point__ico">03</span><p><span class="point__who">서비스</span>BM을 확인하고, 고객 입장에서 <b>이벤트 배너 위치와 탭 구성</b> 같은 UX 결정에 참여했습니다.</p></div>
+          <div class="result">사업 관리 주체는 아니었지만, <b>판매 구조와 BM을 가까이서 볼 수 있었습니다</b></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<!-- ═══ [B] 간지 ═══ -->
+<section class="divider" data-dark>
+  <div class="divider__in wrap">
+    <p class="divider__no">03 &nbsp;/&nbsp; DELIVERABLES</p>
+    <h2>산출물</h2>
+  </div>
+</section>
+
+<!-- ═══ 03 산출물 ═══ -->
+<section class="sec" id="deliverables" style="background:var(--adaptiveBackground)">
+  <div class="wrap">
+    <div class="shead shead--ruled rise">
+      <h2>사업을 진행하며 쓴 문서를<br><em>관리 · 기획 · 데이터</em>로 나눴습니다</h2>
+    </div>
+
+    <div class="kinds rise">
+      <div class="kind"><h4>관리 문서</h4><ul><li>WBS · 일정 관리</li><li>착수계 · 완료계 · 대금청구 기안</li><li>월 업무보고 · 유지보수 보고서</li><li>회의록</li></ul></div>
+      <div class="kind"><h4>기획 문서</h4><ul><li>화면기획서 · 화면정의서</li><li>요구사항정의서</li><li>정책 문서</li></ul></div>
+      <div class="kind"><h4>데이터 문서</h4><ul><li>API 연계 기획서</li><li>데이터 요구사항 명세서 · DB 설계서</li><li>지표 화면 명세</li></ul></div>
+    </div>
+
+    <div class="cards cards--3 rise">
+      <figure class="card doccard">
+        <div class="doccard__shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/work-wbs.png" alt="WBS 발췌 — 사업 일정과 담당 배분" loading="lazy">
+        </div>
+        <figcaption class="doccard__txt">
+          <p class="doccard__kind">관리 문서</p>
+          <p class="doccard__name">사업 일정과 담당 배분</p>
+        </figcaption>
+      </figure>
+      <figure class="card doccard">
+        <div class="doccard__shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/work-screen.png" alt="화면기획서 발췌 — 환불계좌 등록 모달" loading="lazy">
+        </div>
+        <figcaption class="doccard__txt">
+          <p class="doccard__kind">기획 문서</p>
+          <p class="doccard__name">환불계좌 등록 모달 정의</p>
+          <button type="button" class="btn btn--primary-weak btn--sm doccard__more" data-doc-open aria-haspopup="dialog">
+            화면설계서 상세보기<span aria-hidden="true">→</span>
+          </button>
+        </figcaption>
+      </figure>
+      <figure class="card doccard">
+        <div class="doccard__shot">
+          <span class="samplebadge">예시</span>
+          <img src="images/work-data.png" alt="플로우차트 발췌 — 대관 신청 승인·입금 흐름" loading="lazy">
+        </div>
+        <figcaption class="doccard__txt">
+          <p class="doccard__kind">데이터 문서</p>
+          <p class="doccard__name">신청 승인 입금 플로우차트</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- ── AI 활용 ── -->
+    <div class="ai rise" style="margin-top:var(--s7)">
+      <div class="ai__head">
+        <h3 class="blk-h">AI 활용</h3>
+        <div class="track">
+          <div class="track__i">
+            <p class="track__t"><span class="n">01</span>계획</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">02</span>계획 검수</p>
+            <p class="track__d">페르소나 배정</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">03</span>구현</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">04</span>구현 검증</p>
+          </div>
+        </div>
+      </div>
+      <div class="ai__grid">
+        <div class="ai__i">
+          <span class="ai__no">01</span>
+          <span class="ai__disc"><span class="ai__ill"><svg viewBox="0 0 64 64" fill="none" stroke="#1b64da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M32 22V16"/><path d="M39.5 37.5 45.5 41"/><path d="M24.5 37.5 18.5 41"/>
+  <g class="aia-hub"><circle cx="32" cy="32" r="10.5" fill="#3182f6"/><circle cx="32" cy="32" r="3.6" fill="#fff" stroke="none"/></g>
+  <circle class="aia-node" cx="32" cy="11" r="5.5" fill="#ffc342"/>
+  <circle class="aia-node aia-node--2" cx="49.5" cy="44" r="5.5" fill="#c9e2ff"/>
+  <circle class="aia-node aia-node--3" cx="14.5" cy="44" r="5.5" fill="#c9e2ff"/>
+        </svg></span></span>
+          <span class="ai__t">MCP 연결</span>
+        </div>
+        <div class="ai__i">
+          <span class="ai__no">02</span>
+          <span class="ai__disc"><span class="ai__ill"><svg viewBox="0 0 64 64" fill="none" stroke="#1b64da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path class="aia-handle" d="M25 19v-1.5a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4V19"/>
+  <rect x="9" y="19" width="46" height="29" rx="5" fill="#c9e2ff"/>
+  <path d="M9 30.5h46"/>
+  <rect class="aia-latch" x="27" y="25" width="10" height="11" rx="2.4" fill="#ffc342"/>
+  <path d="M17 40h9"/><path d="M38 40h9"/>
+        </svg></span></span>
+          <span class="ai__t">개인 작업 툴 생성</span>
+        </div>
+        <div class="ai__i">
+          <span class="ai__no">03</span>
+          <span class="ai__disc"><span class="ai__ill"><svg viewBox="0 0 64 64" fill="none" stroke="#1b64da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <g class="aia-spin">
+    <path d="M49 32a17 17 0 0 1-28.6 12.4" stroke-width="2.4"/>
+    <path d="M15 32a17 17 0 0 1 28.6-12.4" stroke-width="2.4"/>
+    <path d="M43.5 12.5v7h-7"/>
+    <path d="M20.5 51.5v-7h7"/>
+  </g>
+  <circle cx="32" cy="32" r="9" fill="#ffc342"/>
+  <g class="aia-hand"><path d="M32 27.5V32l3 2.4" stroke-width="1.8"/></g>
+        </svg></span></span>
+          <span class="ai__t">반복 작업의 자동화</span>
+        </div>
+        <div class="ai__i">
+          <span class="ai__no">04</span>
+          <span class="ai__disc"><span class="ai__ill"><svg viewBox="0 0 64 64" fill="none" stroke="#1b64da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M8 22a4 4 0 0 1 4-4h10.5l4 5H52a4 4 0 0 1 4 4v4H8z" fill="#90c2ff"/>
+  <rect class="aia-paper" x="17" y="24" width="30" height="9" rx="2" fill="#fff"/>
+  <path d="M8 29h48v17a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z" fill="#c9e2ff"/>
+  <rect x="34" y="36" width="14" height="5" rx="2.5" fill="#ffc342"/>
+        </svg></span></span>
+          <span class="ai__t">폴더 관리</span>
+        </div>
+        <div class="ai__i">
+          <span class="ai__no">05</span>
+          <span class="ai__disc"><span class="ai__ill"><svg viewBox="0 0 64 64" fill="none" stroke="#1b64da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <rect x="9" y="13" width="46" height="38" rx="5" fill="#fff"/>
+  <path d="M9 22h46"/>
+  <circle cx="15.5" cy="17.5" r="1.5" fill="#1b64da" stroke="none"/>
+  <circle cx="21" cy="17.5" r="1.5" fill="#90c2ff" stroke="none"/>
+  <rect class="aia-bar" x="16" y="34" width="7.5" height="11" rx="1.8" fill="#c9e2ff"/>
+  <rect class="aia-bar aia-bar--2" x="28.2" y="29" width="7.5" height="16" rx="1.8" fill="#90c2ff"/>
+  <rect class="aia-bar aia-bar--3" x="40.4" y="25" width="7.5" height="20" rx="1.8" fill="#ffc342"/>
+        </svg></span></span>
+          <span class="ai__t">데이터 분석</span>
+        </div>
+        <div class="ai__i">
+          <span class="ai__no">06</span>
+          <span class="ai__disc"><span class="ai__ill"><svg viewBox="0 0 64 64" fill="none" stroke="#1b64da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <rect class="aia-back" x="11" y="14" width="30" height="39" rx="4" fill="#c9e2ff"/>
+  <rect x="21" y="11" width="31" height="41" rx="4" fill="#fff"/>
+  <path d="M27 24h19"/><path d="M27 31h19"/><path d="M27 38h11"/>
+  <path class="aia-mark" d="M38 11h8v12l-4-3-4 3z" fill="#ffc342"/>
+        </svg></span></span>
+          <span class="ai__t">보고자료 정리</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ [B] 간지 ═══ -->
+<section class="divider" data-dark>
+  <div class="divider__in wrap">
+    <p class="divider__no">04 &nbsp;/&nbsp; MANAGEMENT</p>
+    <h2>사업 관리</h2>
+  </div>
+</section>
+
+<!-- ═══ 04 사업 관리 ═══ -->
+<section class="sec" id="management" style="background:var(--adaptiveBackground)">
+  <div class="wrap">
+    <div class="shead shead--ruled rise">
+      <span class="shead__no">04</span>
+      <h2>계약 문서와 프로젝트 일정을<br><em>사업 단위</em>로 관리했습니다.</h2>
+      <p><b>계약 · 기안 · 대금청구</b>로 이어지는 행정 절차와 <b>디자이너 · 개발자 작업 배분(WBS)</b>을 맡았습니다.</p>
+    </div>
+
+    <!-- ── 04-1 계약 관리 ── -->
+    <h3 class="blk-h rise">계약 관리<span class="blk-h__badge">기안 · 대금청구</span></h3>
+    <p class="blk-lead rise">사업이 시작되면 <b>착수계부터 완료계, 정산까지</b> 계약 문서를 직접 작성했습니다. 내부 기안으로 결재를 올린 뒤 고객사에 제출했고, 내용이 바뀌면 수정기안으로 다시 올렸습니다.</p>
+
+    <div class="mgmt rise">
+      <div class="mgmt__col">
+        <div class="track">
+          <div class="track__i">
+            <p class="track__t"><span class="n">01</span>착수 · 계약 문서</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">02</span>월별 업무보고</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">03</span>대금청구 기안</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">04</span>수정기안 · 재상신</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">05</span>완료계 · 정산</p>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>사업 3건 동시 청구</b><span>국립부여박물관 · 자전거행복나눔은 월별로, 서울영화센터는 분기별로 업무보고와 대금청구를 나눠 처리했습니다</span></div>
+        </div>
+      </div>
+
+      <figure class="mgmt__fig">
+        <span class="samplebadge">예시</span>
+        <img src="images/pm-contract.png" alt="내부 기안 목록 발췌 — 사업별 월 업무보고와 대금청구 기안 (문서 제목은 블러 처리)" loading="lazy">
+      </figure>
+    </div>
+
+    <!-- ── 04-2 프로젝트 관리 ── -->
+    <h3 class="blk-h rise" style="margin-top:var(--s7)">프로젝트 관리<span class="blk-h__badge">파트별 작업 배분</span></h3>
+    <p class="blk-lead rise">에이전시에서는 한 사람이 여러 사업을 동시에 맡기 때문에 <b>WBS를 같이 보며 확인하는 과정</b>이 꼭 필요했습니다. 기획 산출물이 나오는 순서에 맞춰 디자이너 · 개발자의 착수 시점을 정했고, 일정이 겹치면 담당자와 조율했습니다.</p>
+
+    <div class="crew rise">
+      <article class="crew__c">
+        <svg class="crew__av" viewBox="0 0 96 112" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1b64da" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="디자이너 캐릭터">
+          <circle cx="48" cy="52" r="43" fill="#f1f7ff" stroke="none"/>
+          <path d="M18 110c0-15 13-26 30-26s30 11 30 26" fill="#c9e2ff"/>
+          <path d="M41 86l7 8 7-8"/>
+          <path d="M42 73v9"/><path d="M54 73v9"/>
+          <circle cx="48" cy="52" r="19" fill="#ffffff"/>
+          <path d="M29 52a19 19 0 0138 0c-1.6-4.6-5-7.8-9.6-8.8-3.4-.8-6.2 1.2-9.4 1.2s-6-2-9.4-1.2C34 44.2 30.6 47.4 29 52z" fill="#1b64da" stroke="none"/>
+          <path d="M30.2 47.5c-2.4 7-2.4 14.6-.6 21.6l5-1.1c-1.4-6.4-1.4-13 .4-19z" fill="#1b64da" stroke="none"/>
+          <path d="M65.8 47.5c2.4 7 2.4 14.6.6 21.6l-5-1.1c1.4-6.4 1.4-13-.4-19z" fill="#1b64da" stroke="none"/>
+          <circle cx="41.5" cy="53" r="1.9" fill="#1b64da" stroke="none"/>
+          <circle cx="54.5" cy="53" r="1.9" fill="#1b64da" stroke="none"/>
+          <path d="M44 59.5c2.4 2.2 5.6 2.2 8 0"/>
+          <g class="cha-pen">
+            <rect x="70" y="55" width="8" height="21" rx="2.4" fill="#ffc342"/>
+            <path d="M70 76l4 6.5 4-6.5z" fill="#1b64da" stroke="none"/>
+            <path d="M70 60h8"/>
+          </g>
+          <circle class="cha-f1" cx="16" cy="30" r="4.6" fill="#ffc342"/>
+          <rect class="cha-f2" x="71" y="21" width="9.5" height="9.5" rx="2.4" fill="#90c2ff"/>
+          <path class="cha-f3" d="M17.5 60l5 8h-10z" fill="#90c2ff"/>
+        </svg>
+        <div>
+          <span class="crew__role">디자이너 · 퍼블리셔</span>
+          <p class="crew__n">시안을 먼저 받아 고객사 협의에 씁니다</p>
+          <p class="crew__d">고객사가 가장 빨리 이해하는 산출물이 시안입니다. 필요할 때는 기획서보다 컨셉 시안을 먼저 요청해, 시안을 놓고 고객사와 협의하면서 기획을 같이 진행했습니다.</p>
+        </div>
+      </article>
+      <article class="crew__c">
+        <svg class="crew__av" viewBox="0 0 96 112" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1b64da" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="프로그래머 캐릭터">
+          <circle cx="48" cy="52" r="43" fill="#f1f7ff" stroke="none"/>
+          <path d="M18 110c0-15 13-26 30-26s30 11 30 26" fill="#c9e2ff"/>
+          <path d="M41 86l7 8 7-8"/>
+          <path d="M42 73v9"/><path d="M54 73v9"/>
+          <circle cx="48" cy="52" r="19" fill="#ffffff"/>
+          <path d="M29 52a19 19 0 0138 0c-1.2-5.4-4.8-9-9.6-10-3.6-.8-6.2 1.4-9.4 1.4s-5.8-2.2-9.4-1.4C33.8 43 30.2 46.6 29 52z" fill="#1957c2" stroke="none"/>
+          <path d="M60 42.5c3.4 1.4 5.6 4 6.6 7.5" stroke="#1957c2"/>
+          <circle cx="41.5" cy="53" r="1.9" fill="#1b64da" stroke="none"/>
+          <circle cx="54.5" cy="53" r="1.9" fill="#1b64da" stroke="none"/>
+          <path d="M44 59.5c2.4 2.2 5.6 2.2 8 0"/>
+          <g class="cha-win">
+            <rect x="61" y="54" width="28" height="22" rx="3.4" fill="#ffffff"/>
+            <path d="M61 60.5h28"/>
+            <circle cx="65" cy="57.2" r="1.1" fill="#1b64da" stroke="none"/>
+            <path class="cha-l1" d="M66 67h12"/>
+            <path class="cha-l2" d="M66 71.5h7"/>
+          </g>
+          <path class="cha-b1" d="M20.5 25c-3.2 0-3.2 4.5-6.4 4.5 3.2 0 3.2 4.5 6.4 4.5"/>
+          <path class="cha-b2" d="M76 22.5c3.2 0 3.2 4.5 6.4 4.5-3.2 0-3.2 4.5-6.4 4.5"/>
+          <circle class="cha-dot" cx="18" cy="62" r="4.4" fill="#ffc342"/>
+        </svg>
+        <div>
+          <span class="crew__role">프로그래머 · 개발</span>
+          <p class="crew__n">착수는 앞당기고 마감은 여유 있게 잡습니다</p>
+          <p class="crew__d">고객사가 결과를 바로 체감하기는 어렵지만, 꼼꼼하게 만들고 테스트를 자주 해야 하는 작업입니다. 그래서 착수는 최대한 빨리 하고 마감에는 여유를 두도록 일정을 조정했습니다.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="mgmt rise" style="margin-top:var(--s5)">
+      <div class="mgmt__col">
+        <div class="track">
+          <div class="track__i">
+            <p class="track__t"><span class="n">01</span>주간 계획 수립</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">02</span>직군별 배분</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">03</span>진행 점검</p>
+          </div>
+          <div class="track__i">
+            <p class="track__t"><span class="n">04</span>검수 · 공유</p>
+          </div>
+        </div>
+      </div>
+
+      <figure class="mgmt__fig">
+        <span class="samplebadge">예시</span>
+        <img src="images/pm-schedule.png" alt="주간 업무 현황판 발췌 — 담당자별 프로젝트와 날짜별 작업 배분" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 특장점 ═══ -->
+<section class="sec" id="strengths" style="background:var(--adaptiveBackgroundLevelB01)">
+  <div class="wrap">
+    <div class="shead shead--ruled rise">
+      <span class="shead__no">05</span>
+      <h2>사업 관리에서 해 온 일을 <em>여섯 가지</em>로 정리했습니다.</h2>
+    </div>
+
+    <div class="cards cards--3 rise">
+      <div class="card">
+        <p class="card__no">01</p>
+        <p class="card__copy"><em>계약</em> · 기안 · 정산</p>
+        <p class="card__desc">착수계, 월 업무보고, 대금청구, 완료계를 작성해 내부 결재와 고객사 제출까지 처리했습니다.</p>
+      </div>
+      <div class="card">
+        <p class="card__no">02</p>
+        <p class="card__copy"><em>협력사 일정</em> 조율</p>
+        <p class="card__desc">여러 회사가 걸린 연동 작업에서 WBS로 일정을 먼저 통보하고, 필요한 문서를 미리 써 두어 내부 일정을 지켰습니다.</p>
+      </div>
+      <div class="card">
+        <p class="card__no">03</p>
+        <p class="card__copy"><em>작업 배분</em> · 진행 점검</p>
+        <p class="card__desc">디자이너 · 개발자의 착수 시점을 산출물 순서에 맞추고, 주간 현황판으로 담당자별 진행을 확인했습니다.</p>
+      </div>
+      <div class="card">
+        <p class="card__no">04</p>
+        <p class="card__copy"><em>유지보수</em> · 고도화 제안</p>
+        <p class="card__desc">구축이 끝난 뒤 유지보수 계약으로 운영을 이어 갔고, 운영 중 불편한 부분을 제안해 고도화 계약 2건을 맺었습니다.</p>
+      </div>
+      <div class="card">
+        <p class="card__no">05</p>
+        <p class="card__copy"><em>운영 정책</em> 확정</p>
+        <p class="card__desc">기능을 바꿀 때 영향 범위를 확인하고 여러 안을 비교해 고객사와 정책을 정했습니다. 이벤트 · 쿠폰 지급 규칙도 같은 방식으로 정리했습니다.</p>
+      </div>
+      <div class="card">
+        <p class="card__no">06</p>
+        <p class="card__copy"><em>AI 활용</em> · 문서와 바이브 코딩</p>
+        <p class="card__desc">보고 자료와 문서 작업에 AI를 쓰고, 일부 페이지 수정은 바이브 코딩으로 직접 처리했습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 맺음말 ═══ -->
+<section class="closing" id="closing" data-dark>
+  <div class="wrap">
+    <h2>계약부터 정산까지,<br>사업 단위로 맡아 왔습니다</h2>
+    <p>고객사, 협력사, 작업자 사이에서 일정을 맞추고 결정한 내용을 문서로 남기는 일을 해 왔습니다. 이 경험을 게임 사업 PM 업무에서 이어 가고 싶습니다.</p>
+    <div class="closing__contact">
+      <a href="mailto:sun8070vvv20@gmail.com">sun8070vvv20@gmail.com</a>
+      <span class="closing__sep" aria-hidden="true"></span>
+      <a href="tel:01072220473">010-7222-0473</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__in wrap">
+    <span class="foot__name">박세훈 · GAME BUSINESS PM · 2026</span>
+    <div class="foot__c">
+      <a href="mailto:sun8070vvv20@gmail.com">sun8070vvv20@gmail.com</a>
+      <a href="tel:01072220473">010-7222-0473</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ 바이브코딩 산출물 모달 ═══ -->
+<div class="lvmodal" id="lvmodal" hidden role="dialog" aria-modal="true" aria-label="바이브코딩 산출물 예시">
+  <div class="lvmodal__scrim" data-lv-close></div>
+  <div class="lvmodal__panel">
+    <div class="lvmodal__bar">
+      <nav class="lvmodal__tabs" role="tablist" aria-label="바이브코딩 산출물 예시 선택">
+      <button type="button" class="lvtab" role="tab" aria-selected="true" data-src="demo/sfc-office.html" data-title="공유오피스 대관 신청" data-note="공유오피스는 다른 시설과 달리 <b>좌석을 먼저 고르고 날짜를 정하는 역순</b>입니다. 좌석마다 단기·장기 구분이 달라 선택 가능한 기간이 바뀌기 때문입니다. 좌석은 <b>사용 좌석 목록과 장기 좌석 목록의 교집합으로 3상태(단기·장기·미사용)</b>를 판정해 미사용 좌석은 아예 노출하지 않고, 좌석을 바꾸면 이미 고른 날짜를 초기화합니다.">서울영화센터<small>공유오피스 대관 신청</small></button>
+      <button type="button" class="lvtab" role="tab" aria-selected="false" data-src="demo/sfc-coupon.html" data-title="쿠폰 관리">서울영화센터<small>쿠폰 관리 CMS</small></button>
+      <button type="button" class="lvtab" role="tab" aria-selected="false" data-src="demo/buyeo-ticket.html" data-title="실시간 관람 현황" data-note="외부 키오스크 API를 30초 주기로 받아 회차별 발권 상황을 보여 줍니다. <b>진행 · 종료 · 매진 · 운영중지 4가지 상태</b>를 서버 응답으로만 판정하도록 정의해, 클라이언트 시계와 서버 시간이 어긋나도 표시가 흔들리지 않게 했습니다. 휴관일에는 섹션 자체를 안내 화면으로 교체합니다.">국립부여박물관<small>실시간 관람 현황</small></button>
+      <button type="button" class="lvtab" role="tab" aria-selected="false" data-src="demo/bike-cert.html" data-title="관리자 로그인 · 본인인증" data-note="관리자 로그인 앞단에 본인인증을 세워 인증 성공 시에만 세션이 열리도록 설계했습니다. <b>암호화 실패 5종을 각각 다른 안내로 분기</b>해, 재시도할지 관리자에게 문의할지 사용자가 판단할 수 있게 했습니다. 화면 안에서 정상 / 실패 상태를 전환해 볼 수 있습니다.">자전거행복나눔<small>관리자 로그인 · 본인인증</small></button>
       </nav>
-      <div style="display:flex;flex-direction:column;gap:8px;margin-top:40px;max-width:200px">
-        <a href="portfolio.pdf" download style="display:flex;align-items:center;gap:7px;padding:12px 16px;background:#1A1A1A;color:#FBFAF8;font-size:13px;font-weight:600;white-space:nowrap;transition:background .2s ease" style-hover="background:#A6462B"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 11l5 5 5-5"></path><path d="M4 20h16"></path></svg>PDF 다운로드</a>
-        <a href="../" style="display:flex;align-items:center;justify-content:space-between;gap:7px;padding:12px 16px;border:1px solid #D6D0C7;color:#1A1A1A;font-size:13px;font-weight:600;white-space:nowrap;transition:all .2s ease" style-hover="border-color:#1A1A1A">지원서 페이지로 이동<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M12 5l7 7-7 7"></path></svg></a>
-      </div>
+      <button type="button" class="lvmodal__x" data-lv-close aria-label="닫기">&times;</button>
     </div>
-    <div style="font-size:13px;line-height:1.95;color:#8A8681">
-      sun8070vvv20@gmail.com<br>010-7222-0473<br>2026. 8.
+    <div class="lvmodal__stage">
+      <iframe id="lv-frame" title="바이브코딩 산출물 예시" loading="lazy"></iframe>
     </div>
-  </aside>
-
-  <main style="padding:0 76px 0 0">
-
-    <header style="box-sizing:border-box;display:flex;flex-direction:column;padding:56px 0 56px;position:relative">
-      <div style="font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#A6462B">Game Business PM Portfolio</div>
-      <h1 style="margin:34px 0 0;font-size:40px;font-weight:700;line-height:1.5;letter-spacing:-.035em;max-width:19em;text-wrap:pretty">웹·앱과 이커머스에서 쌓은 사업 및 프로젝트 경험을 바탕으로, <span style="color:#A6462B">게임산업에서 새로운 사업 기회를 발굴</span>하고 서비스의 가치를 만들어가고 싶습니다.</h1>
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:44px;padding-top:24px;border-top:1px solid #1A1A1A">
-        <div><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8A8681">Career</div><div style="margin-top:10px;font-size:32px;font-weight:700;letter-spacing:-.04em">4년 5개월</div></div>
-        <div><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8A8681">Projects</div><div style="margin-top:10px;font-size:32px;font-weight:700;letter-spacing:-.04em">4건</div></div>
-        <div><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8A8681">Scale</div><div style="margin-top:10px;font-size:32px;font-weight:700;letter-spacing:-.04em">~1억원</div></div>
-        <div><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8A8681">Field</div><div style="margin-top:10px;font-size:32px;font-weight:700;letter-spacing:-.04em">Live Ops</div></div>
-      </div>
-    </header>
-
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:56px">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:1px solid #1A1A1A">
-          <span style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8A8681">활용툴</span>
-          <span style="font-size:13px;color:#8A8681">설계 · 문서 · 협업 · 구현</span>
-        </div>
-        <ul class="tool-grid" style="list-style:none;margin:0;padding:0">
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/figma.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">Figma</span><span style="height:4px;background:#E7E3DD"><i data-bar="62%" style="display:block;height:100%;width:62%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1)"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">중</span></li>
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/ppt.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">PowerPoint · Slides</span><span style="height:4px;background:#E7E3DD"><i data-bar="90%" style="display:block;height:100%;width:90%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1) .08s"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">상</span></li>
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/excel.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">Excel · Sheets</span><span style="height:4px;background:#E7E3DD"><i data-bar="62%" style="display:block;height:100%;width:62%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1) .16s"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">중</span></li>
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/hwp.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">한글 · Word</span><span style="height:4px;background:#E7E3DD"><i data-bar="90%" style="display:block;height:100%;width:90%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1) .24s"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">상</span></li>
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/slack.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">Slack</span><span style="height:4px;background:#E7E3DD"><i data-bar="90%" style="display:block;height:100%;width:90%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1) .32s"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">상</span></li>
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/vscode.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">VS Code</span><span style="height:4px;background:#E7E3DD"><i data-bar="62%" style="display:block;height:100%;width:62%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1) .40s"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">중</span></li>
-          <li style="display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr) 30px;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid #E7E3DD"><span style="display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600"><img src="uploads/icons/claude.png" alt="" width="22" height="22" loading="lazy" style="width:22px;height:22px;object-fit:contain;flex:none">생성형 AI</span><span style="height:4px;background:#E7E3DD"><i data-bar="62%" style="display:block;height:100%;width:62%;background:#A6462B;transition:width 1.1s cubic-bezier(.22,1,.36,1) .48s"></i></span><span style="font-size:13px;font-weight:700;color:#A6462B;text-align:right">중</span></li>
-        </ul>
-      </div>
-
-    <section id="s1" style="padding:72px 0 0">
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="display:flex;align-items:baseline;gap:18px">
-          <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#A6462B">01</span>
-          <h2 style="margin:0;font-size:40px;font-weight:700;letter-spacing:-.04em">소개</h2>
-        </div>
-        <p style="margin:24px 0 0;font-size:19px;line-height:1.85;max-width:44em;text-wrap:pretty">공공·문화 포털과 면세 이커머스에서 기획 PL로 일했습니다. 5,000만원부터 1억원 미만 규모의 사업을 맡아 요구사항 접수부터 일정 관리, 검수와 정산까지 책임졌고, 관리자 시스템을 직접 설계해 이벤트와 쿠폰 발급을 운영했습니다.</p>
-        <p style="margin:14px 0 0;font-size:16px;line-height:1.85;color:#6E6A65;max-width:44em">아래는 <b style="color:#1A1A1A">02 프로젝트</b>에서 문제를 어떻게 풀었는지, <b style="color:#1A1A1A">03 산출물</b>에서 무엇을 만들어 냈는지, <b style="color:#1A1A1A">04 특장점</b>에서 어떤 일을 맡을 수 있는지 순서로 읽으시면 됩니다.</p>
-        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:26px">
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">기획 PL</span>
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">사업 관리</span>
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">라이브 운영</span>
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">경력 4년 5개월</span>
-        </div>
-        </sc-if>
-      </div>
-
-      <dl data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1) .08s,transform .7s cubic-bezier(.22,1,.36,1) .08s;margin:48px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:60px">
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">이름</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">박세훈 · Park Sehoon</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">생년월일</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">1993. 6. 1.</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">경력</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">4년 5개월 · 서비스 기획 PL · 사업 관리</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">지원 분야</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">게임 사업 PM · 라이브 옵스</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">학력</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">울산대학교 역사·문화 졸업 (2012.03–2020.02)</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">병역</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">육군 만기전역 (2013.04–2015.01)</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">이메일</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">sun8070vvv20@gmail.com</dd></div>
-        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid #E7E3DD"><dt style="margin:0;font-size:13px;color:#8A8681">휴대폰 번호</dt><dd style="margin:0;font-size:15.5px;overflow-wrap:anywhere">010-7222-0473</dd></div>
-      </dl>
-
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:64px">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:1px solid #1A1A1A">
-          <span style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8A8681">Career</span>
-          <span style="font-size:13px;color:#8A8681">4년 5개월</span>
-        </div>
-        <div style="display:grid;grid-template-columns:180px minmax(0,1fr);gap:44px;padding:32px 0;border-bottom:1px solid #E7E3DD">
-          <span style="font-size:14px;color:#8A8681;padding-top:7px">2025. 2. ~ 현재</span>
-          <div>
-            <h3 style="margin:0;font-size:26px;font-weight:700;letter-spacing:-.03em">(주)이노디스 · 웹서비스팀 기획 PL</h3>
-            <p style="margin:10px 0 0;font-size:15.5px;color:#6E6A65">공공·문화 포털의 유지보수, 고도화, 재구축 — 담당 프로젝트 전부 사업 관리 담당</p>
-            <div style="margin-top:18px;padding-left:18px;border-left:2px solid #A6462B">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#A6462B">맡은 범위</div>
-              <p style="margin:9px 0 0;font-size:15px;line-height:1.8;color:#4A4844">사업 금액 5,000만원~1억원 미만 구간의 공기관 사업을 맡아 요구사항 접수부터 검수·정산까지 운영했습니다. WBS로 사업 일정과 소속 기획자의 업무를 함께 관리했고, 구축 이후의 상시 운영과 고도화도 이어서 담당했습니다.</p>
-            </div>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:180px minmax(0,1fr);gap:44px;padding:32px 0;border-bottom:1px solid #E7E3DD">
-          <span style="font-size:14px;color:#8A8681;padding-top:7px">2024. 1. ~ 2024. 11.</span>
-          <div>
-            <h3 style="margin:0;font-size:26px;font-weight:700;letter-spacing:-.03em">(주)그라비티 네오싸이언 · 대리</h3>
-            <p style="margin:10px 0 0;font-size:15.5px;color:#6E6A65">면세 이커머스 운영 기획 및 프로모션 이벤트 기획</p>
-            <div style="margin-top:18px;padding-left:18px;border-left:2px solid #A6462B">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#A6462B">맡은 범위</div>
-              <p style="margin:9px 0 0;font-size:15px;line-height:1.8;color:#4A4844">상품 노출과 구매 흐름을 중심으로 사용자·관리자 화면 운영을 기획했습니다. 참여형 프로모션의 참여 조건과 회차 제한, 당첨 판정 규칙을 정하고 쿠폰·포인트 지급 규칙과 중복 지급·기간 만료 예외를 정의했습니다.</p>
-            </div>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:180px minmax(0,1fr);gap:44px;padding:32px 0;border-bottom:1px solid #E7E3DD">
-          <span style="font-size:14px;color:#8A8681;padding-top:7px">2021. 7. ~ 2023. 6.</span>
-          <div>
-            <h3 style="margin:0;font-size:26px;font-weight:700;letter-spacing:-.03em">(주)이노컴즈 · 주임</h3>
-            <p style="margin:10px 0 0;font-size:15.5px;color:#6E6A65">업무 시스템과 공공 홈페이지의 서비스 기획 실무</p>
-            <div style="margin-top:18px;padding-left:18px;border-left:2px solid #A6462B">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#A6462B">맡은 범위</div>
-              <p style="margin:9px 0 0;font-size:15px;line-height:1.8;color:#4A4844">출입증 시스템과 전자결재 업무 시스템 등 폐쇄형 시스템의 화면과 API 연계를 기획했고, 공공 홈페이지 반응형 리뉴얼의 화면정의서를 작성했습니다.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="s2" style="padding:120px 0 0">
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="display:flex;align-items:baseline;gap:18px">
-          <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#A6462B">02</span>
-          <h2 style="margin:0;font-size:40px;font-weight:700;letter-spacing:-.04em">프로젝트</h2>
-        </div>
-        <p style="margin:24px 0 0;font-size:19px;line-height:1.85;max-width:46em;text-wrap:pretty">사업 관리를 맡은 일 가운데 결과가 뚜렷한 네 건입니다. 프로젝트마다 <b>사업 관리, 운영, 데이터 설계</b> 관점에서 무엇을 맡아 무엇이 달라졌는지를 한 줄씩 적었습니다.</p>
-      </div>
-
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:48px;padding-top:26px;border-top:1px solid #1A1A1A">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
-          <span style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8A8681">공통업무 경험</span>
-          <span style="font-size:13px;color:#8A8681">프로젝트와 무관하게 늘 맡아 온 일</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:28px;border-top:1px solid #E7E3DD">
-          <div style="padding:26px 28px 26px 0;border-right:1px solid #E7E3DD">
-            <div style="display:flex;align-items:center;gap:12px"><span style="font-size:34px;font-weight:700;letter-spacing:-.05em;color:#A6462B;line-height:1">01</span><span style="flex:1;height:1px;background:#A6462B"></span></div>
-            <p style="margin:16px 0 0;font-size:18px;line-height:1.55;font-weight:700;letter-spacing:-.02em">기획서 · WBS 등 문서 작업</p>
-          </div>
-          <div style="padding:26px 28px;border-right:1px solid #E7E3DD">
-            <div style="display:flex;align-items:center;gap:12px"><span style="font-size:34px;font-weight:700;letter-spacing:-.05em;color:#A6462B;line-height:1">02</span><span style="flex:1;height:1px;background:#A6462B"></span></div>
-            <p style="margin:16px 0 0;font-size:18px;line-height:1.55;font-weight:700;letter-spacing:-.02em">내부 기안 처리 및 계약 문서 작성</p>
-          </div>
-          <div style="padding:26px 0 26px 28px">
-            <div style="display:flex;align-items:center;gap:12px"><span style="font-size:34px;font-weight:700;letter-spacing:-.05em;color:#A6462B;line-height:1">03</span><span style="flex:1;height:1px;background:#A6462B"></span></div>
-            <p style="margin:16px 0 0;font-size:18px;line-height:1.55;font-weight:700;letter-spacing:-.02em">고객과의 커뮤니케이션</p>
-          </div>
-        </div>
-      </div>
-
-      <article data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:64px;padding-top:34px;border-top:1px solid #1A1A1A">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:28px">
-          <h3 style="margin:0;font-size:34px;font-weight:700;letter-spacing:-.04em"><span style="color:#A6462B;font-size:20px;margin-right:14px">01</span>서울영화센터 포털 재구축</h3>
-          <span style="font-size:14px;color:#8A8681;white-space:nowrap">예술 포털 · 연 8천만원</span>
-        </div>
-        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:18px">
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">라이브 운영</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">쿠폰 동기화</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">상태 설계</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">CMS 신규</span>
-        </div>
-        </sc-if>
-        <figure style="margin:32px 0 0;overflow:hidden;border-radius:10px;box-shadow:0 24px 60px rgba(26,26,26,.14);transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)">
-          <img src="uploads/%EC%84%9C%EC%9A%B8%EC%98%81%ED%99%94%EC%84%BC%ED%84%B0.png" alt="서울영화센터 멤버십 안내 화면" style="display:block;width:100%;height:auto;border:1px solid #E7E3DD;border-radius:10px">
-        </figure>
-        <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px;margin-top:36px">
-          <div>
-            <p style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.4">이용자 유입을 늘리다</p>
-            <p style="margin:12px 0 0;font-size:15px;color:#8A8681">통계 페이지 · 쿠폰 관리 페이지 신설</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844"><b style="color:#1A1A1A">일·월·년 단위 통계 페이지</b>를 신설해 유입 연령대와 방문 시간대를 파악</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">쿠폰 발급을 하드코딩 방식에서 <b style="color:#1A1A1A">CMS의 기능</b>으로 기획·구축해 이벤트 혜택 구성의 유연성을 높임</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">고객사와 논의해 지속적인 유지보수를 이어가며 유입 인원 <b style="color:#A6462B">2025년 대비 50% 상승</b></li>
-          </ul>
-        </div>
-      </article>
-
-      <article data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:88px;padding-top:34px;border-top:1px solid #1A1A1A">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:28px">
-          <h3 style="margin:0;font-size:34px;font-weight:700;letter-spacing:-.04em"><span style="color:#A6462B;font-size:20px;margin-right:14px">02</span>서울영테크 청년 재무상담 포털</h3>
-          <span style="font-size:14px;color:#8A8681;white-space:nowrap">공공 서비스 · 연 1억원</span>
-        </div>
-        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:18px">
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">사업 관리</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">운영</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">유저 분석</span>
-        </div>
-        </sc-if>
-        <figure style="margin:32px 0 0;max-height:620px;overflow:hidden;border-radius:10px;box-shadow:0 24px 60px rgba(26,26,26,.14);transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)">
-          <img src="uploads/%EC%98%81%ED%85%8C%ED%81%AC.png" alt="서울영테크 맞춤 재무 상담 신청 화면" style="display:block;width:100%;height:auto;border:1px solid #E7E3DD;border-radius:10px">
-        </figure>
-        <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px;margin-top:36px">
-          <div>
-            <p style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.4">신청자 유형을 그룹핑하다</p>
-            <p style="margin:12px 0 0;font-size:15px;color:#8A8681">다양한 신청자의 유형을 경험 및 데이터 분석하여 그룹핑 진행</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">상담 신청 → 상담사 배정 → 상담 진행 → 상담 완료 <b style="color:#1A1A1A">4단계 절차 화면</b> 구축 진행</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">운영 단계에서 <b style="color:#1A1A1A">다양한 직종·연령층</b>을 접하는 경험을 함</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">직종 등 상담 유형에 따른 <b style="color:#1A1A1A">그룹 강의</b>를 제시</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844"><b style="color:#A6462B">월 4회이던 강의를 월 8회까지 확대</b></li>
-          </ul>
-        </div>
-      </article>
-
-      <article data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:88px;padding-top:34px;border-top:1px solid #1A1A1A">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:28px">
-          <h3 style="margin:0;font-size:34px;font-weight:700;letter-spacing:-.04em"><span style="color:#A6462B;font-size:20px;margin-right:14px">03</span>국립부여박물관 누리집 개편·고도화</h3>
-          <span style="font-size:14px;color:#8A8681">공공·문화 · 5,000만원 + 고도화 2건 2천만원</span>
-        </div>
-        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:18px">
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">사업 관리</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">요구 명세</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">대안 비교</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">데이터 설계</span>
-        </div>
-        </sc-if>
-        <figure style="margin:32px 0 0;max-height:620px;overflow:hidden;border-radius:10px;box-shadow:0 24px 60px rgba(26,26,26,.14);transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)">
-          <img src="uploads/%EA%B5%AD%EB%A6%BD%EB%B6%80%EC%97%AC.png" alt="국립부여박물관 백제대향로관 전시안내 화면" style="display:block;width:100%;height:auto;border:1px solid #E7E3DD;border-radius:10px">
-        </figure>
-        <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px;margin-top:36px">
-          <div>
-            <p style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.4">사업을 관리하다</p>
-            <p style="margin:12px 0 0;font-size:15px;color:#8A8681">3사 연동 일정 조율 · 발권 현황 노출 · 고도화 계약 2건</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">외부 키오스크 연동 작업에 <b style="color:#1A1A1A">3개 고객사·협력사가 얽혀</b> 각자의 사정으로 일정이 모이지 않던 상황에서, <b style="color:#1A1A1A">WBS로 작업 일정을 통보</b>해 내부 일정을 관리한 경험</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">예약 페이지 바로가기를 추가해 발권 현황을 파악하게 함으로써 <b style="color:#A6462B">주말 매진율 60% → 80% 달성</b></li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">고객사의 불편한 부분을 기능 추가로 제시해 <b style="color:#1A1A1A">고도화 계약 2건</b>을 진행</li>
-          </ul>
-        </div>
-      </article>
-
-      <article data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:88px;padding-top:34px;border-top:1px solid #1A1A1A">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:28px">
-          <h3 style="margin:0;font-size:34px;font-weight:700;letter-spacing:-.04em"><span style="color:#A6462B;font-size:20px;margin-right:14px">04</span>신세계DF 면세 이커머스</h3>
-          <span style="font-size:14px;color:#8A8681">이커머스</span>
-        </div>
-        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:18px">
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">운영 기획</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">프로모션</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">쿠폰·포인트</span>
-          <span style="font-size:13px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">구매 흐름</span>
-        </div>
-        </sc-if>
-        <figure style="margin:32px 0 0;max-height:620px;overflow:hidden;border-radius:10px;box-shadow:0 24px 60px rgba(26,26,26,.14);transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)">
-          <img src="uploads/%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%9D%B4%EB%B2%A4%ED%8A%B8.png" alt="신세계면세점 혜택 모음 화면" style="display:block;width:100%;height:auto;border:1px solid #E7E3DD;border-radius:10px">
-        </figure>
-        <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px;margin-top:36px">
-          <div>
-            <p style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.4">대형 이커머스를 경험하다</p>
-            <p style="margin:12px 0 0;font-size:15px;color:#8A8681">면세 이커머스 운영 기획 및 프로모션 이벤트 기획</p>
-          </div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">상품 노출부터 주문·결제까지 <b style="color:#1A1A1A">구매 흐름을 점검</b>해 개선안을 정리</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">상품 노출과 구매 흐름을 중심으로 <b style="color:#1A1A1A">사용자·관리자 화면 운영</b>을 기획</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">참여형 프로모션의 <b style="color:#1A1A1A">참여 조건과 회차 제한, 당첨 판정 규칙</b>을 설계</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">쿠폰·포인트 지급 규칙과 <b style="color:#1A1A1A">중복 지급·기간 만료 예외</b>를 정의</li>
-            <li style="padding:14px 0;border-bottom:1px solid #E7E3DD;font-size:16px;line-height:1.75;color:#4A4844">실무 라인이라 주도적으로 사업 관리를 하는 입장은 아니었고, <b style="color:#1A1A1A">판매와 BM을 상세하게 볼 수 있었던 경험</b></li>
-          </ul>
-        </div>
-      </article>
-
-    </section>
-
-    <section id="s3" style="padding:120px 0 0">
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="display:flex;align-items:baseline;gap:18px">
-          <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#A6462B">03</span>
-          <h2 style="margin:0;font-size:40px;font-weight:700;letter-spacing:-.04em">산출물</h2>
-        </div>
-        <p style="margin:24px 0 0;font-size:19px;line-height:1.85;max-width:46em;text-wrap:pretty">작성해 온 문서를 기획·데이터·관리 세 갈래로 정리했습니다. 아래 샘플 세 장은 각각 <b>기획서·WBS·플로우차트</b>를 대표하는 발췌본입니다.</p>
-        <sc-if value="{{ showTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:26px">
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">기획 문서</span>
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">데이터 문서</span>
-          <span style="font-size:13.5px;font-weight:600;color:#A6462B;border-bottom:1px solid #A6462B;padding-bottom:3px">관리 문서</span>
-        </div>
-        </sc-if>
-      </div>
-
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:52px;margin-top:52px">
-        <div>
-          <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;padding-bottom:12px;border-bottom:1px solid #1A1A1A">기획 문서</div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:13px 0;border-bottom:1px solid #E7E3DD;font-size:16px">화면기획서 · 화면정의서</li>
-            <li style="padding:13px 0;border-bottom:1px solid #E7E3DD;font-size:16px">요구사항정의서</li>
-            <li style="padding:13px 0;border-bottom:1px solid #E7E3DD;font-size:16px">정책 문서</li>
-          </ul>
-        </div>
-        <div>
-          <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;padding-bottom:12px;border-bottom:1px solid #1A1A1A">데이터 문서</div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:13px 0;border-bottom:1px solid #E7E3DD;font-size:16px">API 연계 기획서</li>
-          </ul>
-        </div>
-        <div>
-          <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;padding-bottom:12px;border-bottom:1px solid #1A1A1A">관리 문서</div>
-          <ul style="list-style:none;margin:0;padding:0">
-            <li style="padding:13px 0;border-bottom:1px solid #E7E3DD;font-size:16px">WBS · 일정 관리</li>
-            <li style="padding:13px 0;border-bottom:1px solid #E7E3DD;font-size:16px">유지보수 보고서</li>
-          </ul>
-        </div>
-      </div>
-
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);margin-top:72px">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:1px solid #1A1A1A">
-          <span style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8A8681">문서 샘플</span>
-          <span style="font-size:13px;color:#8A8681">기획서 · WBS · 플로우차트 각 1장</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:32px">
-          <figure style="margin:0">
-            <div style="aspect-ratio:4/3;overflow:hidden;border-radius:10px;box-shadow:0 18px 44px rgba(26,26,26,.13);border:1px solid #E7E3DD;transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)"><img src="uploads/work-screen.png" alt="화면 설계서 발췌" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center"></div>
-            <figcaption style="margin-top:12px;font-size:14px;color:#6E6A65">기획서 — 환불계좌 등록 모달 정의</figcaption>
-          </figure>
-          <figure style="margin:0">
-            <div style="aspect-ratio:4/3;overflow:hidden;border-radius:10px;box-shadow:0 18px 44px rgba(26,26,26,.13);border:1px solid #E7E3DD;transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)"><img src="uploads/work-wbs.png" alt="WBS 일정 관리 발췌" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center"></div>
-            <figcaption style="margin-top:12px;font-size:14px;color:#6E6A65">WBS — 사업 일정과 담당 배분</figcaption>
-          </figure>
-          <figure style="margin:0">
-            <div style="aspect-ratio:4/3;overflow:hidden;border-radius:10px;box-shadow:0 18px 44px rgba(26,26,26,.13);border:1px solid #E7E3DD;transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-6px)"><img src="uploads/work-data.png" alt="대관 신청 플로우차트 발췌" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top center"></div>
-            <figcaption style="margin-top:12px;font-size:14px;color:#6E6A65">플로우차트 — 대관 신청 승인·입금 흐름</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="s4" style="padding:120px 0 0">
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="display:flex;align-items:baseline;gap:18px">
-          <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#A6462B">04</span>
-          <h2 style="margin:0;font-size:40px;font-weight:700;letter-spacing:-.04em">특장점</h2>
-        </div>
-        <p style="margin:24px 0 0;font-size:19px;line-height:1.85;max-width:46em;text-wrap:pretty">사업 단위로 맡아 온 일을 여섯 가지 역량으로 정리했습니다.</p>
-      </div>
-
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 60px;margin-top:48px">
-        <div style="padding:26px 0;border-top:1px solid #1A1A1A"><div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#A6462B">01</div><h3 style="margin:10px 0 0;font-size:22px;font-weight:700;letter-spacing:-.03em">사업 관리 · 검수와 정산</h3><p style="margin:12px 0 0;font-size:15.5px;line-height:1.8;color:#4A4844">기획 PL로 사업 하나를 통째로 맡습니다. 요구사항 접수, WBS 일정 수립, 소속 기획자 업무 배분, 검수와 정산까지 사업 단위로 책임집니다.</p></div>
-        <div style="padding:26px 0;border-top:1px solid #1A1A1A"><div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#A6462B">02</div><h3 style="margin:10px 0 0;font-size:22px;font-weight:700;letter-spacing:-.03em">이벤트 · 쿠폰 운영 설계</h3><p style="margin:12px 0 0;font-size:15.5px;line-height:1.8;color:#4A4844">참여 조건과 회차 제한, 당첨 판정 규칙을 정하고 쿠폰·포인트 지급 규칙과 중복 지급·기간 만료 예외를 정의합니다. 외부 시스템이 발급한 쿠폰을 내부 데이터와 맞추는 동기화도 설계했습니다.</p></div>
-        <div style="padding:26px 0;border-top:1px solid #E7E3DD"><div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#A6462B">03</div><h3 style="margin:10px 0 0;font-size:22px;font-weight:700;letter-spacing:-.03em">라이브 운영과 정책 확정</h3><p style="margin:12px 0 0;font-size:15.5px;line-height:1.8;color:#4A4844">돌아가는 서비스를 상시 운영하며 고도화합니다. 기존 기능을 바꿔야 할 때는 영향 범위를 전수 확인하고 대안을 비교한 뒤 정책 항목으로 확정해 문서로 남깁니다.</p></div>
-        <div style="padding:26px 0;border-top:1px solid #E7E3DD"><div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#A6462B">04</div><h3 style="margin:10px 0 0;font-size:22px;font-weight:700;letter-spacing:-.03em">관리자 시스템(CMS·BO) 설계</h3><p style="margin:12px 0 0;font-size:15.5px;line-height:1.8;color:#4A4844">운영자가 실제로 쓸 화면을 설계합니다. 신청·승인·반려·취소 상태 흐름과 전용 테이블, 목록 검색 조건, 일괄 처리, 권한 구분과 내려받기 규칙을 포함합니다.</p></div>
-        <div style="padding:26px 0;border-top:1px solid #E7E3DD"><div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#A6462B">05</div><h3 style="margin:10px 0 0;font-size:22px;font-weight:700;letter-spacing:-.03em">지표 화면과 데이터 연계</h3><p style="margin:12px 0 0;font-size:15.5px;line-height:1.8;color:#4A4844">쌓인 데이터를 운영이 볼 수 있는 통계 화면으로 만듭니다. 화면이 쓰는 데이터를 테이블과 컬럼 단위로 정의하고, 외부 시스템과 주고받는 항목의 명세를 작성합니다.</p></div>
-        <div style="padding:26px 0;border-top:1px solid #E7E3DD"><div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#A6462B">06</div><h3 style="margin:10px 0 0;font-size:22px;font-weight:700;letter-spacing:-.03em">AI 활용 · 문서와 바이브 코딩</h3><p style="margin:12px 0 0;font-size:15.5px;line-height:1.8;color:#4A4844">문서 작업에 AI를 적극 사용하여 반복되는 단순 작업에 소요되는 시간을 줄였습니다. 사용 시 서브에이전트로 나누어 분업하고, 하네스·스킬로 코드·문서 산출물의 규격을 일원화했습니다. 계획 → 검토 → 구현 순서를 반드시 거치도록 작업 흐름을 구성했습니다.</p></div>
-      </div>
-
-
-    </section>
-
-    <section id="s5" style="padding:120px 0 0">
-      <div data-rv style="transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="display:flex;align-items:baseline;gap:18px">
-          <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#A6462B">05</span>
-          <h2 style="margin:0;font-size:40px;font-weight:700;letter-spacing:-.04em">맺음말</h2>
-        </div>
-        <p style="margin:28px 0 0;font-size:30px;font-weight:600;line-height:1.65;letter-spacing:-.03em;max-width:26em;text-wrap:pretty">요구 정의부터 일정 관리, 검수와 정산까지 사업 단위로 책임져 왔으며 공공·면세 이커머스 등 다양한 프로젝트를 관리 경험 하였습니다.</p>
-        <p style="margin:20px 0 0;font-size:30px;font-weight:600;line-height:1.65;letter-spacing:-.03em;max-width:26em;color:#A6462B">이 경험을 살려 전문적인 사업 관리자로 나아가고 싶습니다.</p>
-      </div>
-    </section>
-
-    <div style="margin:110px 0 0;padding:72px 0 64px;border-top:1px solid #1A1A1A">
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px">
-        <div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8A8681">Email</div>
-          <a href="mailto:sun8070vvv20@gmail.com" style="display:block;margin-top:12px;font-size:26px;font-weight:700;letter-spacing:-.035em;color:#1A1A1A;overflow-wrap:anywhere;transition:color .2s ease" style-hover="color:#A6462B">sun8070vvv20@gmail.com</a>
-        </div>
-        <div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8A8681">Phone</div>
-          <a href="tel:010-7222-0473" style="display:block;margin-top:12px;font-size:26px;font-weight:700;letter-spacing:-.035em;color:#1A1A1A;overflow-wrap:anywhere;transition:color .2s ease" style-hover="color:#A6462B">010-7222-0473</a>
-        </div>
-      </div>
-      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:56px;padding-top:22px;border-top:1px solid #E7E3DD;font-size:13px;letter-spacing:.14em;color:#8A8681">
-        <span>박세훈 · GAME BUSINESS PM</span><span>2026</span>
-      </div>
+    <div class="lvmodal__foot">
+      <span>시연용 재현 화면 · 실제 서비스와 연결되지 않으며 데이터 전송·저장이 일어나지 않습니다.</span>
+      <button type="button" class="lvmodal__replay" id="lv-replay">설명 다시 보기</button>
+      <a id="lv-new" href="demo/sfc-office.html" target="_blank" rel="noopener">새 탭에서 열기 ↗</a>
     </div>
-
-  </main>
+  </div>
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;내용&quot;}}">
-class Component extends DCLogic {
-  setup() {
-    if (this._ready) return;
-    this._ready = true;
+<!-- ═══ 문서 뷰어 모달 — 화면설계서 ═══ -->
+<div class="docmodal" id="docmodal" hidden role="dialog" aria-modal="true" aria-labelledby="dm-title">
+  <div class="docmodal__scrim" data-dm-close></div>
+  <div class="docmodal__panel">
+    <header class="docmodal__head">
+      <div class="docmodal__headtxt">
+        <p class="docmodal__eyebrow">화면설계서 · 대관 신청 관리자 CMS (2026)</p>
+        <h3 class="docmodal__title" id="dm-title">표지 — CMS 화면설계서</h3>
+      </div>
+      <div class="docmodal__tools">
+        <span class="docmodal__count"><b id="dm-cur">1</b> / <span id="dm-total">20</span></span>
+        <button type="button" class="docmodal__x" data-dm-close aria-label="문서 뷰어 닫기">&#10005;</button>
+      </div>
+    </header>
+    <div class="docmodal__stage" id="dm-stage">
+      <div class="docmodal__scroll" id="dm-scroll">
+        <img id="dm-img" src="" alt="">
+        <img id="dm-img2" src="" alt="" hidden>
+      </div>
+      <div class="dm-swipe" id="dm-swipe" aria-hidden="true">
+      <span class="dm-swipe__chev dm-swipe__chev--l">&#8249;</span>
+      <svg class="dm-swipe__hand" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/>
+        <path d="M12 11V4.5a1.5 1.5 0 0 1 3 0V11"/>
+        <path d="M15 11.5V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1.2a5 5 0 0 1-3.7-1.6L6 16.5"/>
+        <path d="M9 11.5V9.8a1.4 1.4 0 0 0-2.6-.7l-.6 1.1a3 3 0 0 0 .1 3.1l1.4 2.2"/>
+      </svg>
+      <span class="dm-swipe__chev dm-swipe__chev--r">&#8250;</span>
+        <span class="dm-swipe__txt">좌우로 밀어 2장씩 넘기기</span>
+      </div>
+    </div>
+    <button type="button" class="docmodal__arrow docmodal__arrow--prev" data-dm-prev aria-label="이전 장">&#8249;</button>
+    <button type="button" class="docmodal__arrow docmodal__arrow--next" data-dm-next aria-label="다음 장">&#8250;</button>
+    <p class="docmodal__hint">한 화면에 2장씩 표시됩니다 · 위아래로 스크롤, 좌우로 밀면 2장씩 넘어갑니다</p>
+    <nav class="docmodal__rail" id="dm-rail" aria-label="화면설계서 장 이동"></nav>
+  </div>
+</div>
 
-    const prog = document.querySelector('[data-prog]');
-    const onScroll = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      if (prog) prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    this._onScroll = onScroll;
 
-    if (!('IntersectionObserver' in window)) return;
-    const items = Array.from(document.querySelectorAll('[data-rv]'));
-    items.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(18px)';
+<!-- ═══ MO 플로팅 메뉴 — GNB 액션 ═══ -->
+<div class="fab" id="fab">
+  <div class="fab__scrim" data-fab-close aria-hidden="true"></div>
+  <div class="fab__sheet" id="fab-sheet" hidden>
+    <button type="button" class="fab__item" data-live-open aria-haspopup="dialog"><span class="fab__ico" aria-hidden="true">▶</span>바이브코딩 산출물 예시</button>
+    <button type="button" class="fab__item" data-doc-open aria-haspopup="dialog"><span class="fab__ico" aria-hidden="true">▤</span>화면설계서</button>
+    <a class="fab__item" href="portfolio.pdf" target="_blank" rel="noopener"><span class="fab__ico" aria-hidden="true">↓</span>PDF 내려받기</a>
+    <a class="fab__item" href="../"><span class="fab__ico" aria-hidden="true">↗</span>지원서 페이지로</a>
+  </div>
+  <button type="button" class="fab__btn" id="fab-btn" aria-expanded="false" aria-controls="fab-sheet" aria-label="바로가기 메뉴 열기">
+    <span class="fab__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+</div>
+
+<script>
+(function(){
+  // 스크롤 등장
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('.rise').forEach(function(el){ io.observe(el); });
+
+  // 워터마크 — 어두운 섹션 위에서는 흰색으로 (제안서 규칙)
+  var wm = document.getElementById('wm');
+  var darks = document.querySelectorAll('[data-dark]');
+  function syncWM(){
+    var y = 86, on = false;   // 워터마크가 놓인 높이
+    darks.forEach(function(s){
+      var r = s.getBoundingClientRect();
+      if (r.top <= y && r.bottom >= y) on = true;
     });
-    const io = new IntersectionObserver(es => {
-      es.forEach(e => {
-        if (!e.isIntersecting) return;
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'none';
-        io.unobserve(e.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-    items.forEach(el => io.observe(el));
-    this._io = io;
+    wm.classList.toggle('on-dark', on);
+  }
+  // GNB 액션 노출 + 워터마크 숨김 — 표지를 지났는지로 판단
+  var cover = document.querySelector('.cover');
+  var navEl = document.querySelector('.nav');
+  function syncNav(){
+    if (!cover || !navEl) return;
+    var past = cover.getBoundingClientRect().bottom <= 8;
+    navEl.classList.toggle('nav--acts', past);
+    wm.classList.toggle('is-hidden', past);
+  }
 
-    const navs = Array.from(document.querySelectorAll('[data-nav]'));
-    const ids = ['s1','s2','s3','s4','s5'];
-    const mark = () => {
-      const line = window.innerHeight * 0.35;
-      let active = null;
-      ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= line) active = id;
-      });
-      navs.forEach(a => {
-        const on = a.getAttribute('data-nav') === active;
-        a.style.color = on ? '#1A1A1A' : '#8A8681';
-        a.style.borderLeftColor = on ? '#A6462B' : '#E7E3DD';
-        a.style.paddingLeft = on ? '20px' : '14px';
-      });
-    };
-    window.addEventListener('scroll', mark, { passive: true });
-    mark();
-    this._mark = mark;
-  }
-  componentDidMount() { requestAnimationFrame(() => this.setup()); }
-  componentWillUnmount() {
-    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
-    if (this._io) this._io.disconnect();
-    if (this._mark) window.removeEventListener('scroll', this._mark);
-  }
-  renderVals() {
-    if (!this._queued) {
-      this._queued = true;
-      const tick = (n) => {
-        if (this._ready) return;
-        if (document.querySelector('[data-prog]') && document.querySelectorAll('[data-rv]').length) { this.setup(); return; }
-        if (n < 40) setTimeout(() => tick(n + 1), 100);
-      };
-      setTimeout(() => tick(0), 0);
+  function onScroll(){ syncWM(); syncNav(); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll);
+
+  // ── 문서 뷰어 모달 (화면설계서) ──
+  var DOC = {
+    base: 'docs/rental-cms/',
+    pages: [
+      { f:'01.png', t:'표지 — CMS 화면설계서' },
+      { f:'02.png', t:'제·개정 이력' },
+      { f:'03.png', t:'GNB — 관리자 메뉴 구조' },
+      { f:'04.png', t:'기본 기능 가이드' },
+      { f:'05.png', t:'공연 정보 관리' },
+      { f:'06.png', t:'공연 목록 (PF01-001)' },
+      { f:'07.png', t:'공연 목록 — 상세 설정 펼침 (PF01-001)' },
+      { f:'08.png', t:'공연 등록 1/2 (PF01-002)' },
+      { f:'09.png', t:'공연 등록 2/2 (PF01-002)' },
+      { f:'10.png', t:'시설대관 관리(A)' },
+      { f:'11.png', t:'시설대관 목록 (FL01-001)' },
+      { f:'12.png', t:'시설대관 등록 (FL01-002)' },
+      { f:'13.png', t:'시설대관 수정 (FL01-003)' },
+      { f:'14.png', t:'신청자 목록 (FL02-001)' },
+      { f:'15.png', t:'신청자 목록 (FL02-001)' },
+      { f:'16.png', t:'신청자 등록 (FL02-002)' },
+      { f:'17.png', t:'신청자 등록 (FL02-002)' },
+      { f:'18.png', t:'신청자 등록 — 불승인·취소 사유 분기 (FL02-002)' },
+      { f:'19.png', t:'신청자 수정 (FL02-003)' },
+      { f:'20.png', t:'신청자 수정 (FL02-003)' }
+    ]
+  };
+
+  var modal = document.getElementById('docmodal');
+  if (modal) {
+    var img   = document.getElementById('dm-img');
+    var img2  = document.getElementById('dm-img2');
+    var stage = document.getElementById('dm-stage');
+    var scroller = document.getElementById('dm-scroll');
+    var elCur = document.getElementById('dm-cur');
+    var elTot = document.getElementById('dm-total');
+    var elTit = document.getElementById('dm-title');
+    var rail  = document.getElementById('dm-rail');
+    var swipeUI = document.getElementById('dm-swipe');
+    var prevBtn = modal.querySelector('[data-dm-prev]');
+    var nextBtn = modal.querySelector('[data-dm-next]');
+    var N = DOC.pages.length;
+    var idx = 0, opener = null, dots = [];
+
+    // MO·태블릿에서는 2장을 위아래로 쌓아 보여주고 2장 단위로 넘긴다
+    var mqPair = window.matchMedia('(max-width:1024px)');
+    function isPair(){ return mqPair.matches; }
+    function step(){ return isPair() ? 2 : 1; }
+    function normalize(i){
+      i = Math.max(0, Math.min(N - 1, i));
+      return isPair() ? Math.floor(i / 2) * 2 : i;
     }
-    return {
-      showTags: this.props.showTags ?? true,
-      setRoot: el => { if (el) setTimeout(() => this.setup(), 0); }
-    };
+
+    elTot.textContent = N;
+
+    function buildRail(){
+      rail.textContent = '';
+      dots = [];
+      for (var i = 0; i < N; i += step()) {
+        (function(start){
+          var pair = isPair() && start + 1 < N;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'docmodal__dot';
+          b.textContent = pair ? (start + 1) + '-' + (start + 2) : String(start + 1);
+          b.title = pair
+            ? DOC.pages[start].t + ' · ' + DOC.pages[start + 1].t
+            : DOC.pages[start].t;
+          b.addEventListener('click', function(){ go(start); });
+          rail.appendChild(b);
+          dots.push({ el: b, start: start });
+        })(i);
+      }
+    }
+
+    function preload(i){
+      if (i < 0 || i >= N) return;
+      var im = new Image(); im.src = DOC.base + DOC.pages[i].f;
+    }
+
+    function go(i){
+      idx = normalize(i);
+      var a = DOC.pages[idx];
+      var b = isPair() && idx + 1 < N ? DOC.pages[idx + 1] : null;
+
+      img.src = DOC.base + a.f;
+      img.alt = '화면설계서 ' + (idx + 1) + '장 — ' + a.t;
+      if (b) {
+        img2.src = DOC.base + b.f;
+        img2.alt = '화면설계서 ' + (idx + 2) + '장 — ' + b.t;
+        img2.hidden = false;
+      } else {
+        img2.hidden = true;
+        img2.removeAttribute('src');
+      }
+
+      elCur.textContent = b ? (idx + 1) + '-' + (idx + 2) : String(idx + 1);
+      elTit.textContent = b ? a.t + ' · ' + b.t : a.t;
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx + step() >= N;
+      dots.forEach(function(d){
+        if (d.start === idx) { d.el.setAttribute('aria-current', 'true'); }
+        else { d.el.removeAttribute('aria-current'); }
+      });
+      if (scroller) { scroller.scrollLeft = 0; scroller.scrollTop = 0; }
+      preload(idx + step()); preload(idx + step() + 1); preload(idx - 1);
+    }
+
+    function onKey(e){
+      if (e.key === 'Escape') { close(); }
+      else if (e.key === 'ArrowRight') { go(idx + step()); }
+      else if (e.key === 'ArrowLeft') { go(idx - step()); }
+      else if (e.key === 'Home') { go(0); }
+      else if (e.key === 'End') { go(N - 1); }
+    }
+
+    function open(){
+      opener = document.activeElement;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      buildRail();
+      go(0);
+      hintShown = false;
+      showSwipeHint();
+      modal.querySelector('.docmodal__x').focus();
+      document.addEventListener('keydown', onKey);
+    }
+
+    function close(){
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (opener && opener.focus) opener.focus();
+    }
+
+    // ── 좌우 스와이프 (MO·태블릿) ──
+    var hintShown = false, hintTimer = null;
+
+    function hideSwipeHint(){
+      if (!swipeUI || swipeUI.classList.contains('is-gone')) return;
+      swipeUI.classList.add('is-gone');
+      if (hintTimer) { clearTimeout(hintTimer); hintTimer = null; }
+    }
+
+    function showSwipeHint(){
+      if (!swipeUI || !isPair() || hintShown) return;
+      hintShown = true;
+      swipeUI.classList.remove('is-gone');
+      if (hintTimer) clearTimeout(hintTimer);
+      hintTimer = setTimeout(hideSwipeHint, 4200);
+    }
+
+    if (stage) {
+      var tx = 0, ty = 0, tracking = false, axis = '';
+      stage.addEventListener('touchstart', function(e){
+        if (!isPair() || e.touches.length !== 1) { tracking = false; return; }
+        tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+        tracking = true; axis = '';
+      }, { passive:true });
+
+      stage.addEventListener('touchmove', function(e){
+        if (!tracking || e.touches.length !== 1) return;
+        var dx = e.touches[0].clientX - tx;
+        var dy = e.touches[0].clientY - ty;
+        // 가로·세로 중 우세한 축을 한 번만 정한다 (세로 스크롤과 충돌 방지)
+        if (!axis && (Math.abs(dx) > 12 || Math.abs(dy) > 12)) {
+          axis = Math.abs(dx) > Math.abs(dy) * 1.4 ? 'x' : 'y';
+        }
+        if (axis === 'x' && e.cancelable) { e.preventDefault(); }
+      }, { passive:false });
+
+      stage.addEventListener('touchend', function(e){
+        if (!tracking) return;
+        tracking = false;
+        if (axis !== 'x') return;
+        var dx = (e.changedTouches[0] || {}).clientX - tx;
+        if (Math.abs(dx) < 45) return;
+        hideSwipeHint();
+        go(dx < 0 ? idx + step() : idx - step());
+      }, { passive:true });
+    }
+
+    // 화면 폭이 바뀌어 1장↔2장 모드가 뒤집히면 레일을 다시 짜고 현재 위치를 유지
+    function onModeChange(){
+      if (modal.hidden) return;
+      buildRail();
+      go(idx);
+      if (!isPair()) { hideSwipeHint(); }
+    }
+    if (mqPair.addEventListener) { mqPair.addEventListener('change', onModeChange); }
+    else if (mqPair.addListener) { mqPair.addListener(onModeChange); }
+
+    document.querySelectorAll('[data-doc-open]').forEach(function(b){
+      b.addEventListener('click', open);
+    });
+    modal.querySelectorAll('[data-dm-close]').forEach(function(b){
+      b.addEventListener('click', close);
+    });
+    prevBtn.addEventListener('click', function(){ hideSwipeHint(); go(idx - step()); });
+    nextBtn.addEventListener('click', function(){ hideSwipeHint(); go(idx + step()); });
   }
-}
+
+  // ── 바이브코딩 산출물 모달 ──
+  var lv = document.getElementById('lvmodal');
+  if (lv) {
+    var lvTabs  = [].slice.call(lv.querySelectorAll('.lvtab'));
+    var lvFrame = document.getElementById('lv-frame');
+    var lvNew   = document.getElementById('lv-new');
+    var lvOpener = null;
+
+    function lvSelect(i){
+      lvTabs.forEach(function(t, k){ t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      var t = lvTabs[i];
+      if (lvFrame.getAttribute('src') !== t.dataset.src) lvFrame.setAttribute('src', t.dataset.src);
+      lvNew.href = t.dataset.src;
+    }
+    function lvOpen(i){
+      lvOpener = document.activeElement;
+      lv.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lvSelect(i || 0);
+      lv.querySelector('.lvmodal__x').focus();
+      document.addEventListener('keydown', lvKey);
+    }
+    function lvClose(){
+      lv.hidden = true;
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', lvKey);
+      if (lvOpener && lvOpener.focus) lvOpener.focus();
+    }
+    function lvKey(e){ if (e.key === 'Escape' || e.key === 'Esc') lvClose(); }
+
+    lvTabs.forEach(function(t, i){ t.addEventListener('click', function(){ lvSelect(i); }); });
+    document.querySelectorAll('[data-live-open]').forEach(function(b){
+      b.addEventListener('click', function(){ lvOpen(parseInt(b.dataset.liveTab || '0', 10)); });
+    });
+    lv.querySelectorAll('[data-lv-close]').forEach(function(b){ b.addEventListener('click', lvClose); });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+    document.getElementById('lv-replay').addEventListener('click', function(){
+      try{ lvFrame.contentWindow.postMessage('tut:restart', '*'); }catch(e){}
+    });
+  }
+
+  // ── 표지 프로필 : 캐릭터 <-> 실사 ──
+  var coverPhoto = document.getElementById('cover-photo');
+  if (coverPhoto) {
+    coverPhoto.addEventListener('click', function(){
+      var on = !coverPhoto.classList.contains('is-real');
+      coverPhoto.classList.toggle('is-real', on);
+      coverPhoto.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  // ── MO 플로팅 메뉴 ──
+  var fab = document.getElementById('fab');
+  if (fab) {
+    var fabBtn = document.getElementById('fab-btn');
+    var fabSheet = document.getElementById('fab-sheet');
+    var fabSet = function(on){
+      fab.classList.toggle('is-open', on);
+      fabSheet.hidden = !on;
+      fabBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      fabBtn.setAttribute('aria-label', on ? '바로가기 메뉴 닫기' : '바로가기 메뉴 열기');
+    };
+    fabBtn.addEventListener('click', function(e){ e.stopPropagation(); fabSet(fabSheet.hidden); });
+    // 항목을 고르면 닫는다 (화면설계서는 data-doc-open 핸들러가 따로 모달을 연다)
+    fabSheet.addEventListener('click', function(){ fabSet(false); });
+    document.addEventListener('click', function(e){ if (!fab.contains(e.target)) fabSet(false); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' || e.key === 'Esc') fabSet(false); });
+  }
+})();
+
 </script>
 </body>
 </html>

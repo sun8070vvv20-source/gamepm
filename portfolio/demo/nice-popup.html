@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>본인확인 서비스</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif;color:#222;background:#fff}
+.nc-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e6e6e6}
+.nc-logo{font-size:16px;font-weight:800;letter-spacing:-.02em;color:#0b3d91}
+.nc-dummy{font-size:10.5px;font-weight:800;color:#fff;background:#f26522;padding:3px 7px;border-radius:4px}
+.nc-body{padding:20px}
+.nc-h{font-size:17px;font-weight:800;letter-spacing:-.02em;margin:0 0 4px}
+.nc-sub{font-size:12px;color:#888;margin:0 0 18px;line-height:1.6}
+.nc-lbl{display:block;font-size:12px;font-weight:700;color:#555;margin:14px 0 6px}
+.nc-tel{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.nc-tel button{height:40px;border:1px solid #ddd;border-radius:4px;background:#fff;
+  font-family:inherit;font-size:12.5px;font-weight:600;color:#444;cursor:pointer}
+.nc-tel button.on{border-color:#0b3d91;color:#0b3d91;background:#f2f6fd;font-weight:800}
+.nc-in{width:100%;height:42px;padding:0 12px;border:1px solid #ddd;border-radius:4px;
+  font-family:inherit;font-size:13.5px;background:#fff}
+.nc-in:focus{outline:none;border-color:#0b3d91}
+.nc-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.nc-agree{display:flex;align-items:flex-start;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid #eee}
+.nc-agree label{font-size:12px;color:#666;line-height:1.6}
+.nc-go{width:100%;height:46px;margin-top:16px;border:0;border-radius:4px;background:#0b3d91;color:#fff;
+  font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.nc-go:hover{background:#0a3480}
+.nc-ft{padding:12px 20px 18px;font-size:11px;color:#aaa;line-height:1.6;text-align:center}
+</style>
+</head>
+<body>
+<div class="nc-hd">
+  <span class="nc-logo">통합 본인확인 서비스</span>
+  <span class="nc-dummy">DUMMY</span>
+</div>
+<div class="nc-body">
+  <p class="nc-h">휴대폰 본인확인</p>
+  <p class="nc-sub">본인 명의의 휴대폰으로 인증을 진행합니다.<br>이 창은 포트폴리오 시연용 더미 화면입니다.</p>
+
+  <span class="nc-lbl">통신사 선택</span>
+  <div class="nc-tel">
+    <button type="button" class="on">SKT</button>
+    <button type="button">KT</button>
+    <button type="button">LG U+</button>
+  </div>
+
+  <span class="nc-lbl">이름</span>
+  <input class="nc-in" type="text" value="박세훈" readonly>
+
+  <span class="nc-lbl">생년월일 / 성별</span>
+  <div class="nc-row">
+    <input class="nc-in" type="text" value="930601" readonly>
+    <input class="nc-in" type="text" value="남성" readonly>
+  </div>
+
+  <span class="nc-lbl">휴대폰 번호</span>
+  <input class="nc-in" type="text" value="010-****-0473" readonly>
+
+  <div class="nc-agree">
+    <input type="checkbox" id="ncAgree" checked disabled>
+    <label for="ncAgree">개인정보 이용 및 고유식별정보 처리, 통신사 이용약관에 모두 동의합니다.</label>
+  </div>
+
+  <button type="button" class="nc-go" onclick="alert('시연용 더미 화면입니다. 실제 인증은 진행되지 않습니다.')">인증요청</button>
+</div>
+<p class="nc-ft">시연용 재현 화면 · 실제 인증기관과 무관하며 어떤 정보도 전송되지 않습니다.</p>
+<script>
+document.querySelectorAll('.nc-tel button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.nc-tel button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>

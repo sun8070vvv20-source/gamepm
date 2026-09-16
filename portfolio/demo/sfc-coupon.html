@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>쿠폰 관리 · 서울영화센터 CMS | 박세훈 포트폴리오</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  .dm-top{position:sticky;top:0;z-index:9999;background:#12161f;color:#fff;
+    font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+    border-bottom:1px solid rgba(255,255,255,.12)}
+  .dm-top *{box-sizing:border-box}
+  .dm-in{max-width:1180px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .dm-back{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;
+    border-radius:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;
+    font-size:13px;font-weight:700;white-space:nowrap;transition:background .18s}
+  .dm-back:hover{background:rgba(255,255,255,.2)}
+  .dm-ttl{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .dm-badge{flex:0 0 auto;padding:3px 9px;border-radius:5px;background:#f26522;color:#fff;
+    font-size:11.5px;font-weight:800;letter-spacing:.02em}
+  .dm-name{font-size:15px;font-weight:700;letter-spacing:-.02em}
+  .dm-org{font-size:12.5px;color:rgba(255,255,255,.55);font-weight:600}
+  .dm-note{flex:1 1 100%;margin:0;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);
+    font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.68)}
+  .dm-note b{color:#8fc0ff;font-weight:700}
+  .dm-stage{background:#fff}
+  @media(max-width:640px){ .dm-in{padding:12px 16px;gap:10px} .dm-name{font-size:14px} }
+
+*{box-sizing:border-box}
+body{margin:0;background:#f5f6f8;color:#6c757d;font-size:14px;line-height:1.5;
+  font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif}
+.bo-wrap{max-width:1180px;margin:0 auto;padding:28px 24px 56px}
+.header-title{margin:0 0 12px;font-size:16px;font-weight:600;color:#343a40;letter-spacing:-.01em}
+.card{background:#fff;border:1px solid #eef2f7;border-radius:4px;margin-bottom:24px;
+  box-shadow:0 0 35px 0 rgba(154,161,171,.15)}
+.card-body{padding:24px}
+.btn-group{display:inline-flex;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 14px;
+  border:1px solid transparent;border-radius:3px;font-family:inherit;font-size:13px;font-weight:500;
+  cursor:pointer;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.btn-group .btn{border-radius:0;margin-left:-1px}
+.btn-group .btn:first-child{border-radius:3px 0 0 3px;margin-left:0}
+.btn-group .btn:last-child{border-radius:0 3px 3px 0}
+.btn-dark{background:#343a40;border-color:#343a40;color:#fff}
+.btn-outline-secondary{background:#fff;border-color:#ced4da;color:#6c757d}
+.btn-outline-secondary:hover{background:#f1f3f5;color:#343a40}
+.btn-primary{background:#3b7ddd;border-color:#3b7ddd;color:#fff}
+.btn-primary:hover{background:#326abc}
+.btn-outline-primary{background:#fff;border-color:#3b7ddd;color:#3b7ddd}
+.btn-outline-primary:hover{background:#3b7ddd;color:#fff}
+.btn-sm{height:28px;padding:0 11px;font-size:12px}
+.form-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;flex-wrap:wrap}
+.form-row + .form-row{border-top:1px solid #f4f6f9}
+.col-label{flex:0 0 130px;padding-top:7px;font-size:13px;font-weight:500;color:#343a40}
+.col-label .req{color:#dc3545;margin-left:2px}
+.col-field{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.form-control{height:34px;padding:0 10px;border:1px solid #ced4da;border-radius:3px;
+  background:#fff;font-family:inherit;font-size:13px;color:#495057;min-width:0}
+.form-control:focus{outline:none;border-color:#3b7ddd;box-shadow:0 0 0 2px rgba(59,125,221,.12)}
+.form-control[readonly]{background:#eef2f7;color:#8a94a0}
+.w-full{flex:1 1 auto;width:100%}
+.w-200{width:200px}.w-120{width:120px}.w-90{width:90px}
+select.form-control{padding-right:26px}
+.text-muted{font-size:12px;color:#98a6ad}
+.radio-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:6px}
+.radio-row label{display:flex;align-items:center;gap:6px;font-size:13px;color:#495057;cursor:pointer;font-weight:400}
+.radio-row input{accent-color:#3b7ddd;cursor:pointer}
+/* 표 */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{padding:10px 8px;background:#f9fafb;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7;
+  color:#343a40;font-weight:600;text-align:center;white-space:nowrap}
+.tbl td{padding:11px 8px;border-bottom:1px solid #f4f6f9;color:#6c757d;text-align:center;white-space:nowrap}
+.tbl tr:hover td{background:#fbfcfd}
+.tbl .l{text-align:left}
+.badge{display:inline-block;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:600}
+.bg-use{background:#e8f5e9;color:#2e7d32}
+.bg-un{background:#eef2f7;color:#6c757d}
+.bg-exp{background:#fdecea;color:#c62828}
+.bg-src-d{background:#e7f0fd;color:#2f66c4}
+.bg-src-m{background:#f4f0fb;color:#6b4fbb}
+.dday{font-weight:700;color:#343a40}
+.dday.warn{color:#dc3545}
+.tbl-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.tbl-top .cnt{font-size:13px;color:#6c757d}
+.tbl-top .cnt b{color:#3b7ddd}
+.tbl-act{display:flex;gap:6px;flex-wrap:wrap}
+.pager{display:flex;justify-content:center;gap:4px;margin-top:18px}
+.pager a{display:grid;place-items:center;width:30px;height:30px;border:1px solid #dee2e6;border-radius:3px;
+  color:#6c757d;text-decoration:none;font-size:13px}
+.pager a.on{background:#3b7ddd;border-color:#3b7ddd;color:#fff}
+/* 하위 탭 */
+.subtab{display:flex;gap:6px;margin-bottom:16px}
+.pane{display:none}
+.pane.on{display:block}
+
+/* ── 튜토리얼 : 대상 요소를 비추고 설명을 붙인다 ── */
+.tut[hidden]{display:none}
+.tut{position:fixed;inset:0;z-index:99999;pointer-events:auto;cursor:default;
+  overscroll-behavior:contain;-webkit-user-select:none;user-select:none;
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif}
+/* 튜토리얼 동안 본문은 선택·드래그 불가 (스크롤은 스크립트가 막는다) */
+html.tut-lock, html.tut-lock body{-webkit-user-select:none;user-select:none}
+html.tut-lock body{cursor:default}
+.tut__ring{position:absolute;border-radius:10px;pointer-events:none;
+  box-shadow:0 0 0 9999px rgba(0,12,30,.66), 0 0 0 3px #3182f6;
+  transition:top .32s cubic-bezier(.22,1,.36,1),left .32s cubic-bezier(.22,1,.36,1),
+             width .32s cubic-bezier(.22,1,.36,1),height .32s cubic-bezier(.22,1,.36,1)}
+.tut__pop{position:absolute;pointer-events:auto;width:min(360px,calc(100vw - 32px));padding:18px 20px 16px;
+  background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(0,12,30,.36);
+  transition:top .32s cubic-bezier(.22,1,.36,1),left .32s cubic-bezier(.22,1,.36,1)}
+.tut__no{display:flex;align-items:center;gap:7px;margin:0 0 8px;
+  font-size:12px;font-weight:800;letter-spacing:.06em;color:#3182f6}
+.tut__no i{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:#3182f6;font-style:normal}
+.tut__txt{margin:0;font-size:14px;line-height:1.72;color:#333d4b;word-break:keep-all}
+.tut__txt b{font-weight:700;color:#191f28}
+.tut__acts{display:flex;align-items:center;gap:8px;margin-top:16px}
+.tut__acts button{height:36px;padding:0 14px;border:0;border-radius:10px;cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.tut__skip{margin-right:auto;background:none;color:#8b95a1}
+.tut__skip:hover{color:#4e5968}
+.tut__prev{background:#f2f4f6;color:#4e5968}
+.tut__prev:hover{background:#e5e8eb}
+.tut__prev[disabled]{opacity:.4;cursor:default}
+.tut__next{background:#3182f6;color:#fff}
+.tut__next:hover{background:#2272eb}
+@media(max-width:640px){
+  .tut__pop{width:calc(100vw - 24px);left:12px !important}
+}
+@media(prefers-reduced-motion:reduce){
+  .tut__ring,.tut__pop{transition:none}
+}
+/* 상시 노출 : 튜토리얼을 다시 부르는 버튼 */
+.tut-open{position:fixed;right:16px;bottom:16px;z-index:9998;display:inline-flex;align-items:center;gap:7px;
+  height:38px;padding:0 15px;border:0;border-radius:999px;cursor:pointer;
+  background:#3182f6;color:#fff;box-shadow:0 6px 18px rgba(49,130,246,.34);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:-.01em;transition:background .16s,transform .16s}
+.tut-open:hover{background:#2272eb;transform:translateY(-2px)}
+.tut-open svg{width:15px;height:15px;flex:0 0 15px}
+.tut:not([hidden]) ~ .tut-open{display:none}
+@media(prefers-reduced-motion:reduce){ .tut-open:hover{transform:none} }
+</style>
+</head>
+<body>
+
+<div class="bo-wrap">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-dark btn-sm" data-p="dtryx">쿠폰 발급</button>
+    <button type="button" class="btn btn-outline-secondary btn-sm" data-p="mng">발급 쿠폰 관리</button>
+    <button type="button" class="btn btn-outline-secondary btn-sm" data-p="stng">쿠폰 설정(템플릿)</button>
+  </div>
+
+  <!-- ══ 쿠폰 발급 ══ -->
+  <div class="pane on" id="pane-dtryx">
+    <div class="subtab">
+      <button type="button" class="btn btn-primary btn-sm" data-s="d1">외부API 쿠폰 발급</button>
+      <button type="button" class="btn btn-outline-primary btn-sm" data-s="d2">수동 쿠폰 발급</button>
+    </div>
+
+    <div class="pane on" id="s-d1">
+      <div class="card"><div class="card-body">
+        <h4 class="header-title">외부API 쿠폰 발급</h4>
+        <p class="text-muted" style="margin:0 0 14px">외부 예매처(외부API)에서 발급된 쿠폰을 회원 계정에 연결합니다.</p>
+        <div class="form-row">
+          <div class="col-label">회원 선택<span class="req">*</span></div>
+          <div class="col-field">
+            <input class="form-control w-200" value="kim*** (김**)" readonly>
+            <button type="button" class="btn btn-outline-primary btn-sm">회원 검색 팝업 열기</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-label">MakeNo<span class="req">*</span></div>
+          <div class="col-field">
+            <button type="button" class="btn btn-dark btn-sm" data-m="mem">멤버십</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-m="gen">일반</button>
+            <select class="form-control w-200">
+              <option>MEM-2026-0912 · 멤버십 10% 할인</option>
+              <option>MEM-2026-0911 · 멤버십 5,000원</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-label">사용 기간</div>
+          <div class="col-field">
+            <input class="form-control w-120" value="2026-09-01"> ~
+            <input class="form-control w-120" value="2026-09-30">
+          </div>
+        </div>
+        <div class="form-row" style="justify-content:flex-end;border-top:0;padding-top:16px">
+          <button type="button" class="btn btn-primary">발급</button>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="pane" id="s-d2">
+      <div class="card"><div class="card-body">
+        <h4 class="header-title">수동 쿠폰 발급</h4>
+        <p class="text-muted" style="margin:0 0 14px">설정(템플릿)을 골라 운영자가 직접 발급합니다.</p>
+        <div class="form-row">
+          <div class="col-label">회원 선택<span class="req">*</span></div>
+          <div class="col-field">
+            <input class="form-control w-200" value="lee*** (이**)" readonly>
+            <button type="button" class="btn btn-outline-primary btn-sm">회원 검색 팝업 열기</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-label">쿠폰 설정<span class="req">*</span></div>
+          <div class="col-field">
+            <select class="form-control w-full" style="max-width:420px">
+              <option>2509100008 · 연간패스 15% 할인 (할인율)</option>
+              <option>2509100007 · 신규가입 3,000원 (할인금액)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-label">사용 기간<span class="req">*</span></div>
+          <div class="col-field">
+            <input class="form-control w-120" value="2026-09-03"> ~
+            <input class="form-control w-120" value="2026-10-02">
+          </div>
+        </div>
+        <div class="form-row" style="justify-content:flex-end;border-top:0;padding-top:16px">
+          <button type="button" class="btn btn-primary">발급</button>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ══ 발급 쿠폰 관리 ══ -->
+  <div class="pane" id="pane-mng">
+    <div class="card"><div class="card-body">
+      <div class="form-row" style="padding-top:0">
+        <div class="col-label">쿠폰 구분</div>
+        <div class="col-field radio-row">
+          <label><input type="radio" name="src" checked> 전체</label>
+          <label><input type="radio" name="src"> 외부API</label>
+          <label><input type="radio" name="src"> 수동</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">상태</div>
+        <div class="col-field radio-row">
+          <label><input type="radio" name="st" checked> 전체</label>
+          <label><input type="radio" name="st"> 미사용</label>
+          <label><input type="radio" name="st"> 사용</label>
+          <label><input type="radio" name="st"> 만료</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">검색어</div>
+        <div class="col-field">
+          <select class="form-control w-120"><option>회원ID</option><option>쿠폰명</option><option>쿠폰SN</option></select>
+          <input class="form-control w-200" placeholder="검색어 입력">
+          <button type="button" class="btn btn-primary btn-sm">검색</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm">초기화</button>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="card"><div class="card-body">
+      <div class="tbl-top">
+        <span class="cnt">전체 <b>1,284</b>건 · 미사용 <b>412</b>건</span>
+        <span class="tbl-act">
+          <button type="button" class="btn btn-outline-secondary btn-sm">선택 일괄 만료</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm">엑셀 내려받기</button>
+          <button type="button" class="btn btn-primary btn-sm">외부API 전체 동기화</button>
+        </span>
+      </div>
+      <table class="tbl">
+        <thead>
+          <tr><th style="width:34px"><input type="checkbox"></th><th>No</th><th>쿠폰SN</th><th>쿠폰명</th>
+            <th>종류</th><th>회원ID</th><th>상태</th><th>시작~종료</th><th>D-day</th><th>발급일</th><th>발급자</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><input type="checkbox"></td><td>1</td><td>2509100021</td><td class="l">멤버십 10% 할인</td><td>할인율</td><td>kim***</td><td><span class="badge bg-un">미사용</span></td><td>2026.09.01~2026.09.30</td><td><span class="dday">D-27</span></td><td>2026.09.01</td><td><span class="badge bg-src-d">외부API</span></td></tr>
+          <tr><td><input type="checkbox"></td><td>2</td><td>2509100020</td><td class="l">기획전 5,000원</td><td>할인금액</td><td>lee***</td><td><span class="badge bg-use">사용</span></td><td>2026.08.20~2026.09.19</td><td><span class="dday">D-16</span></td><td>2026.08.20</td><td><span class="badge bg-src-d">외부API</span></td></tr>
+          <tr><td><input type="checkbox"></td><td>3</td><td>2509100019</td><td class="l">연간패스 15% 할인</td><td>할인율</td><td>park**</td><td><span class="badge bg-un">미사용</span></td><td>2026.09.01~2026.09.07</td><td><span class="dday warn">D-4</span></td><td>2026.09.01</td><td><span class="badge bg-src-m">수동</span></td></tr>
+          <tr><td><input type="checkbox"></td><td>4</td><td>2509100018</td><td class="l">신규가입 3,000원</td><td>할인금액</td><td>choi**</td><td><span class="badge bg-exp">만료</span></td><td>2026.07.01~2026.07.31</td><td><span class="text-muted">-</span></td><td>2026.07.01</td><td><span class="badge bg-src-m">수동</span></td></tr>
+          <tr><td><input type="checkbox"></td><td>5</td><td>2509100017</td><td class="l">멤버십 10% 할인</td><td>할인율</td><td>jung**</td><td><span class="badge bg-use">사용</span></td><td>2026.08.01~2026.08.31</td><td><span class="text-muted">-</span></td><td>2026.08.01</td><td><span class="badge bg-src-d">외부API</span></td></tr>
+        </tbody>
+      </table>
+      <div class="pager">
+        <a href="#none" class="on">1</a><a href="#none">2</a><a href="#none">3</a>
+        <a href="#none">4</a><a href="#none">5</a><a href="#none">&rsaquo;</a>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══ 쿠폰 설정(템플릿) ══ -->
+  <div class="pane" id="pane-stng">
+    <div class="card"><div class="card-body">
+      <h4 class="header-title">쿠폰 설정(템플릿)</h4>
+      <p class="text-muted" style="margin:0 0 14px">쿠폰 상품을 여기서 정의합니다. 발급은 이 설정을 골라서 진행합니다.</p>
+      <div class="form-row">
+        <div class="col-label">설정 SN<span class="req">*</span></div>
+        <div class="col-field"><input class="form-control w-200" value="2509100008" placeholder="예: 2509100008"></div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">쿠폰명<span class="req">*</span></div>
+        <div class="col-field"><input class="form-control w-full" style="max-width:420px" value="연간패스 15% 할인" maxlength="200"></div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">종류<span class="req">*</span></div>
+        <div class="col-field radio-row">
+          <label><input type="radio" name="kind" checked> 할인율</label>
+          <label><input type="radio" name="kind"> 할인금액</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">생성코드명</div>
+        <div class="col-field"><input class="form-control w-200" value="ANNUAL_PASS_15"></div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">할인율(%)</div>
+        <div class="col-field"><input class="form-control w-90" value="15"><span class="text-muted">할인율 선택 시 입력</span></div>
+      </div>
+      <div class="form-row">
+        <div class="col-label">할인금액(원)</div>
+        <div class="col-field"><input class="form-control w-120" value="" placeholder="0" readonly><span class="text-muted">할인금액 선택 시 활성</span></div>
+      </div>
+      <div class="form-row" style="justify-content:flex-end;border-top:0;padding-top:16px">
+        <button type="button" class="btn btn-outline-secondary">목록</button>
+        <button type="button" class="btn btn-primary">저장</button>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-p]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-p]').forEach(function(x){
+        x.className = 'btn ' + (x===b ? 'btn-dark' : 'btn-outline-secondary') + ' btn-sm';
+      });
+      document.querySelectorAll('.bo-wrap > .pane').forEach(function(p){ p.classList.remove('on') });
+      document.getElementById('pane-' + b.dataset.p).classList.add('on');
+    });
+  });
+  document.querySelectorAll('[data-s]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-s]').forEach(function(x){
+        x.className = 'btn ' + (x===b ? 'btn-primary' : 'btn-outline-primary') + ' btn-sm';
+      });
+      document.querySelectorAll('#pane-dtryx .pane').forEach(function(p){ p.classList.remove('on') });
+      document.getElementById('s-' + b.dataset.s).classList.add('on');
+    });
+  });
+  document.querySelectorAll('[data-m]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-m]').forEach(function(x){
+        x.className = 'btn ' + (x===b ? 'btn-dark' : 'btn-outline-secondary') + ' btn-sm';
+      });
+    });
+  });
+})();
+</script>
+
+
+<div class="tut" id="tut" hidden>
+  <div class="tut__ring" id="tutRing"></div>
+  <div class="tut__pop" id="tutPop">
+    <p class="tut__no"><i></i><span id="tutNo">1 / 4</span></p>
+    <p class="tut__txt" id="tutTxt"></p>
+    <div class="tut__acts">
+      <button type="button" class="tut__skip" id="tutSkip">건너뛰기</button>
+      <button type="button" class="tut__prev" id="tutPrev">이전</button>
+      <button type="button" class="tut__next" id="tutNext">다음</button>
+    </div>
+  </div>
+</div>
+<button type="button" class="tut-open" id="tutOpen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+  설명 보기
+</button>
+
+<script>
+(function(){
+  var KEY = 'tut:copn';
+  var STEPS = [{"sel": ".btn-group", "txt": "쿠폰은 <b>발급 · 발급 관리 · 설정</b>으로 나누어 관리합니다."}, {"sel": "#pane-stng .card", "txt": "<b>쿠폰의 혜택과 조건을 이곳에서 설정합니다.</b> 별도 개발 없이 필요한 내용을 직접 수정할 수 있습니다.", "before": "document.querySelectorAll(\"[data-p]\")[2].click();"}, {"sel": "#pane-stng .form-row:nth-of-type(3)", "txt": "<b>할인율과 할인금액 중 하나를 선택합니다.</b> 선택하지 않은 항목은 입력할 수 없습니다."}, {"sel": "#pane-dtryx .subtab", "txt": "쿠폰은 <b>외부API 또는 수동으로 발급합니다.</b> 외부에서 들어온 쿠폰은 회원에게 연결하고, 필요한 쿠폰은 직접 발급합니다.", "before": "document.querySelectorAll(\"[data-p]\")[0].click();"}, {"sel": "#pane-mng .tbl-top", "txt": "발급된 쿠폰은 <b>일괄 만료 처리하거나 외부 데이터와 동기화합니다.</b>", "before": "document.querySelectorAll(\"[data-p]\")[1].click();"}, {"sel": "#pane-mng .tbl", "txt": "목록에서 <b>쿠폰 상태와 D-day, 발급 방식</b>을 한눈에 확인합니다."}];
+  var el = document.getElementById('tut'), ring = document.getElementById('tutRing'),
+      pop = document.getElementById('tutPop'), no = document.getElementById('tutNo'),
+      txt = document.getElementById('tutTxt'), prev = document.getElementById('tutPrev'),
+      next = document.getElementById('tutNext'), skip = document.getElementById('tutSkip');
+  var i = 0;
+
+  function place(step){
+    if(step.before){ try{ (new Function(step.before))(); }catch(e){} }
+    var t = document.querySelector(step.sel);
+    if(!t){ return false; }
+    t.scrollIntoView({block:'center', behavior:'smooth'});
+    setTimeout(function(){
+      var r = t.getBoundingClientRect(), pad = 6;
+      ring.style.top    = (r.top - pad) + 'px';
+      ring.style.left   = (r.left - pad) + 'px';
+      ring.style.width  = (r.width + pad*2) + 'px';
+      ring.style.height = (r.height + pad*2) + 'px';
+      var pw = Math.min(360, window.innerWidth - 32), ph = pop.offsetHeight || 180;
+      var top = r.bottom + 14, left = r.left;
+      if(top + ph > window.innerHeight - 12) top = Math.max(12, r.top - ph - 14);
+      if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+      pop.style.top = Math.max(12, top) + 'px';
+      pop.style.left = Math.max(12, left) + 'px';
+    }, 220);
+    setTimeout(function(){                       // 스크롤이 멎은 뒤 재보정
+      var r2 = t.getBoundingClientRect(), pad = 6;
+      ring.style.top = (r2.top - pad) + 'px';
+      ring.style.left = (r2.left - pad) + 'px';
+      ring.style.width = (r2.width + pad*2) + 'px';
+      ring.style.height = (r2.height + pad*2) + 'px';
+      var pw2 = Math.min(360, window.innerWidth - 32), ph2 = pop.offsetHeight || 180;
+      var top2 = r2.bottom + 14, left2 = r2.left;
+      if(top2 + ph2 > window.innerHeight - 12) top2 = Math.max(12, r2.top - ph2 - 14);
+      if(left2 + pw2 > window.innerWidth - 12) left2 = window.innerWidth - pw2 - 12;
+      pop.style.top = Math.max(12, top2) + 'px';
+      pop.style.left = Math.max(12, left2) + 'px';
+    }, 620);
+    return true;
+  }
+
+  function show(n){
+    i = Math.max(0, Math.min(STEPS.length - 1, n));
+    var s = STEPS[i];
+    no.textContent = (i+1) + ' / ' + STEPS.length;
+    txt.innerHTML = s.txt;
+    prev.disabled = i === 0;
+    next.textContent = i === STEPS.length - 1 ? '완료' : '다음';
+    place(s);
+  }
+
+  /* ── 튜토리얼 중 외부 조작 차단 ──
+     스포트라이트가 가리키는 곳이 바뀌면 안 되므로 사용자 스크롤·클릭·포커스 이동을 막는다.
+     스크립트가 부르는 scrollIntoView 는 이벤트가 아니라서 그대로 동작한다. */
+  var SCROLLS = ['wheel','mousewheel','DOMMouseScroll','touchmove'];
+  function eat(e){ e.preventDefault(); e.stopPropagation(); }
+  function keyGuard(e){
+    if(e.key === 'Escape' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') return;
+    // 말풍선 버튼 위에서의 Enter / Space 는 살려 둔다
+    if(pop.contains(e.target) && (e.key === 'Enter' || e.key === ' ')) return;
+    e.preventDefault();          // 스크롤 키(Space·PageUp/Down·Home/End·↑↓) · Tab 이탈 차단
+    e.stopPropagation();
+  }
+  function lock(){
+    SCROLLS.forEach(function(t){ document.addEventListener(t, eat, {passive:false, capture:true}); });
+    window.addEventListener('wheel', eat, {passive:false, capture:true});
+    document.addEventListener('keydown', keyGuard, true);
+    document.addEventListener('contextmenu', eat, true);
+    document.documentElement.classList.add('tut-lock');
+  }
+  function unlock(){
+    SCROLLS.forEach(function(t){ document.removeEventListener(t, eat, true); });
+    window.removeEventListener('wheel', eat, true);
+    document.removeEventListener('keydown', keyGuard, true);
+    document.removeEventListener('contextmenu', eat, true);
+    document.documentElement.classList.remove('tut-lock');
+  }
+
+  function open(){ el.hidden = false; lock(); show(0); next.focus(); }
+  function close(){
+    el.hidden = true;
+    unlock();
+    try{ sessionStorage.setItem(KEY, '1'); }catch(e){}
+  }
+
+  var openBtn = document.getElementById('tutOpen');
+  if(openBtn) openBtn.addEventListener('click', open);
+
+  next.addEventListener('click', function(){ i === STEPS.length - 1 ? close() : show(i+1); });
+  prev.addEventListener('click', function(){ show(i-1); });
+  skip.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(el.hidden) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowRight') next.click();
+    else if(e.key === 'ArrowLeft' && i > 0) prev.click();
+  });
+  window.addEventListener('resize', function(){ if(!el.hidden) place(STEPS[i]); });
+
+  /* 부모(모달)에서 '설명 다시 보기' 요청 */
+  window.addEventListener('message', function(e){
+    if(e.data === 'tut:restart') open();
+  });
+
+  /* 탭 첫 진입에만 자동 실행 */
+  var seen = false;
+  try{ seen = sessionStorage.getItem(KEY) === '1'; }catch(e){}
+  if(!seen) setTimeout(open, 420);
+})();
+</script>
+</body>
+</html>

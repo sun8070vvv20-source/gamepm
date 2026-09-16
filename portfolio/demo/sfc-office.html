@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>공유오피스 대관 신청 · 서울영화센터 | 박세훈 포트폴리오</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  .dm-top{position:sticky;top:0;z-index:9999;background:#12161f;color:#fff;
+    font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+    border-bottom:1px solid rgba(255,255,255,.12)}
+  .dm-top *{box-sizing:border-box}
+  .dm-in{max-width:1180px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .dm-back{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;
+    border-radius:8px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;
+    font-size:13px;font-weight:700;white-space:nowrap;transition:background .18s}
+  .dm-back:hover{background:rgba(255,255,255,.2)}
+  .dm-ttl{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .dm-badge{flex:0 0 auto;padding:3px 9px;border-radius:5px;background:#f26522;color:#fff;
+    font-size:11.5px;font-weight:800;letter-spacing:.02em}
+  .dm-name{font-size:15px;font-weight:700;letter-spacing:-.02em}
+  .dm-org{font-size:12.5px;color:rgba(255,255,255,.55);font-weight:600}
+  .dm-note{flex:1 1 100%;margin:0;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);
+    font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.68)}
+  .dm-note b{color:#8fc0ff;font-weight:700}
+  .dm-stage{background:#fff}
+  @media(max-width:640px){ .dm-in{padding:12px 16px;gap:10px} .dm-name{font-size:14px} }
+
+body{margin:0;background:#fff;color:#333;
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  word-break:keep-all;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+:root{--primary900:#FF256D;--gray-33:#333;--gray-55:#555;--gray-75:#757575;--gray-99:#999;
+  --gray-aa:#aaa;--gray-cc:#ccc;--gray-e5:#e5e5e5;--gray-f5:#f5f5f5}
+.sf-wrap{max-width:1180px;margin:0 auto;padding:40px 24px 72px}
+.grid-main{display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:start}
+@media(max-width:900px){.grid-main{grid-template-columns:1fr;gap:36px}}
+/* ── 좌측 : .con-body.detail-main ── */
+.txt-36{display:block;line-height:1.4;font-size:36px;font-weight:700;letter-spacing:-.02em;color:#111;margin:0 0 10px}
+.txt-18{display:block;line-height:1.4;font-size:18px;color:#555;margin:0 0 20px}
+.img-st56{position:relative;width:100%;height:0;padding-bottom:56%;overflow:hidden;
+  background:linear-gradient(135deg,#f2f2f2,#e6e6e6);border:1px solid var(--gray-e5)}
+.img-st56 span{position:absolute;inset:0;display:grid;place-items:center;color:var(--gray-aa);font-size:14px;font-weight:600}
+.detail-tbl{border-collapse:collapse;border-spacing:0;width:100%;border-top:1px solid #000;margin-top:40px}
+.detail-tbl th{line-height:1.3;padding:18px 10px;color:var(--gray-75);font-weight:500;text-align:left;vertical-align:top;font-size:16px}
+.detail-tbl td{line-height:1.3;padding:18px 10px;word-break:break-all;font-size:16px;color:#333}
+.detail-tbl tr{border-bottom:1px solid var(--gray-e5)}
+/* ── 우측 : .retal-info — 좌석 > 캘린더 > 시간 > 대관료 > 버튼 ── */
+.retal-info{display:flex;flex-direction:column}
+#officeSeatSection{order:1}
+.retal-info > div:first-child{order:2}
+#officeTimeSection{order:3}
+.retal-info > .mt30{order:5}
+.retal-info > .btn-ce{order:6}
+.mt15{margin-top:15px}.mt30{margin-top:30px}
+.rt-lbl{display:flex;align-items:center;gap:7px;font-size:20px;font-weight:700;
+  letter-spacing:-.02em;color:#111;margin:0 0 10px}
+.rt-lbl svg{width:18px;height:18px;flex:0 0 18px}
+.rt-guide,.rt-note{font-size:15px;line-height:1.6;color:var(--gray-75);margin:0 0 10px}
+.rt-note{margin:5px 0 0}
+/* 캘린더 */
+.rt-mon{display:flex;justify-content:center;align-items:center;gap:15px;margin-bottom:15px}
+.rt-mon button{width:32px;height:32px;border:0;background:none;cursor:pointer;font-size:20px;color:#333;line-height:1}
+.rt-mon strong{font-size:24px;font-weight:700;letter-spacing:-.02em;color:#111}
+.calendar-st1{width:100%;text-align:center;border-collapse:collapse}
+.calendar-st1 thead th{line-height:20px;padding:7px 0 3px;font-weight:400;font-size:15px;color:#333}
+.calendar-st1 thead th:first-child{color:var(--primary900)}
+.calendar-st1 tbody td{padding:2px 0}
+.calendar-st1 tbody td .date{display:inline-flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;width:50px;height:50px;cursor:pointer;border-radius:2px;
+  transition:background-color .2s ease}
+.calendar-st1 tbody td .date .num{display:block;line-height:18px;margin-top:9px;font-weight:400;font-size:16px;transition:color .2s ease}
+.calendar-st1 tbody td .date .txt{display:block;line-height:12px;margin-top:2px;font-size:10px;transition:color .2s ease}
+.calendar-st1 tbody td .today .num,.calendar-st1 tbody td .today .txt{color:var(--primary900)}
+.calendar-st1 tbody td .unselectable{cursor:default}
+.calendar-st1 tbody td .unselectable .num,.calendar-st1 tbody td .unselectable .txt{color:var(--gray-cc)}
+.calendar-st1 tbody td .holiday .num,.calendar-st1 tbody td .holiday .txt{color:var(--gray-aa)}
+.calendar-st1 tbody td .selected{background-color:var(--primary900);border-radius:2px}
+.calendar-st1 tbody td .selected .num,.calendar-st1 tbody td .selected .txt{color:#fff}
+/* 좌석 · 시간 칩 */
+.chk-list-st2{display:flex;flex-wrap:wrap;align-items:center;gap:6px;width:100%;list-style:none;margin:0;padding:0}
+.chk-list-st2--grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.rdo-st2{position:relative;flex:1 1 calc(33.3% - 6px)}
+.chk-list-st2--grid2 .rdo-st2{flex:none}
+.rdo-st2 input{appearance:none;-webkit-appearance:none;position:absolute;top:0;left:0;
+  width:100%;height:100%;border:none;background:transparent;margin:0;cursor:pointer}
+.rdo-st2 label{position:relative;display:inline-block;width:100%;height:40px;line-height:40px;
+  padding:0 12px;font-weight:500;font-size:15px;border:1px solid var(--gray-e5);border-radius:2px;
+  text-align:center;cursor:pointer;color:#333;background:#fff}
+.rdo-st2 input:checked + label{color:#fff;background:#000;border-color:#000}
+.rdo-st2.tm-disabled input + label,.rdo-st2.tm-disabled input:checked + label{
+  color:var(--gray-75);background:var(--gray-f5);border-color:var(--gray-e5);cursor:not-allowed}
+.rdo-st2 .tm-mark{margin-left:5px;font-weight:700}
+.rdo-st2 .tm-mark--mine{color:var(--primary900)}
+/* 대관료 · 신청 */
+.rt-amt{display:flex;align-items:baseline;justify-content:flex-end;gap:6px;margin-top:10px}
+.rt-amt b{font-size:30px;font-weight:700;color:var(--primary900);letter-spacing:-.02em}
+.rt-amt span{font-size:16px;color:#333}
+.btn-ce{margin-top:30px;text-align:center}
+.btn-ce button{width:200px;height:56px;border:0;background:#000;color:#fff;
+  font-family:inherit;font-size:17px;font-weight:600;cursor:pointer}
+.btn-ce button:hover{background:#222}
+.rt-hide{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* 시간 영역은 좌석+일자가 확정돼야 나타난다 (원본 #officeTimeSection style="display:none") */
+#officeTimeSection{display:none}
+@keyframes officeTimeReveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#officeTimeSection.is-revealed{animation:officeTimeReveal .4s ease both}
+.chk-list-st2.is-allday-on .rdo-st2 input + label,
+.chk-list-st2.is-allday-on .rdo-st2 input:checked + label{
+  color:var(--gray-75);background:var(--gray-f5);border-color:var(--gray-e5);cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){#officeTimeSection.is-revealed{animation:none}}
+.rt-formula{margin:0;text-align:right;font-size:15px;color:var(--gray-75);min-height:22px}
+
+/* ── 튜토리얼 : 대상 요소를 비추고 설명을 붙인다 ── */
+.tut[hidden]{display:none}
+.tut{position:fixed;inset:0;z-index:99999;pointer-events:auto;cursor:default;
+  overscroll-behavior:contain;-webkit-user-select:none;user-select:none;
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif}
+/* 튜토리얼 동안 본문은 선택·드래그 불가 (스크롤은 스크립트가 막는다) */
+html.tut-lock, html.tut-lock body{-webkit-user-select:none;user-select:none}
+html.tut-lock body{cursor:default}
+.tut__ring{position:absolute;border-radius:10px;pointer-events:none;
+  box-shadow:0 0 0 9999px rgba(0,12,30,.66), 0 0 0 3px #3182f6;
+  transition:top .32s cubic-bezier(.22,1,.36,1),left .32s cubic-bezier(.22,1,.36,1),
+             width .32s cubic-bezier(.22,1,.36,1),height .32s cubic-bezier(.22,1,.36,1)}
+.tut__pop{position:absolute;pointer-events:auto;width:min(360px,calc(100vw - 32px));padding:18px 20px 16px;
+  background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(0,12,30,.36);
+  transition:top .32s cubic-bezier(.22,1,.36,1),left .32s cubic-bezier(.22,1,.36,1)}
+.tut__no{display:flex;align-items:center;gap:7px;margin:0 0 8px;
+  font-size:12px;font-weight:800;letter-spacing:.06em;color:#3182f6}
+.tut__no i{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:#3182f6;font-style:normal}
+.tut__txt{margin:0;font-size:14px;line-height:1.72;color:#333d4b;word-break:keep-all}
+.tut__txt b{font-weight:700;color:#191f28}
+.tut__acts{display:flex;align-items:center;gap:8px;margin-top:16px}
+.tut__acts button{height:36px;padding:0 14px;border:0;border-radius:10px;cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.tut__skip{margin-right:auto;background:none;color:#8b95a1}
+.tut__skip:hover{color:#4e5968}
+.tut__prev{background:#f2f4f6;color:#4e5968}
+.tut__prev:hover{background:#e5e8eb}
+.tut__prev[disabled]{opacity:.4;cursor:default}
+.tut__next{background:#3182f6;color:#fff}
+.tut__next:hover{background:#2272eb}
+@media(max-width:640px){
+  .tut__pop{width:calc(100vw - 24px);left:12px !important}
+}
+@media(prefers-reduced-motion:reduce){
+  .tut__ring,.tut__pop{transition:none}
+}
+/* 상시 노출 : 튜토리얼을 다시 부르는 버튼 */
+.tut-open{position:fixed;right:16px;bottom:16px;z-index:9998;display:inline-flex;align-items:center;gap:7px;
+  height:38px;padding:0 15px;border:0;border-radius:999px;cursor:pointer;
+  background:#3182f6;color:#fff;box-shadow:0 6px 18px rgba(49,130,246,.34);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:-.01em;transition:background .16s,transform .16s}
+.tut-open:hover{background:#2272eb;transform:translateY(-2px)}
+.tut-open svg{width:15px;height:15px;flex:0 0 15px}
+.tut:not([hidden]) ~ .tut-open{display:none}
+@media(prefers-reduced-motion:reduce){ .tut-open:hover{transform:none} }
+</style>
+</head>
+<body>
+
+<div class="sf-wrap">
+  <div class="grid-main">
+
+    <div class="con-body detail-main">
+      <strong class="txt-36">공유오피스</strong>
+      <p class="txt-18">영상·영화 분야 창작자를 위한 공유 업무 공간입니다.</p>
+      <div class="img-st56"><span>시설 이미지</span></div>
+      <table class="detail-tbl">
+        <caption class="rt-hide">상세내용을 설명하는 표입니다.</caption>
+        <colgroup><col style="min-width:100px;width:10%"><col style="width:90%"></colgroup>
+        <tbody>
+          <tr><th scope="row">위치</th><td>본관 4층</td></tr>
+          <tr><th scope="row">규모</th><td>8석 / 8명</td></tr>
+          <tr><th scope="row">운영시간</th><td>09:00 ~ 22:00</td></tr>
+          <tr><th scope="row">대관료</th><td>시간당 5,000원 · 종일 40,000원</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="main-aside">
+      <div class="retal-info">
+
+        <div>
+          <div class="rt-mon">
+            <button type="button" id="btnPrev" aria-label="이전달">&#8249;</button>
+            <strong class="year-month" id="yearMonth"></strong>
+            <button type="button" id="btnNext" aria-label="다음달">&#8250;</button>
+          </div>
+          <table class="calendar-st1">
+            <caption class="rt-hide">달력 테이블</caption>
+            <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
+            <tbody class="dates" id="dates"></tbody>
+          </table>
+          <p class="rt-note" id="rsvtYmdErr" style="display:none;color:var(--primary900)">신청이 불가능한 일자입니다.</p>
+        </div>
+
+        <div class="mt30" id="officeSeatSection">
+          <p class="rt-guide" id="officeSeatGuide">* 먼저 희망 좌석을 선택한 후, 캘린더에서 시작일을 선택하세요.</p>
+          <strong class="rt-lbl"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5h-11zM3 2h10v12H3V2z"/><path d="M8 4.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM5 12c0-1.7 1.3-3 3-3s3 1.3 3 3H5z"/></svg> 희망 단기 좌석 선택</strong>
+          <ul class="chk-list-st2">
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn005" value="005" data-yn="N"><label for="rsvtHrCn005">좌석5</label></li>
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn006" value="006" data-yn="N"><label for="rsvtHrCn006">좌석6</label></li>
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn007" value="007" data-yn="N"><label for="rsvtHrCn007">좌석7</label></li>
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn008" value="008" data-yn="N"><label for="rsvtHrCn008">좌석8</label></li>
+          </ul>
+          <strong class="rt-lbl mt15"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5h-11zM3 2h10v12H3V2z"/><path d="M8 4.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM5 12c0-1.7 1.3-3 3-3s3 1.3 3 3H5z"/></svg> 희망 장기 좌석 선택</strong>
+          <ul class="chk-list-st2">
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn001" value="001" data-yn="Y"><label for="rsvtHrCn001">좌석1</label></li>
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn002" value="002" data-yn="Y"><label for="rsvtHrCn002">좌석2</label></li>
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn003" value="003" data-yn="Y"><label for="rsvtHrCn003">좌석3</label></li>
+            <li class="rdo-st2"><input type="radio" name="rsvtHrCn" id="rsvtHrCn004" value="004" data-yn="Y"><label for="rsvtHrCn004">좌석4</label></li>
+          </ul>
+          <p class="rt-note">* 선택하신 희망좌석은 신청순위에 따라 다른 좌석으로 배치될 수 있습니다. 양해부탁드립니다.</p>
+        </div>
+
+        <div class="mt30" id="officeTimeSection">
+          <div style="margin-bottom:15px" id="officeAllDaySection">
+            <strong class="rt-lbl"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.5 3h13a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zM2 6v6h12V6H2zm0-1.5V5h12v-.5H2z"/><path d="M3 9h4v1.5H3z"/></svg> 종일 선택</strong>
+            <ul class="chk-list-st2">
+              <li class="rdo-st2" style="flex:0 0 120px">
+                <input type="checkbox" id="allDayChk001"><label for="allDayChk001">종일</label>
+              </li>
+            </ul>
+            <p class="rt-note">* 종일 선택 시 시간 다중 선택은 비활성화되며, 대관료는 1일 단위로 계산됩니다.</p>
+          </div>
+          <strong class="rt-lbl"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1.5A5.5 5.5 0 1 0 8 2.5a5.5 5.5 0 0 0 0 11z"/><path d="M7.25 4h1.5v4.2l2.6 1.5-.75 1.3-3.35-1.95V4z"/></svg> 이용 시간 선택</strong>
+          <ul class="chk-list-st2 chk-list-st2--grid2">
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn01" value="TM01"><label for="rsvtTmCn01">09:00~10:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn02" value="TM02"><label for="rsvtTmCn02">10:00~11:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn03" value="TM03"><label for="rsvtTmCn03">11:00~12:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn04" value="TM04"><label for="rsvtTmCn04">12:00~13:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn05" value="TM05"><label for="rsvtTmCn05">13:00~14:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn06" value="TM06"><label for="rsvtTmCn06">14:00~15:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn07" value="TM07"><label for="rsvtTmCn07">15:00~16:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn08" value="TM08"><label for="rsvtTmCn08">16:00~17:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn09" value="TM09"><label for="rsvtTmCn09">17:00~18:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn10" value="TM10"><label for="rsvtTmCn10">18:00~19:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn11" value="TM11"><label for="rsvtTmCn11">19:00~20:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn12" value="TM12"><label for="rsvtTmCn12">20:00~21:00</label></li>
+            <li class="rdo-st2"><input type="checkbox" name="rsvtTmCn" id="rsvtTmCn13" value="TM13"><label for="rsvtTmCn13">21:00~22:00</label></li>
+          </ul>
+          <p class="rt-note">* 선택 기간 중 매일 동일 시간대에 이용합니다.</p>
+        </div>
+
+        <div class="mt30">
+          <strong class="rt-lbl"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.5 3h13a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zM2 6v6h12V6H2zm0-1.5V5h12v-.5H2z"/><path d="M3 9h4v1.5H3z"/></svg> 대관료</strong>
+          <p class="rt-formula" id="stlmAmtFormula"></p>
+          <p class="rt-amt"><b id="stlmAmtText">0</b><span>원</span></p>
+          <p class="rt-note" id="amtGuide">* 이용 시간을 선택하면 대관료가 계산됩니다.</p>
+        </div>
+
+        <div class="btn-ce"><button type="button">신청하기</button></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── 원본 fclt_aply_step2.jsp 의 공유오피스(001) 흐름 재현 ──
+     좌석 클릭 = longTermYn 설정 + 기간/시간/요금 초기화 (기간 확정 안 함)
+     캘린더 클릭 = applyOfficeSelection() → 기간 확정 · 일자 표시 · 시간 영역 노출 · 요금 계산
+     단기(N) 시작일 당일 1일 / 장기(Y) 시작일 +1개월, 휴일·지난일자 제외          */
+  var TM_AMT = 5000, ALLDAY_AMT = 40000;
+  var TODAY = new Date(2026, 8, 3);                 // 시연 기준일 2026-09-03
+  var HOLIDAY = { '20260924':1, '20260925':1, '20260926':1 };   // 공휴일
+  var view = new Date(2026, 8, 1);
+  var rsvtYmd = '', longTermYn = '', useYmds = [];
+
+  function pad(n){ return (n<10?'0':'')+n }
+  function ymdOf(d){ return d.getFullYear()+''+pad(d.getMonth()+1)+pad(d.getDate()) }
+  function isHoliday(y){ return !!HOLIDAY[y] }
+  function fmt(y){ return y.substring(0,4)+'.'+y.substring(4,6)+'.'+y.substring(6,8) }
+
+  /* 시작일 + 좌석 유형으로 실제 이용 일자 목록 */
+  function getOfficeRange(startYmd, yn){
+    if(!startYmd) return [];
+    var y=+startYmd.substr(0,4), mo=+startYmd.substr(4,2)-1, d=+startYmd.substr(6,2);
+    var cur=new Date(y,mo,d), end=new Date(y,mo,d);
+    if(yn==='Y') end.setMonth(end.getMonth()+1);
+    var r=[];
+    while(cur<=end){
+      var s=ymdOf(cur);
+      if(+s >= +ymdOf(TODAY) && !isHoliday(s)) r.push(s);
+      cur.setDate(cur.getDate()+1);
+    }
+    return r;
+  }
+
+  function renderCalendar(){
+    document.getElementById('yearMonth').textContent = view.getFullYear()+'.'+(view.getMonth()+1);
+    var first=new Date(view.getFullYear(),view.getMonth(),1);
+    var cur=new Date(first); cur.setDate(1-first.getDay());
+    var html='', used={};
+    useYmds.forEach(function(y){ used[y]=1 });
+    for(var w=0; w<6; w++){
+      html+='<tr>';
+      for(var i=0;i<7;i++){
+        var s=ymdOf(cur), inMonth=cur.getMonth()===view.getMonth();
+        var cls='date', txt='';
+        if(!inMonth || +s < +ymdOf(TODAY)){ cls+=' unselectable'; }
+        else if(isHoliday(s)){ cls+=' unselectable'; txt='공휴일'; }
+        if(used[s] && inMonth) cls+=' selected';
+        html+='<td><span class="'+cls+'" data-ymd="'+s+'"><span class="num">'+cur.getDate()+
+              '</span><span class="txt">'+txt+'</span></span></td>';
+        cur.setDate(cur.getDate()+1);
+      }
+      html+='</tr>';
+      if(cur.getMonth()!==view.getMonth() && w>=4) break;
+    }
+    document.getElementById('dates').innerHTML=html;
+    bindDates();
+  }
+
+  function bindDates(){
+    document.querySelectorAll('#dates .date:not(.unselectable)').forEach(function(el){
+      el.addEventListener('click', function(){
+        // 좌석이 먼저 선택돼야 기간이 확정된다 (좌석 → 일자 순서)
+        if(!document.querySelector('input[name="rsvtHrCn"]:checked')){
+          var g=document.getElementById('officeSeatGuide');
+          g.style.color='var(--primary900)';
+          setTimeout(function(){ g.style.color='' }, 1200);
+          return;
+        }
+        rsvtYmd = el.dataset.ymd;
+        applyOfficeSelection();
+      });
+    });
+  }
+
+  /* 일자 + 좌석이 모두 정해진 상태 → 기간 확정 · 일자 표시 · 시간 영역 노출 · 요금 계산 */
+  function applyOfficeSelection(){
+    var seat=document.querySelector('input[name="rsvtHrCn"]:checked');
+    if(!rsvtYmd || !seat){ clearOfficeSelection(); return; }
+    useYmds = getOfficeRange(rsvtYmd, seat.dataset.yn);
+    renderCalendar();                                  // 확정 기간을 캘린더에 칠한다
+    var sec=document.getElementById('officeTimeSection');
+    // CSS 로 숨겨 뒀으므로 인라인으로 명시해야 열린다 ('' 는 CSS 의 display:none 으로 되돌아감)
+    sec.style.display='block';
+    sec.classList.remove('is-revealed'); void sec.offsetWidth; sec.classList.add('is-revealed');
+    document.querySelectorAll('input[name="rsvtTmCn"]').forEach(function(c){ c.checked=false; c.disabled=false });
+    document.querySelector('.chk-list-st2--grid2').classList.remove('is-allday-on');
+    document.getElementById('allDayChk001').checked=false;
+    calcOfficeAmt();
+  }
+
+  /* 기간/시간/요금 초기화 (좌석은 유지) */
+  function clearOfficeSelection(){
+    useYmds=[]; rsvtYmd='';
+    var sec=document.getElementById('officeTimeSection');
+    sec.style.display='none'; sec.classList.remove('is-revealed');
+    document.querySelectorAll('input[name="rsvtTmCn"]').forEach(function(c){ c.checked=false; c.disabled=false });
+    document.querySelector('.chk-list-st2--grid2').classList.remove('is-allday-on');
+    document.getElementById('allDayChk001').checked=false;
+    renderCalendar();
+    calcOfficeAmt();
+  }
+
+  /* 요금 = 종일가 x 일수  또는  단가 x 시간수 x 일수 */
+  function calcOfficeAmt(){
+    var days = useYmds.length;
+    var isAllDay = document.getElementById('allDayChk001').checked;
+    var times = document.querySelectorAll('input[name="rsvtTmCn"]:checked').length;
+    var amt = 0, formula = '';
+    if(days === 0 || (!isAllDay && times === 0)){
+      amt = 0; formula = '';
+    } else if(isAllDay){
+      amt = ALLDAY_AMT * days;
+      formula = ALLDAY_AMT.toLocaleString() + '원/일 × ' + days + '일';
+    } else {
+      amt = TM_AMT * times * days;
+      formula = TM_AMT.toLocaleString() + '원 × ' + times + '시간 × ' + days + '일';
+    }
+    document.getElementById('stlmAmtFormula').textContent = formula;
+    document.getElementById('stlmAmtText').textContent = amt.toLocaleString();
+    var g = document.getElementById('amtGuide');
+    if(g) g.style.display = amt > 0 ? 'none' : '';
+  }
+
+  /* 좌석 클릭 — longTermYn 만 설정하고 기간은 확정하지 않는다 */
+  document.querySelectorAll('input[name="rsvtHrCn"]').forEach(function(r){
+    r.addEventListener('click', function(){
+      longTermYn = r.dataset.yn;
+      document.querySelectorAll('input[name="rsvtHrCn"]').forEach(function(x){ if(x!==r) x.checked=false });
+      r.checked=true;
+      clearOfficeSelection();                          // 좌석 변경 시 선택 날짜 초기화
+    });
+  });
+
+  /* 종일 토글 — 시간 전체 체크 + 비활성, 요금은 일 단위 */
+  document.getElementById('allDayChk001').addEventListener('change', function(){
+    var on=this.checked, ul=document.querySelector('.chk-list-st2--grid2');
+    document.querySelectorAll('input[name="rsvtTmCn"]').forEach(function(c){ c.checked=on; c.disabled=on });
+    ul.classList.toggle('is-allday-on', on);
+    calcOfficeAmt();
+  });
+  document.querySelectorAll('input[name="rsvtTmCn"]').forEach(function(c){ c.addEventListener('change', calcOfficeAmt) });
+
+  document.getElementById('btnPrev').addEventListener('click', function(){ view.setMonth(view.getMonth()-1); renderCalendar(); });
+  document.getElementById('btnNext').addEventListener('click', function(){ view.setMonth(view.getMonth()+1); renderCalendar(); });
+
+  renderCalendar();
+})();
+</script>
+
+
+<div class="tut" id="tut" hidden>
+  <div class="tut__ring" id="tutRing"></div>
+  <div class="tut__pop" id="tutPop">
+    <p class="tut__no"><i></i><span id="tutNo">1 / 4</span></p>
+    <p class="tut__txt" id="tutTxt"></p>
+    <div class="tut__acts">
+      <button type="button" class="tut__skip" id="tutSkip">건너뛰기</button>
+      <button type="button" class="tut__prev" id="tutPrev">이전</button>
+      <button type="button" class="tut__next" id="tutNext">다음</button>
+    </div>
+  </div>
+</div>
+<button type="button" class="tut-open" id="tutOpen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+  설명 보기
+</button>
+
+<script>
+(function(){
+  var KEY = 'tut:sfc';
+  var STEPS = [{"sel": "#officeSeatSection", "txt": "공유오피스는 <b>좌석부터 차례대로 선택합니다.</b>"}, {"sel": "#officeSeatSection .chk-list-st2", "txt": "단기 좌석은 <b>선택한 시작일 당일 하루만 이용합니다.</b>"}, {"sel": "#officeSeatSection .chk-list-st2:nth-of-type(2)", "txt": "장기 좌석은 <b>선택한 시작일부터 한 달간 이용합니다.</b> 실제 이용할 수 있는 좌석만 보여줍니다."}, {"sel": ".calendar-st1", "txt": "좌석을 선택하면 <b>이용 기간이 한 번에 표시됩니다.</b> 지난날과 공휴일은 제외되고, 좌석을 바꾸면 날짜도 초기화됩니다.", "before": "var s=document.getElementById(\"seatS6\")||document.querySelector(\"input[name=rsvtHrCn]\");if(s&&!s.checked){s.click();}"}, {"sel": "#officeTimeSection", "txt": "이용 기간을 정한 뒤 <b>이용 시간을 선택합니다.</b>", "before": "var d=document.querySelector(\"#dates .date:not(.unselectable)\");if(d&&!document.querySelector(\".calendar-st1 .selected\")){d.click();}"}, {"sel": "#stlmAmtFormula", "txt": "요금은 <b>단가 × 이용 시간 × 이용 일수</b>로 계산합니다. 종일을 선택하면 시간 선택 없이 <b>하루 단위로 계산합니다.</b>", "before": "var t=document.querySelectorAll(\"input[name=rsvtTmCn]\");for(var k=0;k<3&&k<t.length;k++){ if(!t[k].checked){ t[k].checked=true; t[k].dispatchEvent(new Event(\"change\",{bubbles:true})); } }"}];
+  var el = document.getElementById('tut'), ring = document.getElementById('tutRing'),
+      pop = document.getElementById('tutPop'), no = document.getElementById('tutNo'),
+      txt = document.getElementById('tutTxt'), prev = document.getElementById('tutPrev'),
+      next = document.getElementById('tutNext'), skip = document.getElementById('tutSkip');
+  var i = 0;
+
+  function place(step){
+    if(step.before){ try{ (new Function(step.before))(); }catch(e){} }
+    var t = document.querySelector(step.sel);
+    if(!t){ return false; }
+    t.scrollIntoView({block:'center', behavior:'smooth'});
+    setTimeout(function(){
+      var r = t.getBoundingClientRect(), pad = 6;
+      ring.style.top    = (r.top - pad) + 'px';
+      ring.style.left   = (r.left - pad) + 'px';
+      ring.style.width  = (r.width + pad*2) + 'px';
+      ring.style.height = (r.height + pad*2) + 'px';
+      var pw = Math.min(360, window.innerWidth - 32), ph = pop.offsetHeight || 180;
+      var top = r.bottom + 14, left = r.left;
+      if(top + ph > window.innerHeight - 12) top = Math.max(12, r.top - ph - 14);
+      if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+      pop.style.top = Math.max(12, top) + 'px';
+      pop.style.left = Math.max(12, left) + 'px';
+    }, 220);
+    setTimeout(function(){                       // 스크롤이 멎은 뒤 재보정
+      var r2 = t.getBoundingClientRect(), pad = 6;
+      ring.style.top = (r2.top - pad) + 'px';
+      ring.style.left = (r2.left - pad) + 'px';
+      ring.style.width = (r2.width + pad*2) + 'px';
+      ring.style.height = (r2.height + pad*2) + 'px';
+      var pw2 = Math.min(360, window.innerWidth - 32), ph2 = pop.offsetHeight || 180;
+      var top2 = r2.bottom + 14, left2 = r2.left;
+      if(top2 + ph2 > window.innerHeight - 12) top2 = Math.max(12, r2.top - ph2 - 14);
+      if(left2 + pw2 > window.innerWidth - 12) left2 = window.innerWidth - pw2 - 12;
+      pop.style.top = Math.max(12, top2) + 'px';
+      pop.style.left = Math.max(12, left2) + 'px';
+    }, 620);
+    return true;
+  }
+
+  function show(n){
+    i = Math.max(0, Math.min(STEPS.length - 1, n));
+    var s = STEPS[i];
+    no.textContent = (i+1) + ' / ' + STEPS.length;
+    txt.innerHTML = s.txt;
+    prev.disabled = i === 0;
+    next.textContent = i === STEPS.length - 1 ? '완료' : '다음';
+    place(s);
+  }
+
+  /* ── 튜토리얼 중 외부 조작 차단 ──
+     스포트라이트가 가리키는 곳이 바뀌면 안 되므로 사용자 스크롤·클릭·포커스 이동을 막는다.
+     스크립트가 부르는 scrollIntoView 는 이벤트가 아니라서 그대로 동작한다. */
+  var SCROLLS = ['wheel','mousewheel','DOMMouseScroll','touchmove'];
+  function eat(e){ e.preventDefault(); e.stopPropagation(); }
+  function keyGuard(e){
+    if(e.key === 'Escape' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') return;
+    // 말풍선 버튼 위에서의 Enter / Space 는 살려 둔다
+    if(pop.contains(e.target) && (e.key === 'Enter' || e.key === ' ')) return;
+    e.preventDefault();          // 스크롤 키(Space·PageUp/Down·Home/End·↑↓) · Tab 이탈 차단
+    e.stopPropagation();
+  }
+  function lock(){
+    SCROLLS.forEach(function(t){ document.addEventListener(t, eat, {passive:false, capture:true}); });
+    window.addEventListener('wheel', eat, {passive:false, capture:true});
+    document.addEventListener('keydown', keyGuard, true);
+    document.addEventListener('contextmenu', eat, true);
+    document.documentElement.classList.add('tut-lock');
+  }
+  function unlock(){
+    SCROLLS.forEach(function(t){ document.removeEventListener(t, eat, true); });
+    window.removeEventListener('wheel', eat, true);
+    document.removeEventListener('keydown', keyGuard, true);
+    document.removeEventListener('contextmenu', eat, true);
+    document.documentElement.classList.remove('tut-lock');
+  }
+
+  function open(){ el.hidden = false; lock(); show(0); next.focus(); }
+  function close(){
+    el.hidden = true;
+    unlock();
+    try{ sessionStorage.setItem(KEY, '1'); }catch(e){}
+  }
+
+  var openBtn = document.getElementById('tutOpen');
+  if(openBtn) openBtn.addEventListener('click', open);
+
+  next.addEventListener('click', function(){ i === STEPS.length - 1 ? close() : show(i+1); });
+  prev.addEventListener('click', function(){ show(i-1); });
+  skip.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(el.hidden) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowRight') next.click();
+    else if(e.key === 'ArrowLeft' && i > 0) prev.click();
+  });
+  window.addEventListener('resize', function(){ if(!el.hidden) place(STEPS[i]); });
+
+  /* 부모(모달)에서 '설명 다시 보기' 요청 */
+  window.addEventListener('message', function(e){
+    if(e.data === 'tut:restart') open();
+  });
+
+  /* 탭 첫 진입에만 자동 실행 */
+  var seen = false;
+  try{ seen = sessionStorage.getItem(KEY) === '1'; }catch(e){}
+  if(!seen) setTimeout(open, 420);
+})();
+</script>
+</body>
+</html>
