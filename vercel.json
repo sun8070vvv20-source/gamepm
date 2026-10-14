@@ -6,8 +6,8 @@
       "permanent": true
     },
     {
-      "source": "/portfolio/:path*",
-      "destination": "/:path*",
+      "source": "/portfolio/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -16,8 +16,18 @@
       "permanent": true
     },
     {
+      "source": "/application/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/application/:path*",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/:path*",
+      "destination": "/:path*",
       "permanent": true
     }
   ]
