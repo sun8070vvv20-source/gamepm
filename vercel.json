@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/application",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/application/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
